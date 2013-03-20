@@ -1,0 +1,10 @@
+adapter: "mysql2"
+pool: 5
+host: "localhost"
+encoding: "utf8"
+username: "root"
+database: "6pm"
+password: ""
+# password => "ctrhtnfhbfn",
+# socket => "/var/run/mysqld/mysqld.sock"
+socket: "/var/lib/mysql/mysql.sock"
