@@ -4,6 +4,7 @@ class CreateWomenCategories < ActiveRecord::Migration
     create_table :wcategory do |t|
       t.string :cat_name_en
       t.string :cat_name_ru
+      t.string :cat_link
       t.timestamps
     end
   end

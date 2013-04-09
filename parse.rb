@@ -16,6 +16,9 @@ ActiveRecord::Base.logger = Logger.new(File.open('./log/database.log', 'a'))
 class Shoes < ActiveRecord::Base
 end
 
+class Wcategory < ActiveRecord::Base
+end
+
 def ImageDownload( image_url )
 	open(item_image_main) do |f|
   	File.open("images/test.jpg","wb") do |file|
@@ -70,9 +73,10 @@ def GetWomenShoesCategories()
 	category_block = page.css("div.sideColumn")
 	male_category_block = category_block.css("h5")
 	# puts male_category_block.text
-	category_links = category_block.css("a.gae-click.*ALP-Shoes.*Category-Navigation.*Shoes-Women-")
+	category_links = category_block.css('a[class^="gae-click"]')
 	category_links.each do |link|
-		puts link
+		puts "#{link['href'] http://6pm.com#{link['href']}"
+		break if link.text == "Men's"
 	end
 end
 
