@@ -3,7 +3,7 @@ pool: 5
 host: "localhost"
 encoding: "utf8"
 username: "root"
-database: "6pm"
+database: "garderob"
 password: ""
 # password => "ctrhtnfhbfn",
 # socket => "/var/run/mysqld/mysqld.sock"

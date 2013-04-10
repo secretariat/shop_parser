@@ -47,37 +47,46 @@ def GetItemDetails( item_url )
 	# puts header_block.css("span.sku").text
 end
 
-
-# page = Nokogiri::HTML(open("http://www.6pm.com/mens-shoes~s?s=goliveRecentSalesStyle/desc/#!/men-sneakers-athletic-shoes/CK_XARC81wHAAQLiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/"))
-# page = Nokogiri::HTML(open("http://www.6pm.com/womens-shoes~1gp?s=recentSalesStyle/desc#!/womens-sandals~yD?s=recentSalesStyle/desc/"))
-# page = Nokogiri::HTML(open("http://www.6pm.com/women-sandals-page1/CK_XARC51wHAAQHiAgMBGAI.zso?p=1&s=goliveRecentSalesStyle/desc/"))
-# SearchResult = page.css("div#searchResults")
-# item_links = SearchResult.css("a")
-# item_links.each do |link|
-	# puts link
-	# ilink = "http://6pm.com#{link['href']}"
-	# GetItemDetails( ilink )
-	# image = link.css("img.productImg")[0]['src']
-	# puts brandName = link.css("span.brandName").text
-	# productName = link.css("span.productName").text
-	# price = link.css("span.price-6pm").text
-	# discount = link.css("span.discount").text
-	# Shoes.create( :ilink => ilink, :image => image.to_s, :brandname => brandName, :productname => productName, :price_orig => price, :discount => discount)
-	# puts "#{image}\n#{brandName}\n#{productName}\n#{price}\n#{discount}\n"
-	# puts "-------------------------------"
-# end
-
-
-def GetWomenShoesCategories()
-	page = Nokogiri::HTML(open("http://www.6pm.com/shoes"))
-	category_block = page.css("div.sideColumn")
-	male_category_block = category_block.css("h5")
-	# puts male_category_block.text
-	category_links = category_block.css('a[class^="gae-click"]')
-	category_links.each do |link|
-		puts "#{link['href'] http://6pm.com#{link['href']}"
-		break if link.text == "Men's"
+def BrowseItemsFromCategory( page )
+	search_result = page.css("div#searchResults")
+	item_links = search_result.css("a")
+	item_links.each do |link|
+		puts link
+		ilink = "http://6pm.com#{link['href']}"
+		GetItemDetails( ilink )
+		image = link.css("img.productImg")[0]['src']
+		puts brandName = link.css("span.brandName").text
+		productName = link.css("span.productName").text
+		price = link.css("span.price-6pm").text
+		discount = link.css("span.discount").text
+		Shoes.create( :ilink => ilink, :image => image.to_s, :brandname => brandName, :productname => productName, :price_orig => price, :discount => discount)
+		puts "#{image}\n#{brandName}\n#{productName}\n#{price}\n#{discount}\n"
+		puts "-------------------------------"
 	end
 end
 
+def GetWomenShoesCategories()
+	page = Nokogiri::HTML(open("http://www.6pm.com/womens-shoes~b?s=goliveRecentSalesStyle/desc/"))
+	category_block = page.css("div#FCTzc2Select")
+	male_category_links = category_block.css("a")
+	male_category_links.each do |link|
+		cat_name = link.text.strip
+		cat_name = cat_name.split("(")[0].chomp
+		puts cat_name
+		cat_link = "http://6pm.com#{link['href']}"
+		Wcategory.create( :cat_name_en => cat_name, :cat_link => cat_link)
+	end
+end
+
+def BrowseCategories( model )
+	links = model.find(:all)
+	links.each do |l|
+		page = Nokogiri::HTML(open(l.cat_link))
+		puts "CATEGORY: #{l.cat_name_en}.upcase:"
+		BrowseItemsFromCategory( page )
+	end
+end
+
+
 GetWomenShoesCategories()
+BrowseCategories( Wcategory )

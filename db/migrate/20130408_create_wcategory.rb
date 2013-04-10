@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
-class CreateWomenCategories < ActiveRecord::Migration
+class CreateWcategory < ActiveRecord::Migration
   def change
-    create_table :wcategory do |t|
+    create_table :wcategories do |t|
       t.string :cat_name_en
       t.string :cat_name_ru
       t.string :cat_link

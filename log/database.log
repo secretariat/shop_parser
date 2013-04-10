@@ -1,5 +1,480 @@
-D, [2013-07-02T07:22:02.056470 #15570] DEBUG -- :   [1m[36m (13.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
-I, [2013-07-02T07:22:02.056756 #15570]  INFO -- : Migrating to CreateShoes (20130320)
-I, [2013-07-02T07:22:02.056856 #15570]  INFO -- : Migrating to CreateWomenCategories (20130408)
-D, [2013-07-02T07:22:02.349494 #15570] DEBUG -- :   [1m[35m (212.8ms)[0m  CREATE TABLE `wcategory` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `cat_name_en` varchar(255), `cat_name_ru` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
-D, [2013-07-02T07:22:02.396687 #15570] DEBUG -- :   [1m[36m (46.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20130408')[0m
+D, [2013-04-10T14:28:53.350027 #18502] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:28:53.355960 #18502] DEBUG -- :   [1m[35mSQL (0.9ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/womens-sandals~S?s=goliveRecentSalesStyle/desc/', 'Sandals', NULL, '2013-04-10 14:28:53', '2013-04-10 14:28:53')
+D, [2013-04-10T14:28:53.365615 #18502] DEBUG -- :   [1m[36m (9.2ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:28:53.367265 #18502] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:28:53.369047 #18502] DEBUG -- :   [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-heels/CK_XARC41wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Heels', NULL, '2013-04-10 14:28:53', '2013-04-10 14:28:53')[0m
+D, [2013-04-10T14:28:53.370245 #18502] DEBUG -- :   [1m[35m (0.9ms)[0m  COMMIT
+D, [2013-04-10T14:28:53.370739 #18502] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:28:53.371449 #18502] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/womens-boots~1e?s=goliveRecentSalesStyle/desc/', 'Boots', NULL, '2013-04-10 14:28:53', '2013-04-10 14:28:53')
+D, [2013-04-10T14:28:53.372001 #18502] DEBUG -- :   [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:28:53.372303 #18502] DEBUG -- :   [1m[35m (0.0ms)[0m  BEGIN
+D, [2013-04-10T14:28:53.372992 #18502] DEBUG -- :   [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-flats/CK_XARC11wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Flats', NULL, '2013-04-10 14:28:53', '2013-04-10 14:28:53')[0m
+D, [2013-04-10T14:28:53.373624 #18502] DEBUG -- :   [1m[35m (0.5ms)[0m  COMMIT
+D, [2013-04-10T14:28:53.373961 #18502] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:28:53.374618 #18502] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-sneakers-athletic-shoes/CK_XARC81wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Sneakers & Athletic Shoes', NULL, '2013-04-10 14:28:53', '2013-04-10 14:28:53')
+D, [2013-04-10T14:28:53.375152 #18502] DEBUG -- :   [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:28:53.375465 #18502] DEBUG -- :   [1m[35m (0.0ms)[0m  BEGIN
+D, [2013-04-10T14:28:53.376089 #18502] DEBUG -- :   [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-loafers/CK_XARC21wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Loafers', NULL, '2013-04-10 14:28:53', '2013-04-10 14:28:53')[0m
+D, [2013-04-10T14:28:53.376626 #18502] DEBUG -- :   [1m[35m (0.4ms)[0m  COMMIT
+D, [2013-04-10T14:28:53.376919 #18502] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:28:53.377544 #18502] DEBUG -- :   [1m[35mSQL (0.1ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-clogs-mules/CK_XARC01wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Clogs & Mules', NULL, '2013-04-10 14:28:53', '2013-04-10 14:28:53')
+D, [2013-04-10T14:28:53.378075 #18502] DEBUG -- :   [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:28:53.378346 #18502] DEBUG -- :   [1m[35m (0.0ms)[0m  BEGIN
+D, [2013-04-10T14:28:53.378958 #18502] DEBUG -- :   [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-oxfords/CK_XARC31wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Oxfords', NULL, '2013-04-10 14:28:53', '2013-04-10 14:28:53')[0m
+D, [2013-04-10T14:28:53.379664 #18502] DEBUG -- :   [1m[35m (0.6ms)[0m  COMMIT
+D, [2013-04-10T14:28:53.379993 #18502] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:28:53.380606 #18502] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-slippers/CK_XARC71wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Slippers', NULL, '2013-04-10 14:28:53', '2013-04-10 14:28:53')
+D, [2013-04-10T14:28:53.381155 #18502] DEBUG -- :   [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:28:53.381451 #18502] DEBUG -- :   [1m[35m (0.0ms)[0m  BEGIN
+D, [2013-04-10T14:28:53.382063 #18502] DEBUG -- :   [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-boat-shoes/CK_XARCy1wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Boat Shoes', NULL, '2013-04-10 14:28:53', '2013-04-10 14:28:53')[0m
+D, [2013-04-10T14:28:53.382662 #18502] DEBUG -- :   [1m[35m (0.5ms)[0m  COMMIT
+D, [2013-04-10T14:28:53.382939 #18502] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:28:53.383627 #18502] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-insoles-accessories/CK_XARC61wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Insoles & Accessories', NULL, '2013-04-10 14:28:53', '2013-04-10 14:28:53')
+D, [2013-04-10T14:28:53.384565 #18502] DEBUG -- :   [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:28:53.384917 #18502] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:28:53.385650 #18502] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-climbing/CK_XARDK2QHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Climbing', NULL, '2013-04-10 14:28:53', '2013-04-10 14:28:53')[0m
+D, [2013-04-10T14:28:53.386182 #18502] DEBUG -- :   [1m[35m (0.4ms)[0m  COMMIT
+D, [2013-04-10T14:28:53.387299 #18502] DEBUG -- :   [1m[36mWcategory Load (0.5ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-04-10T14:29:40.654565 #18533] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:29:40.659676 #18533] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/womens-sandals~S?s=goliveRecentSalesStyle/desc/', 'Sandals', NULL, '2013-04-10 14:29:40', '2013-04-10 14:29:40')
+D, [2013-04-10T14:29:40.668348 #18533] DEBUG -- :   [1m[36m (8.3ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:29:40.669385 #18533] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:29:40.670688 #18533] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-heels/CK_XARC41wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Heels', NULL, '2013-04-10 14:29:40', '2013-04-10 14:29:40')[0m
+D, [2013-04-10T14:29:40.671352 #18533] DEBUG -- :   [1m[35m (0.4ms)[0m  COMMIT
+D, [2013-04-10T14:29:40.671734 #18533] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:29:40.672547 #18533] DEBUG -- :   [1m[35mSQL (0.1ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/womens-boots~1e?s=goliveRecentSalesStyle/desc/', 'Boots', NULL, '2013-04-10 14:29:40', '2013-04-10 14:29:40')
+D, [2013-04-10T14:29:40.673110 #18533] DEBUG -- :   [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:29:40.673443 #18533] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:29:40.674287 #18533] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-flats/CK_XARC11wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Flats', NULL, '2013-04-10 14:29:40', '2013-04-10 14:29:40')[0m
+D, [2013-04-10T14:29:40.674954 #18533] DEBUG -- :   [1m[35m (0.5ms)[0m  COMMIT
+D, [2013-04-10T14:29:40.675280 #18533] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:29:40.675917 #18533] DEBUG -- :   [1m[35mSQL (0.1ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-sneakers-athletic-shoes/CK_XARC81wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Sneakers & Athletic Shoes', NULL, '2013-04-10 14:29:40', '2013-04-10 14:29:40')
+D, [2013-04-10T14:29:40.676423 #18533] DEBUG -- :   [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:29:40.676761 #18533] DEBUG -- :   [1m[35m (0.0ms)[0m  BEGIN
+D, [2013-04-10T14:29:40.677387 #18533] DEBUG -- :   [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-loafers/CK_XARC21wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Loafers', NULL, '2013-04-10 14:29:40', '2013-04-10 14:29:40')[0m
+D, [2013-04-10T14:29:40.677901 #18533] DEBUG -- :   [1m[35m (0.4ms)[0m  COMMIT
+D, [2013-04-10T14:29:40.678211 #18533] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:29:40.678982 #18533] DEBUG -- :   [1m[35mSQL (0.3ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-clogs-mules/CK_XARC01wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Clogs & Mules', NULL, '2013-04-10 14:29:40', '2013-04-10 14:29:40')
+D, [2013-04-10T14:29:40.679676 #18533] DEBUG -- :   [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:29:40.680000 #18533] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:29:40.680681 #18533] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-oxfords/CK_XARC31wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Oxfords', NULL, '2013-04-10 14:29:40', '2013-04-10 14:29:40')[0m
+D, [2013-04-10T14:29:40.681209 #18533] DEBUG -- :   [1m[35m (0.4ms)[0m  COMMIT
+D, [2013-04-10T14:29:40.681522 #18533] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:29:40.682292 #18533] DEBUG -- :   [1m[35mSQL (0.1ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-slippers/CK_XARC71wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Slippers', NULL, '2013-04-10 14:29:40', '2013-04-10 14:29:40')
+D, [2013-04-10T14:29:40.682810 #18533] DEBUG -- :   [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:29:40.683118 #18533] DEBUG -- :   [1m[35m (0.0ms)[0m  BEGIN
+D, [2013-04-10T14:29:40.683728 #18533] DEBUG -- :   [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-boat-shoes/CK_XARCy1wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Boat Shoes', NULL, '2013-04-10 14:29:40', '2013-04-10 14:29:40')[0m
+D, [2013-04-10T14:29:40.684265 #18533] DEBUG -- :   [1m[35m (0.4ms)[0m  COMMIT
+D, [2013-04-10T14:29:40.684569 #18533] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:29:40.685221 #18533] DEBUG -- :   [1m[35mSQL (0.1ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-insoles-accessories/CK_XARC61wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Insoles & Accessories', NULL, '2013-04-10 14:29:40', '2013-04-10 14:29:40')
+D, [2013-04-10T14:29:40.685738 #18533] DEBUG -- :   [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:29:40.686073 #18533] DEBUG -- :   [1m[35m (0.0ms)[0m  BEGIN
+D, [2013-04-10T14:29:40.687001 #18533] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-climbing/CK_XARDK2QHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Climbing', NULL, '2013-04-10 14:29:40', '2013-04-10 14:29:40')[0m
+D, [2013-04-10T14:29:40.687662 #18533] DEBUG -- :   [1m[35m (0.5ms)[0m  COMMIT
+D, [2013-04-10T14:29:40.688631 #18533] DEBUG -- :   [1m[36mWcategory Load (0.3ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-04-10T14:34:14.518040 #18624] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:34:14.522775 #18624] DEBUG -- :   [1m[35mSQL (0.3ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/womens-sandals~S?s=goliveRecentSalesStyle/desc/', 'Sandals', NULL, '2013-04-10 14:34:14', '2013-04-10 14:34:14')
+D, [2013-04-10T14:34:14.532167 #18624] DEBUG -- :   [1m[36m (8.8ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:34:14.534734 #18624] DEBUG -- :   [1m[35m (0.2ms)[0m  BEGIN
+D, [2013-04-10T14:34:14.537391 #18624] DEBUG -- :   [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-heels/CK_XARC41wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Heels', NULL, '2013-04-10 14:34:14', '2013-04-10 14:34:14')[0m
+D, [2013-04-10T14:34:14.539481 #18624] DEBUG -- :   [1m[35m (1.6ms)[0m  COMMIT
+D, [2013-04-10T14:34:14.540477 #18624] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:34:14.541619 #18624] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/womens-boots~1e?s=goliveRecentSalesStyle/desc/', 'Boots', NULL, '2013-04-10 14:34:14', '2013-04-10 14:34:14')
+D, [2013-04-10T14:34:14.542343 #18624] DEBUG -- :   [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:34:14.542657 #18624] DEBUG -- :   [1m[35m (0.0ms)[0m  BEGIN
+D, [2013-04-10T14:34:14.543310 #18624] DEBUG -- :   [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-flats/CK_XARC11wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Flats', NULL, '2013-04-10 14:34:14', '2013-04-10 14:34:14')[0m
+D, [2013-04-10T14:34:14.544038 #18624] DEBUG -- :   [1m[35m (0.6ms)[0m  COMMIT
+D, [2013-04-10T14:34:14.544347 #18624] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:34:14.544934 #18624] DEBUG -- :   [1m[35mSQL (0.1ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-sneakers-athletic-shoes/CK_XARC81wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Sneakers & Athletic Shoes', NULL, '2013-04-10 14:34:14', '2013-04-10 14:34:14')
+D, [2013-04-10T14:34:14.545765 #18624] DEBUG -- :   [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:34:14.546145 #18624] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:34:14.546794 #18624] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-loafers/CK_XARC21wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Loafers', NULL, '2013-04-10 14:34:14', '2013-04-10 14:34:14')[0m
+D, [2013-04-10T14:34:14.550278 #18624] DEBUG -- :   [1m[35m (3.3ms)[0m  COMMIT
+D, [2013-04-10T14:34:14.550822 #18624] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:34:14.551538 #18624] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-clogs-mules/CK_XARC01wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Clogs & Mules', NULL, '2013-04-10 14:34:14', '2013-04-10 14:34:14')
+D, [2013-04-10T14:34:14.552347 #18624] DEBUG -- :   [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:34:14.552680 #18624] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:34:14.553326 #18624] DEBUG -- :   [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-oxfords/CK_XARC31wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Oxfords', NULL, '2013-04-10 14:34:14', '2013-04-10 14:34:14')[0m
+D, [2013-04-10T14:34:14.553997 #18624] DEBUG -- :   [1m[35m (0.5ms)[0m  COMMIT
+D, [2013-04-10T14:34:14.554301 #18624] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:34:14.554982 #18624] DEBUG -- :   [1m[35mSQL (0.1ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-slippers/CK_XARC71wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Slippers', NULL, '2013-04-10 14:34:14', '2013-04-10 14:34:14')
+D, [2013-04-10T14:34:14.555661 #18624] DEBUG -- :   [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:34:14.556003 #18624] DEBUG -- :   [1m[35m (0.0ms)[0m  BEGIN
+D, [2013-04-10T14:34:14.557258 #18624] DEBUG -- :   [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-boat-shoes/CK_XARCy1wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Boat Shoes', NULL, '2013-04-10 14:34:14', '2013-04-10 14:34:14')[0m
+D, [2013-04-10T14:34:14.559037 #18624] DEBUG -- :   [1m[35m (1.6ms)[0m  COMMIT
+D, [2013-04-10T14:34:14.559649 #18624] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:34:14.560355 #18624] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-insoles-accessories/CK_XARC61wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Insoles & Accessories', NULL, '2013-04-10 14:34:14', '2013-04-10 14:34:14')
+D, [2013-04-10T14:34:14.561158 #18624] DEBUG -- :   [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:34:14.561461 #18624] DEBUG -- :   [1m[35m (0.0ms)[0m  BEGIN
+D, [2013-04-10T14:34:14.562099 #18624] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-climbing/CK_XARDK2QHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Climbing', NULL, '2013-04-10 14:34:14', '2013-04-10 14:34:14')[0m
+D, [2013-04-10T14:34:14.562684 #18624] DEBUG -- :   [1m[35m (0.4ms)[0m  COMMIT
+D, [2013-04-10T14:34:14.563691 #18624] DEBUG -- :   [1m[36mWcategory Load (0.3ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-04-10T14:34:21.866371 #18624] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:34:21.868624 #18624] DEBUG -- :   [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Kickers', '2013-04-10 14:34:21', '(38% off MSRP $160.00)', 'http://6pm.com/product/8196815/color/4188', 'http://a3.zassets.com/images/z/1/8/1/7/2/9/1817292-p-LARGE_SEARCH.jpg', '$99.99', NULL, 'U-Feel', '2013-04-10 14:34:21')[0m
+D, [2013-04-10T14:34:21.870185 #18624] DEBUG -- :   [1m[35m (1.3ms)[0m  COMMIT
+D, [2013-04-10T14:34:24.496846 #18624] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:34:24.497839 #18624] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Kickers', '2013-04-10 14:34:24', '(38% off MSRP $160.00)', 'http://6pm.com/product/8196815/color/43', 'http://a3.zassets.com/images/z/1/8/1/7/2/9/1817291-p-LARGE_SEARCH.jpg', '$99.99', NULL, 'U-Feel', '2013-04-10 14:34:24')
+D, [2013-04-10T14:34:24.499546 #18624] DEBUG -- :   [1m[36m (1.3ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:34:27.008575 #18624] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:34:27.009657 #18624] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Kickers', '2013-04-10 14:34:27', '(35% off MSRP $85.00)', 'http://6pm.com/product/8196801/color/2802', 'http://l3.zassets.com/images/z/1/8/1/8/7/5/1818750-p-LARGE_SEARCH.jpg', '$54.99', NULL, 'Lilou W3', '2013-04-10 14:34:27')[0m
+D, [2013-04-10T14:34:27.011477 #18624] DEBUG -- :   [1m[35m (1.4ms)[0m  COMMIT
+D, [2013-04-10T14:34:29.253415 #18624] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:34:29.255560 #18624] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Kickers', '2013-04-10 14:34:29', '(38% off MSRP $160.00)', 'http://6pm.com/kickers-submarine-green-multi', 'http://a3.zassets.com/images/z/1/8/1/7/2/7/1817276-p-LARGE_SEARCH.jpg', '$99.99', NULL, 'Submarine', '2013-04-10 14:34:29')
+D, [2013-04-10T14:34:29.257759 #18624] DEBUG -- :   [1m[36m (1.9ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:34:36.676267 #18624] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:34:36.677446 #18624] DEBUG -- :   [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Jessica Simpson', '2013-04-10 14:34:36', '(20% off MSRP $89.00)', 'http://6pm.com/product/8172832/color/409157', 'http://l3.zassets.com/images/z/2/3/3/2/0/1/2332014-p-LARGE_SEARCH.jpg', '$70.99', NULL, 'Carson', '2013-04-10 14:34:36')[0m
+D, [2013-04-10T14:34:36.678968 #18624] DEBUG -- :   [1m[35m (1.3ms)[0m  COMMIT
+D, [2013-04-10T14:34:39.156413 #18624] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:34:39.157601 #18624] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Jessica Simpson', '2013-04-10 14:34:39', '(20% off MSRP $89.00)', 'http://6pm.com/product/8172832/color/427683', 'http://l4.zassets.com/images/z/2/3/3/2/0/1/2332013-p-LARGE_SEARCH.jpg', '$70.99', NULL, 'Carson', '2013-04-10 14:34:39')
+D, [2013-04-10T14:34:39.158839 #18624] DEBUG -- :   [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:34:41.406238 #18624] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:34:41.407285 #18624] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Korks by Kork-Ease', '2013-04-10 14:34:41', '(24% off MSRP $79.00)', 'http://6pm.com/product/8194538/color/435109', 'http://l4.zassets.com/images/z/2/3/7/9/7/4/2379746-p-LARGE_SEARCH.jpg', '$59.99', NULL, 'Della', '2013-04-10 14:34:41')[0m
+D, [2013-04-10T14:34:41.411975 #18624] DEBUG -- :   [1m[35m (4.4ms)[0m  COMMIT
+D, [2013-04-10T14:34:43.670765 #18624] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:34:43.671863 #18624] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Korks by Kork-Ease', '2013-04-10 14:34:43', '(26% off MSRP $89.00)', 'http://6pm.com/product/8194564/color/435134', 'http://l4.zassets.com/images/z/2/3/7/9/8/0/2379808-p-LARGE_SEARCH.jpg', '$65.99', NULL, 'Helen', '2013-04-10 14:34:43')
+D, [2013-04-10T14:34:43.673017 #18624] DEBUG -- :   [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:34:46.007105 #18624] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:34:46.008194 #18624] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Korks by Kork-Ease', '2013-04-10 14:34:46', '(24% off MSRP $79.00)', 'http://6pm.com/product/8194538/color/289232', 'http://a2.zassets.com/images/z/2/3/7/9/7/4/2379748-p-LARGE_SEARCH.jpg', '$59.99', NULL, 'Della', '2013-04-10 14:34:46')[0m
+D, [2013-04-10T14:34:46.009279 #18624] DEBUG -- :   [1m[35m (0.9ms)[0m  COMMIT
+D, [2013-04-10T14:34:48.448620 #18624] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:34:48.449738 #18624] DEBUG -- :   [1m[35mSQL (0.3ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Korks by Kork-Ease', '2013-04-10 14:34:48', '(24% off MSRP $79.00)', 'http://6pm.com/product/8194540/color/435111', 'http://l4.zassets.com/images/z/2/3/7/9/7/5/2379754-p-LARGE_SEARCH.jpg', '$59.99', NULL, 'Brie', '2013-04-10 14:34:48')
+D, [2013-04-10T14:34:48.450743 #18624] DEBUG -- :   [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:34:50.816546 #18624] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:34:50.817654 #18624] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Korks by Kork-Ease', '2013-04-10 14:34:50', '(26% off MSRP $89.00)', 'http://6pm.com/product/8194564/color/435131', 'http://a2.zassets.com/images/z/2/3/7/9/8/1/2379810-p-LARGE_SEARCH.jpg', '$65.99', NULL, 'Helen', '2013-04-10 14:34:50')[0m
+D, [2013-04-10T14:34:50.818676 #18624] DEBUG -- :   [1m[35m (0.8ms)[0m  COMMIT
+D, [2013-04-10T14:34:55.444286 #18624] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:34:55.457492 #18624] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Korks by Kork-Ease', '2013-04-10 14:34:55', '(24% off MSRP $79.00)', 'http://6pm.com/product/8194554/color/435126', 'http://a2.zassets.com/images/z/2/3/7/9/7/9/2379790-p-LARGE_SEARCH.jpg', '$59.99', NULL, 'Colleen', '2013-04-10 14:34:55')
+D, [2013-04-10T14:34:55.459590 #18624] DEBUG -- :   [1m[36m (1.6ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:34:58.068197 #18624] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:34:58.069206 #18624] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('DKNY', '2013-04-10 14:34:58', '(20% off MSRP $79.00)', 'http://6pm.com/product/8177120/color/690', 'http://l4.zassets.com/images/z/2/3/4/2/0/8/2342086-p-LARGE_SEARCH.jpg', '$62.99', NULL, 'Harlei', '2013-04-10 14:34:58')[0m
+D, [2013-04-10T14:34:58.071137 #18624] DEBUG -- :   [1m[35m (1.7ms)[0m  COMMIT
+D, [2013-04-10T14:35:00.975353 #18624] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:35:00.976355 #18624] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Korks by Kork-Ease', '2013-04-10 14:35:00', '(26% off MSRP $89.00)', 'http://6pm.com/product/8194564/color/435132', 'http://l3.zassets.com/images/z/2/3/7/9/8/1/2379813-p-LARGE_SEARCH.jpg', '$65.99', NULL, 'Helen', '2013-04-10 14:35:00')
+D, [2013-04-10T14:35:00.977586 #18624] DEBUG -- :   [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:35:15.369126 #18646] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:35:15.373797 #18646] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/womens-sandals~S?s=goliveRecentSalesStyle/desc/', 'Sandals', NULL, '2013-04-10 14:35:15', '2013-04-10 14:35:15')
+D, [2013-04-10T14:35:15.383341 #18646] DEBUG -- :   [1m[36m (9.0ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:35:15.385380 #18646] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:35:15.387804 #18646] DEBUG -- :   [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-heels/CK_XARC41wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Heels', NULL, '2013-04-10 14:35:15', '2013-04-10 14:35:15')[0m
+D, [2013-04-10T14:35:15.389571 #18646] DEBUG -- :   [1m[35m (1.2ms)[0m  COMMIT
+D, [2013-04-10T14:35:15.390375 #18646] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:35:15.391429 #18646] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/womens-boots~1e?s=goliveRecentSalesStyle/desc/', 'Boots', NULL, '2013-04-10 14:35:15', '2013-04-10 14:35:15')
+D, [2013-04-10T14:35:15.392183 #18646] DEBUG -- :   [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:35:15.392470 #18646] DEBUG -- :   [1m[35m (0.0ms)[0m  BEGIN
+D, [2013-04-10T14:35:15.393082 #18646] DEBUG -- :   [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-flats/CK_XARC11wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Flats', NULL, '2013-04-10 14:35:15', '2013-04-10 14:35:15')[0m
+D, [2013-04-10T14:35:15.394168 #18646] DEBUG -- :   [1m[35m (0.9ms)[0m  COMMIT
+D, [2013-04-10T14:35:15.394500 #18646] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:35:15.395191 #18646] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-sneakers-athletic-shoes/CK_XARC81wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Sneakers & Athletic Shoes', NULL, '2013-04-10 14:35:15', '2013-04-10 14:35:15')
+D, [2013-04-10T14:35:15.395826 #18646] DEBUG -- :   [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:35:15.396155 #18646] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:35:15.396763 #18646] DEBUG -- :   [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-loafers/CK_XARC21wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Loafers', NULL, '2013-04-10 14:35:15', '2013-04-10 14:35:15')[0m
+D, [2013-04-10T14:35:15.398362 #18646] DEBUG -- :   [1m[35m (1.4ms)[0m  COMMIT
+D, [2013-04-10T14:35:15.398779 #18646] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:35:15.399550 #18646] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-clogs-mules/CK_XARC01wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Clogs & Mules', NULL, '2013-04-10 14:35:15', '2013-04-10 14:35:15')
+D, [2013-04-10T14:35:15.400182 #18646] DEBUG -- :   [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:35:15.400492 #18646] DEBUG -- :   [1m[35m (0.0ms)[0m  BEGIN
+D, [2013-04-10T14:35:15.401142 #18646] DEBUG -- :   [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-oxfords/CK_XARC31wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Oxfords', NULL, '2013-04-10 14:35:15', '2013-04-10 14:35:15')[0m
+D, [2013-04-10T14:35:15.401677 #18646] DEBUG -- :   [1m[35m (0.4ms)[0m  COMMIT
+D, [2013-04-10T14:35:15.402029 #18646] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:35:15.402624 #18646] DEBUG -- :   [1m[35mSQL (0.1ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-slippers/CK_XARC71wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Slippers', NULL, '2013-04-10 14:35:15', '2013-04-10 14:35:15')
+D, [2013-04-10T14:35:15.403300 #18646] DEBUG -- :   [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:35:15.403602 #18646] DEBUG -- :   [1m[35m (0.0ms)[0m  BEGIN
+D, [2013-04-10T14:35:15.404241 #18646] DEBUG -- :   [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-boat-shoes/CK_XARCy1wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Boat Shoes', NULL, '2013-04-10 14:35:15', '2013-04-10 14:35:15')[0m
+D, [2013-04-10T14:35:15.405950 #18646] DEBUG -- :   [1m[35m (1.6ms)[0m  COMMIT
+D, [2013-04-10T14:35:15.406288 #18646] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:35:15.406970 #18646] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-insoles-accessories/CK_XARC61wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Insoles & Accessories', NULL, '2013-04-10 14:35:15', '2013-04-10 14:35:15')
+D, [2013-04-10T14:35:15.407556 #18646] DEBUG -- :   [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:35:15.407891 #18646] DEBUG -- :   [1m[35m (0.0ms)[0m  BEGIN
+D, [2013-04-10T14:35:15.408491 #18646] DEBUG -- :   [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-climbing/CK_XARDK2QHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Climbing', NULL, '2013-04-10 14:35:15', '2013-04-10 14:35:15')[0m
+D, [2013-04-10T14:35:15.409037 #18646] DEBUG -- :   [1m[35m (0.4ms)[0m  COMMIT
+D, [2013-04-10T14:35:15.410027 #18646] DEBUG -- :   [1m[36mWcategory Load (0.4ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-04-10T14:35:21.822050 #18646] DEBUG -- :   [1m[35m (3.2ms)[0m  BEGIN
+D, [2013-04-10T14:35:21.826927 #18646] DEBUG -- :   [1m[36mSQL (3.0ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Kickers', '2013-04-10 14:35:21', '(38% off MSRP $160.00)', 'http://6pm.com/product/8196815/color/4188', 'http://a3.zassets.com/images/z/1/8/1/7/2/9/1817292-p-LARGE_SEARCH.jpg', '$99.99', NULL, 'U-Feel', '2013-04-10 14:35:21')[0m
+D, [2013-04-10T14:35:21.830170 #18646] DEBUG -- :   [1m[35m (2.9ms)[0m  COMMIT
+D, [2013-04-10T14:35:24.022155 #18646] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:35:24.025846 #18646] DEBUG -- :   [1m[35mSQL (2.8ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Kickers', '2013-04-10 14:35:24', '(38% off MSRP $160.00)', 'http://6pm.com/product/8196815/color/43', 'http://a3.zassets.com/images/z/1/8/1/7/2/9/1817291-p-LARGE_SEARCH.jpg', '$99.99', NULL, 'U-Feel', '2013-04-10 14:35:24')
+D, [2013-04-10T14:35:24.028281 #18646] DEBUG -- :   [1m[36m (2.1ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:35:31.049916 #18646] DEBUG -- :   [1m[35m (0.9ms)[0m  BEGIN
+D, [2013-04-10T14:35:31.052926 #18646] DEBUG -- :   [1m[36mSQL (2.1ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Kickers', '2013-04-10 14:35:31', '(35% off MSRP $85.00)', 'http://6pm.com/product/8196801/color/2802', 'http://l3.zassets.com/images/z/1/8/1/8/7/5/1818750-p-LARGE_SEARCH.jpg', '$54.99', NULL, 'Lilou W3', '2013-04-10 14:35:31')[0m
+D, [2013-04-10T14:35:31.055911 #18646] DEBUG -- :   [1m[35m (2.7ms)[0m  COMMIT
+D, [2013-04-10T14:35:33.338937 #18646] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:35:33.341781 #18646] DEBUG -- :   [1m[35mSQL (1.9ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Kickers', '2013-04-10 14:35:33', '(38% off MSRP $160.00)', 'http://6pm.com/kickers-submarine-green-multi', 'http://a3.zassets.com/images/z/1/8/1/7/2/7/1817276-p-LARGE_SEARCH.jpg', '$99.99', NULL, 'Submarine', '2013-04-10 14:35:33')
+D, [2013-04-10T14:35:33.344842 #18646] DEBUG -- :   [1m[36m (2.8ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:35:35.643960 #18646] DEBUG -- :   [1m[35m (1.2ms)[0m  BEGIN
+D, [2013-04-10T14:35:35.648731 #18646] DEBUG -- :   [1m[36mSQL (3.9ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Jessica Simpson', '2013-04-10 14:35:35', '(20% off MSRP $89.00)', 'http://6pm.com/product/8172832/color/409157', 'http://l3.zassets.com/images/z/2/3/3/2/0/1/2332014-p-LARGE_SEARCH.jpg', '$70.99', NULL, 'Carson', '2013-04-10 14:35:35')[0m
+D, [2013-04-10T14:35:35.651900 #18646] DEBUG -- :   [1m[35m (2.9ms)[0m  COMMIT
+D, [2013-04-10T14:35:37.866910 #18646] DEBUG -- :   [1m[36m (3.2ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:35:37.868094 #18646] DEBUG -- :   [1m[35mSQL (0.3ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Jessica Simpson', '2013-04-10 14:35:37', '(20% off MSRP $89.00)', 'http://6pm.com/product/8172832/color/427683', 'http://l4.zassets.com/images/z/2/3/3/2/0/1/2332013-p-LARGE_SEARCH.jpg', '$70.99', NULL, 'Carson', '2013-04-10 14:35:37')
+D, [2013-04-10T14:35:37.871067 #18646] DEBUG -- :   [1m[36m (2.7ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:35:44.940712 #18646] DEBUG -- :   [1m[35m (3.6ms)[0m  BEGIN
+D, [2013-04-10T14:35:44.945527 #18646] DEBUG -- :   [1m[36mSQL (3.6ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Korks by Kork-Ease', '2013-04-10 14:35:44', '(24% off MSRP $79.00)', 'http://6pm.com/product/8194538/color/435109', 'http://l4.zassets.com/images/z/2/3/7/9/7/4/2379746-p-LARGE_SEARCH.jpg', '$59.99', NULL, 'Della', '2013-04-10 14:35:44')[0m
+D, [2013-04-10T14:35:44.948829 #18646] DEBUG -- :   [1m[35m (2.9ms)[0m  COMMIT
+D, [2013-04-10T14:35:46.662527 #18646] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:35:46.664913 #18646] DEBUG -- :   [1m[35mSQL (1.5ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Korks by Kork-Ease', '2013-04-10 14:35:46', '(26% off MSRP $89.00)', 'http://6pm.com/product/8194564/color/435134', 'http://l4.zassets.com/images/z/2/3/7/9/8/0/2379808-p-LARGE_SEARCH.jpg', '$65.99', NULL, 'Helen', '2013-04-10 14:35:46')
+D, [2013-04-10T14:35:46.668030 #18646] DEBUG -- :   [1m[36m (2.7ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:35:53.440922 #18646] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:35:53.442009 #18646] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Korks by Kork-Ease', '2013-04-10 14:35:53', '(24% off MSRP $79.00)', 'http://6pm.com/product/8194538/color/289232', 'http://a2.zassets.com/images/z/2/3/7/9/7/4/2379748-p-LARGE_SEARCH.jpg', '$59.99', NULL, 'Della', '2013-04-10 14:35:53')[0m
+D, [2013-04-10T14:35:53.443757 #18646] DEBUG -- :   [1m[35m (1.5ms)[0m  COMMIT
+D, [2013-04-10T14:35:55.130111 #18646] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:35:55.131132 #18646] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Korks by Kork-Ease', '2013-04-10 14:35:55', '(24% off MSRP $79.00)', 'http://6pm.com/product/8194540/color/435111', 'http://l4.zassets.com/images/z/2/3/7/9/7/5/2379754-p-LARGE_SEARCH.jpg', '$59.99', NULL, 'Brie', '2013-04-10 14:35:55')
+D, [2013-04-10T14:35:55.132321 #18646] DEBUG -- :   [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:35:56.733646 #18646] DEBUG -- :   [1m[35m (3.2ms)[0m  BEGIN
+D, [2013-04-10T14:35:56.736788 #18646] DEBUG -- :   [1m[36mSQL (2.2ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Korks by Kork-Ease', '2013-04-10 14:35:56', '(26% off MSRP $89.00)', 'http://6pm.com/product/8194564/color/435131', 'http://a2.zassets.com/images/z/2/3/7/9/8/1/2379810-p-LARGE_SEARCH.jpg', '$65.99', NULL, 'Helen', '2013-04-10 14:35:56')[0m
+D, [2013-04-10T14:35:56.740171 #18646] DEBUG -- :   [1m[35m (1.0ms)[0m  COMMIT
+D, [2013-04-10T14:35:58.436541 #18646] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:35:58.437567 #18646] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Korks by Kork-Ease', '2013-04-10 14:35:58', '(24% off MSRP $79.00)', 'http://6pm.com/product/8194554/color/435126', 'http://a2.zassets.com/images/z/2/3/7/9/7/9/2379790-p-LARGE_SEARCH.jpg', '$59.99', NULL, 'Colleen', '2013-04-10 14:35:58')
+D, [2013-04-10T14:35:58.438927 #18646] DEBUG -- :   [1m[36m (1.1ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:36:00.184477 #18646] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:36:00.185524 #18646] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('DKNY', '2013-04-10 14:36:00', '(20% off MSRP $79.00)', 'http://6pm.com/product/8177120/color/690', 'http://l4.zassets.com/images/z/2/3/4/2/0/8/2342086-p-LARGE_SEARCH.jpg', '$62.99', NULL, 'Harlei', '2013-04-10 14:36:00')[0m
+D, [2013-04-10T14:36:00.186683 #18646] DEBUG -- :   [1m[35m (0.9ms)[0m  COMMIT
+D, [2013-04-10T14:36:01.948038 #18646] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:36:01.949060 #18646] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Korks by Kork-Ease', '2013-04-10 14:36:01', '(26% off MSRP $89.00)', 'http://6pm.com/product/8194564/color/435132', 'http://l3.zassets.com/images/z/2/3/7/9/8/1/2379813-p-LARGE_SEARCH.jpg', '$65.99', NULL, 'Helen', '2013-04-10 14:36:01')
+D, [2013-04-10T14:36:01.949994 #18646] DEBUG -- :   [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:36:03.674768 #18646] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:36:03.675809 #18646] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Korks by Kork-Ease', '2013-04-10 14:36:03', '(24% off MSRP $79.00)', 'http://6pm.com/product/8194536/color/435106', 'http://l4.zassets.com/images/z/2/3/7/9/7/4/2379741-p-LARGE_SEARCH.jpg', '$59.99', NULL, 'Brenda', '2013-04-10 14:36:03')[0m
+D, [2013-04-10T14:36:03.677474 #18646] DEBUG -- :   [1m[35m (1.4ms)[0m  COMMIT
+D, [2013-04-10T14:36:05.994489 #18646] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:36:05.995569 #18646] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Korks by Kork-Ease', '2013-04-10 14:36:05', '(24% off MSRP $79.00)', 'http://6pm.com/product/8194540/color/435113', 'http://a1.zassets.com/images/z/2/3/7/9/7/5/2379752-p-LARGE_SEARCH.jpg', '$59.99', NULL, 'Brie', '2013-04-10 14:36:05')
+D, [2013-04-10T14:36:05.996530 #18646] DEBUG -- :   [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:36:08.210751 #18646] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:36:08.212008 #18646] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Korks by Kork-Ease', '2013-04-10 14:36:08', '(24% off MSRP $79.00)', 'http://6pm.com/product/8194555/color/4601', 'http://l4.zassets.com/images/z/2/3/7/9/7/9/2379792-p-LARGE_SEARCH.jpg', '$59.99', NULL, 'Anna', '2013-04-10 14:36:08')[0m
+D, [2013-04-10T14:36:08.213770 #18646] DEBUG -- :   [1m[35m (1.5ms)[0m  COMMIT
+D, [2013-04-10T14:36:10.413488 #18646] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:36:10.414563 #18646] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Korks by Kork-Ease', '2013-04-10 14:36:10', '(24% off MSRP $79.00)', 'http://6pm.com/product/8194555/color/435125', 'http://a3.zassets.com/images/z/2/3/7/9/7/8/2379788-p-LARGE_SEARCH.jpg', '$59.99', NULL, 'Anna', '2013-04-10 14:36:10')
+D, [2013-04-10T14:36:10.416224 #18646] DEBUG -- :   [1m[36m (1.3ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:36:13.035843 #18646] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:36:13.036932 #18646] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Korks by Kork-Ease', '2013-04-10 14:36:13', '(24% off MSRP $79.00)', 'http://6pm.com/product/8194565/color/289232', 'http://l4.zassets.com/images/z/2/3/7/9/8/1/2379811-p-LARGE_SEARCH.jpg', '$59.99', NULL, 'Nancy', '2013-04-10 14:36:13')[0m
+D, [2013-04-10T14:36:13.038453 #18646] DEBUG -- :   [1m[35m (1.3ms)[0m  COMMIT
+D, [2013-04-10T14:36:15.575379 #18646] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:36:15.576461 #18646] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Korks by Kork-Ease', '2013-04-10 14:36:15', '(24% off MSRP $79.00)', 'http://6pm.com/product/8194540/color/435110', 'http://l4.zassets.com/images/z/2/3/7/9/7/5/2379755-p-LARGE_SEARCH.jpg', '$59.99', NULL, 'Brie', '2013-04-10 14:36:15')
+D, [2013-04-10T14:36:15.577378 #18646] DEBUG -- :   [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:36:17.931400 #18646] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:36:17.932894 #18646] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Korks by Kork-Ease', '2013-04-10 14:36:17', '(24% off MSRP $79.00)', 'http://6pm.com/product/8194553/color/435109', 'http://a1.zassets.com/images/z/2/3/7/9/7/9/2379791-p-LARGE_SEARCH.jpg', '$59.99', NULL, 'Uma', '2013-04-10 14:36:17')[0m
+D, [2013-04-10T14:36:17.933828 #18646] DEBUG -- :   [1m[35m (0.7ms)[0m  COMMIT
+D, [2013-04-10T14:36:20.320120 #18646] DEBUG -- :   [1m[36m (4.7ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:36:20.321371 #18646] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Korks by Kork-Ease', '2013-04-10 14:36:20', '(24% off MSRP $79.00)', 'http://6pm.com/product/8194540/color/435112', 'http://l4.zassets.com/images/z/2/3/7/9/7/5/2379753-p-LARGE_SEARCH.jpg', '$59.99', NULL, 'Brie', '2013-04-10 14:36:20')
+D, [2013-04-10T14:36:20.323960 #18646] DEBUG -- :   [1m[36m (2.3ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:36:22.434807 #18646] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:36:22.435876 #18646] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Korks by Kork-Ease', '2013-04-10 14:36:22', '(24% off MSRP $79.00)', 'http://6pm.com/product/8194553/color/435127', 'http://l3.zassets.com/images/z/2/3/7/9/7/8/2379789-p-LARGE_SEARCH.jpg', '$59.99', NULL, 'Uma', '2013-04-10 14:36:22')[0m
+D, [2013-04-10T14:36:22.437294 #18646] DEBUG -- :   [1m[35m (1.2ms)[0m  COMMIT
+D, [2013-04-10T14:36:29.628754 #18646] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:36:29.632079 #18646] DEBUG -- :   [1m[35mSQL (2.4ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Korks by Kork-Ease', '2013-04-10 14:36:29', '(26% off MSRP $89.00)', 'http://6pm.com/product/8194564/color/435133', 'http://l4.zassets.com/images/z/2/3/7/9/8/1/2379812-p-LARGE_SEARCH.jpg', '$65.99', NULL, 'Helen', '2013-04-10 14:36:29')
+D, [2013-04-10T14:36:29.637943 #18646] DEBUG -- :   [1m[36m (5.4ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:36:31.921241 #18646] DEBUG -- :   [1m[35m (1.8ms)[0m  BEGIN
+D, [2013-04-10T14:36:31.922714 #18646] DEBUG -- :   [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('DKNY', '2013-04-10 14:36:31', '(20% off MSRP $79.00)', 'http://6pm.com/product/8177120/color/3', 'http://l4.zassets.com/images/z/2/3/8/6/3/8/2386385-p-LARGE_SEARCH.jpg', '$62.99', NULL, 'Harlei', '2013-04-10 14:36:31')[0m
+D, [2013-04-10T14:36:31.923993 #18646] DEBUG -- :   [1m[35m (1.0ms)[0m  COMMIT
+D, [2013-04-10T14:36:34.326040 #18646] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:36:34.327259 #18646] DEBUG -- :   [1m[35mSQL (0.4ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Korks by Kork-Ease', '2013-04-10 14:36:34', '(24% off MSRP $79.00)', 'http://6pm.com/product/8194538/color/435110', 'http://l4.zassets.com/images/z/2/3/7/9/7/4/2379747-p-LARGE_SEARCH.jpg', '$59.99', NULL, 'Della', '2013-04-10 14:36:34')
+D, [2013-04-10T14:36:34.329132 #18646] DEBUG -- :   [1m[36m (1.6ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:36:36.945020 #18646] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:36:36.946195 #18646] DEBUG -- :   [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Korks by Kork-Ease', '2013-04-10 14:36:36', '(24% off MSRP $79.00)', 'http://6pm.com/product/8194565/color/435130', 'http://a1.zassets.com/images/z/2/3/7/9/8/0/2379809-p-LARGE_SEARCH.jpg', '$59.99', NULL, 'Nancy', '2013-04-10 14:36:36')[0m
+D, [2013-04-10T14:36:36.947169 #18646] DEBUG -- :   [1m[35m (0.7ms)[0m  COMMIT
+D, [2013-04-10T14:36:39.714635 #18646] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:36:39.715798 #18646] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Korks by Kork-Ease', '2013-04-10 14:36:39', '(24% off MSRP $79.00)', 'http://6pm.com/product/8194536/color/289232', 'http://l3.zassets.com/images/z/2/3/7/9/7/4/2379742-p-LARGE_SEARCH.jpg', '$59.99', NULL, 'Brenda', '2013-04-10 14:36:39')
+D, [2013-04-10T14:36:39.716673 #18646] DEBUG -- :   [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:36:42.036014 #18646] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:36:42.037044 #18646] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Korks by Kork-Ease', '2013-04-10 14:36:42', '(26% off MSRP $99.00)', 'http://6pm.com/product/8194546/color/935', 'http://l3.zassets.com/images/z/2/3/7/9/7/6/2379767-p-LARGE_SEARCH.jpg', '$72.99', NULL, 'Holly', '2013-04-10 14:36:42')[0m
+D, [2013-04-10T14:36:42.038110 #18646] DEBUG -- :   [1m[35m (0.8ms)[0m  COMMIT
+D, [2013-04-10T14:36:44.248591 #18646] DEBUG -- :   [1m[36m (2.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:36:44.249904 #18646] DEBUG -- :   [1m[35mSQL (0.3ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Korks by Kork-Ease', '2013-04-10 14:36:44', '(24% off MSRP $70.00)', 'http://6pm.com/product/8194554/color/113605', 'http://a1.zassets.com/images/z/2/3/7/9/7/9/2379793-p-LARGE_SEARCH.jpg', '$52.99', NULL, 'Colleen', '2013-04-10 14:36:44')
+D, [2013-04-10T14:36:44.251097 #18646] DEBUG -- :   [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:36:48.726875 #18646] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:36:48.728388 #18646] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Aravon', '2013-04-10 14:36:48', '(47% off MSRP $135.00)', 'http://6pm.com/aravon-quinn-brown-croc', 'http://a3.zassets.com/images/z/1/3/4/6/0/7/1346073-p-LARGE_SEARCH.jpg', '$70.99', NULL, 'Quinn', '2013-04-10 14:36:48')[0m
+D, [2013-04-10T14:36:48.729702 #18646] DEBUG -- :   [1m[35m (1.1ms)[0m  COMMIT
+D, [2013-04-10T14:36:51.077085 #18646] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:36:51.078188 #18646] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Aravon', '2013-04-10 14:36:51', '(47% off MSRP $135.00)', 'http://6pm.com/aravon-quinn-black-leather', 'http://l4.zassets.com/images/z/1/3/4/6/0/7/1346074-p-LARGE_SEARCH.jpg', '$70.99', NULL, 'Quinn', '2013-04-10 14:36:51')
+D, [2013-04-10T14:36:51.079148 #18646] DEBUG -- :   [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:36:53.949950 #18646] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:36:53.951092 #18646] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Aravon', '2013-04-10 14:36:53', '(47% off MSRP $105.00)', 'http://6pm.com/aravon-robin-cream', 'http://a1.zassets.com/images/z/1/3/4/6/1/0/1346105-p-LARGE_SEARCH.jpg', '$55.99', NULL, 'Robin', '2013-04-10 14:36:53')[0m
+D, [2013-04-10T14:36:53.952076 #18646] DEBUG -- :   [1m[35m (0.8ms)[0m  COMMIT
+D, [2013-04-10T14:36:56.416044 #18646] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:36:56.417025 #18646] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('MIA', '2013-04-10 14:36:56', '(22% off MSRP $49.00)', 'http://6pm.com/mia-tonga-gold', 'http://l4.zassets.com/images/z/2/2/4/4/7/8/2244783-p-LARGE_SEARCH.jpg', '$37.99', NULL, 'Tonga', '2013-04-10 14:36:56')
+D, [2013-04-10T14:36:56.418801 #18646] DEBUG -- :   [1m[36m (1.4ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:36:58.991235 #18646] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:36:58.992295 #18646] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('MIA', '2013-04-10 14:36:58', '(22% off MSRP $49.00)', 'http://6pm.com/mia-tonga-silver', 'http://a1.zassets.com/images/z/2/2/4/4/7/8/2244782-p-LARGE_SEARCH.jpg', '$37.99', NULL, 'Tonga', '2013-04-10 14:36:58')[0m
+D, [2013-04-10T14:36:58.993536 #18646] DEBUG -- :   [1m[35m (1.0ms)[0m  COMMIT
+D, [2013-04-10T14:37:01.466298 #18646] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:37:01.467410 #18646] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Corkys', '2013-04-10 14:37:01', '(27% off MSRP $44.99)', 'http://6pm.com/corkys-christine-champagne', 'http://l3.zassets.com/images/z/2/2/5/6/1/4/2256148-p-LARGE_SEARCH.jpg', '$32.99', NULL, 'Christine', '2013-04-10 14:37:01')
+D, [2013-04-10T14:37:01.468482 #18646] DEBUG -- :   [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:37:04.207936 #18646] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:37:04.208933 #18646] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Corkys', '2013-04-10 14:37:04', '(33% off MSRP $54.99)', 'http://6pm.com/corkys-cutie-pie-black-zebra', 'http://l4.zassets.com/images/z/2/2/5/6/1/7/2256172-p-LARGE_SEARCH.jpg', '$36.99', NULL, 'Cutie Pie', '2013-04-10 14:37:04')[0m
+D, [2013-04-10T14:37:04.210034 #18646] DEBUG -- :   [1m[35m (0.9ms)[0m  COMMIT
+D, [2013-04-10T14:37:06.857510 #18646] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:37:06.858602 #18646] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Corkys', '2013-04-10 14:37:06', '(27% off MSRP $44.99)', 'http://6pm.com/corkys-christine-silver', 'http://l3.zassets.com/images/z/2/2/5/6/1/4/2256149-p-LARGE_SEARCH.jpg', '$32.99', NULL, 'Christine', '2013-04-10 14:37:06')
+D, [2013-04-10T14:37:06.897010 #18646] DEBUG -- :   [1m[36m (37.7ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:37:09.579552 #18646] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:37:09.580612 #18646] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Corkys', '2013-04-10 14:37:09', '(33% off MSRP $54.99)', 'http://6pm.com/corkys-cutie-pie-champagne', 'http://a3.zassets.com/images/z/2/2/5/6/1/7/2256173-p-LARGE_SEARCH.jpg', '$36.99', NULL, 'Cutie Pie', '2013-04-10 14:37:09')[0m
+D, [2013-04-10T14:37:09.581933 #18646] DEBUG -- :   [1m[35m (0.9ms)[0m  COMMIT
+D, [2013-04-10T14:37:14.869450 #18646] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:37:14.870527 #18646] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Corkys', '2013-04-10 14:37:14', '(33% off MSRP $59.99)', 'http://6pm.com/corkys-dana-brown', 'http://l3.zassets.com/images/z/2/2/5/6/1/6/2256164-p-LARGE_SEARCH.jpg', '$39.99', NULL, 'Dana', '2013-04-10 14:37:14')
+D, [2013-04-10T14:37:14.871459 #18646] DEBUG -- :   [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:37:16.807229 #18646] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:37:16.808287 #18646] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Corkys', '2013-04-10 14:37:16', '(33% off MSRP $44.99)', 'http://6pm.com/corkys-punkin-white', 'http://a2.zassets.com/images/z/2/2/5/6/1/4/2256146-p-LARGE_SEARCH.jpg', '$29.99', NULL, 'Punkin', '2013-04-10 14:37:16')[0m
+D, [2013-04-10T14:37:16.809924 #18646] DEBUG -- :   [1m[35m (1.4ms)[0m  COMMIT
+D, [2013-04-10T14:37:19.217682 #18646] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:37:19.218693 #18646] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Corkys', '2013-04-10 14:37:19', '(27% off MSRP $44.99)', 'http://6pm.com/corkys-dominique-clear-crystals', 'http://a2.zassets.com/images/z/2/2/5/6/1/7/2256171-p-LARGE_SEARCH.jpg', '$32.99', NULL, 'Dominique', '2013-04-10 14:37:19')
+D, [2013-04-10T14:37:19.220677 #18646] DEBUG -- :   [1m[36m (1.7ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:37:21.715460 #18646] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:37:21.716467 #18646] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Corkys', '2013-04-10 14:37:21', '(27% off MSRP $44.99)', 'http://6pm.com/corkys-dinner-multi-crystal', 'http://l4.zassets.com/images/z/2/2/5/6/1/6/2256160-p-LARGE_SEARCH.jpg', '$32.99', NULL, 'Dinner', '2013-04-10 14:37:21')[0m
+D, [2013-04-10T14:37:21.717724 #18646] DEBUG -- :   [1m[35m (0.8ms)[0m  COMMIT
+D, [2013-04-10T14:37:24.153489 #18646] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:37:24.154681 #18646] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Corkys', '2013-04-10 14:37:24', '(33% off MSRP $59.99)', 'http://6pm.com/corkys-dana-black', 'http://l3.zassets.com/images/z/2/2/5/6/1/6/2256161-p-LARGE_SEARCH.jpg', '$39.99', NULL, 'Dana', '2013-04-10 14:37:24')
+D, [2013-04-10T14:37:24.155631 #18646] DEBUG -- :   [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:37:26.302100 #18646] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:37:26.303221 #18646] DEBUG -- :   [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Corkys', '2013-04-10 14:37:26', '(33% off MSRP $44.99)', 'http://6pm.com/corkys-punkin-black', 'http://l4.zassets.com/images/z/2/2/5/6/1/4/2256144-p-LARGE_SEARCH.jpg', '$29.99', NULL, 'Punkin', '2013-04-10 14:37:26')[0m
+D, [2013-04-10T14:37:26.305415 #18646] DEBUG -- :   [1m[35m (1.9ms)[0m  COMMIT
+D, [2013-04-10T14:37:29.208599 #18646] DEBUG -- :   [1m[36m (0.6ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:37:29.209718 #18646] DEBUG -- :   [1m[35mSQL (0.3ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Corkys', '2013-04-10 14:37:29', '(33% off MSRP $44.99)', 'http://6pm.com/corkys-punkin-brown', 'http://a1.zassets.com/images/z/2/2/5/6/1/4/2256145-p-LARGE_SEARCH.jpg', '$29.99', NULL, 'Punkin', '2013-04-10 14:37:29')
+D, [2013-04-10T14:37:29.210936 #18646] DEBUG -- :   [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:37:32.314974 #18646] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:37:32.315983 #18646] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Corkys', '2013-04-10 14:37:32', '(33% off MSRP $59.99)', 'http://6pm.com/corkys-cross-black-croco', 'http://l3.zassets.com/images/z/2/2/5/6/1/6/2256167-p-LARGE_SEARCH.jpg', '$39.99', NULL, 'Cross', '2013-04-10 14:37:32')[0m
+D, [2013-04-10T14:37:32.317056 #18646] DEBUG -- :   [1m[35m (0.9ms)[0m  COMMIT
+D, [2013-04-10T14:37:37.604320 #18646] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:37:37.605365 #18646] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Corkys', '2013-04-10 14:37:37', '(33% off MSRP $59.99)', 'http://6pm.com/corkys-cross-pewter-metallic', 'http://l3.zassets.com/images/z/2/2/5/6/1/7/2256170-p-LARGE_SEARCH.jpg', '$39.99', NULL, 'Cross', '2013-04-10 14:37:37')
+D, [2013-04-10T14:37:37.606372 #18646] DEBUG -- :   [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:37:41.871181 #18646] DEBUG -- :   [1m[35m (0.2ms)[0m  BEGIN
+D, [2013-04-10T14:37:41.872645 #18646] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Corkys', '2013-04-10 14:37:41', '(27% off MSRP $44.99)', 'http://6pm.com/corkys-dinner-black-crystal', 'http://l3.zassets.com/images/z/2/2/5/6/1/5/2256158-p-LARGE_SEARCH.jpg', '$32.99', NULL, 'Dinner', '2013-04-10 14:37:41')[0m
+D, [2013-04-10T14:37:41.874147 #18646] DEBUG -- :   [1m[35m (1.0ms)[0m  COMMIT
+D, [2013-04-10T14:37:44.253897 #18646] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:37:44.254895 #18646] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Corkys', '2013-04-10 14:37:44', '(27% off MSRP $44.99)', 'http://6pm.com/corkys-christine-white', 'http://a1.zassets.com/images/z/2/2/5/6/1/5/2256150-p-LARGE_SEARCH.jpg', '$32.99', NULL, 'Christine', '2013-04-10 14:37:44')
+D, [2013-04-10T14:37:44.256841 #18646] DEBUG -- :   [1m[36m (1.7ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:37:46.790463 #18646] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:37:46.791524 #18646] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Corkys', '2013-04-10 14:37:46', '(33% off MSRP $54.99)', 'http://6pm.com/corkys-cutie-pie-pewter', 'http://a3.zassets.com/images/z/2/2/5/6/1/7/2256176-p-LARGE_SEARCH.jpg', '$36.99', NULL, 'Cutie Pie', '2013-04-10 14:37:46')[0m
+D, [2013-04-10T14:37:46.792613 #18646] DEBUG -- :   [1m[35m (0.9ms)[0m  COMMIT
+D, [2013-04-10T14:37:49.235934 #18646] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:37:49.236944 #18646] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Corkys', '2013-04-10 14:37:49', '(27% off MSRP $44.99)', 'http://6pm.com/corkys-dinner-white-crystal', 'http://l3.zassets.com/images/z/2/2/5/6/1/5/2256159-p-LARGE_SEARCH.jpg', '$32.99', NULL, 'Dinner', '2013-04-10 14:37:49')
+D, [2013-04-10T14:37:49.238120 #18646] DEBUG -- :   [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:37:58.887596 #18646] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:37:58.888641 #18646] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Corkys', '2013-04-10 14:37:58', '(33% off MSRP $54.99)', 'http://6pm.com/corkys-cutie-pie-white', 'http://l3.zassets.com/images/z/2/2/5/6/1/7/2256174-p-LARGE_SEARCH.jpg', '$36.99', NULL, 'Cutie Pie', '2013-04-10 14:37:58')[0m
+D, [2013-04-10T14:37:58.889661 #18646] DEBUG -- :   [1m[35m (0.8ms)[0m  COMMIT
+D, [2013-04-10T14:38:06.323086 #18646] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:38:06.324786 #18646] DEBUG -- :   [1m[35mSQL (0.9ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Corkys', '2013-04-10 14:38:06', '(33% off MSRP $59.99)', 'http://6pm.com/corkys-cross-brown-croco', 'http://a1.zassets.com/images/z/2/2/5/6/1/6/2256166-p-LARGE_SEARCH.jpg', '$39.99', NULL, 'Cross', '2013-04-10 14:38:06')
+D, [2013-04-10T14:38:06.326011 #18646] DEBUG -- :   [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:38:08.689614 #18646] DEBUG -- :   [1m[35m (3.9ms)[0m  BEGIN
+D, [2013-04-10T14:38:08.690923 #18646] DEBUG -- :   [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Roxy', '2013-04-10 14:38:08', '(35% off MSRP $39.90)', 'http://6pm.com/roxy-kona-tan', 'http://a1.zassets.com/images/z/2/3/8/8/2/4/2388248-p-LARGE_SEARCH.jpg', '$25.99', NULL, 'Kona', '2013-04-10 14:38:08')[0m
+D, [2013-04-10T14:38:08.694264 #18646] DEBUG -- :   [1m[35m (3.0ms)[0m  COMMIT
+D, [2013-04-10T14:38:10.985468 #18646] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:38:10.986931 #18646] DEBUG -- :   [1m[35mSQL (0.3ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Vaneli', '2013-04-10 14:38:10', '(26% off MSRP $103.00)', 'http://6pm.com/vaneli-kaija-pewter-cipria', 'http://a2.zassets.com/images/z/2/3/7/7/2/3/2377232-p-LARGE_SEARCH.jpg', '$75.99', NULL, 'Kaija', '2013-04-10 14:38:10')
+D, [2013-04-10T14:38:10.990095 #18646] DEBUG -- :   [1m[36m (2.8ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:38:13.144410 #18646] DEBUG -- :   [1m[35m (4.3ms)[0m  BEGIN
+D, [2013-04-10T14:38:13.145677 #18646] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Vaneli', '2013-04-10 14:38:13', '(26% off MSRP $103.00)', 'http://6pm.com/vaneli-kaija-red-nubuck', 'http://a1.zassets.com/images/z/2/3/7/7/2/3/2377234-p-LARGE_SEARCH.jpg', '$75.99', NULL, 'Kaija', '2013-04-10 14:38:13')[0m
+D, [2013-04-10T14:38:13.150015 #18646] DEBUG -- :   [1m[35m (3.8ms)[0m  COMMIT
+D, [2013-04-10T14:38:15.930210 #18646] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:38:15.932075 #18646] DEBUG -- :   [1m[35mSQL (0.4ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Vaneli', '2013-04-10 14:38:15', '(26% off MSRP $103.00)', 'http://6pm.com/vaneli-kaija-white-nappa-bart-print', 'http://l3.zassets.com/images/z/2/3/7/7/2/3/2377233-p-LARGE_SEARCH.jpg', '$75.99', NULL, 'Kaija', '2013-04-10 14:38:15')
+D, [2013-04-10T14:38:15.933413 #18646] DEBUG -- :   [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:38:18.228780 #18646] DEBUG -- :   [1m[35m (1.0ms)[0m  BEGIN
+D, [2013-04-10T14:38:18.229941 #18646] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Vaneli', '2013-04-10 14:38:18', '(26% off MSRP $103.00)', 'http://6pm.com/vaneli-kaija-natural-cork', 'http://a3.zassets.com/images/z/2/3/7/7/2/3/2377231-p-LARGE_SEARCH.jpg', '$75.99', NULL, 'Kaija', '2013-04-10 14:38:18')[0m
+D, [2013-04-10T14:38:18.231723 #18646] DEBUG -- :   [1m[35m (1.6ms)[0m  COMMIT
+D, [2013-04-10T14:38:20.497419 #18646] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:38:20.498459 #18646] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Aerosoles', '2013-04-10 14:38:20', '(23% off MSRP $69.00)', 'http://6pm.com/aerosoles-wip-zone-black', 'http://l3.zassets.com/images/z/2/1/5/1/1/3/2151137-p-LARGE_SEARCH.jpg', '$52.99', NULL, 'Wip Zone', '2013-04-10 14:38:20')
+D, [2013-04-10T14:38:20.499329 #18646] DEBUG -- :   [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:38:22.991552 #18646] DEBUG -- :   [1m[35m (0.2ms)[0m  BEGIN
+D, [2013-04-10T14:38:22.992750 #18646] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Aerosoles', '2013-04-10 14:38:22', '(23% off MSRP $69.00)', 'http://6pm.com/aerosoles-wip-zone-tan', 'http://l3.zassets.com/images/z/2/1/5/1/1/3/2151138-p-LARGE_SEARCH.jpg', '$52.99', NULL, 'Wip Zone', '2013-04-10 14:38:22')[0m
+D, [2013-04-10T14:38:22.994060 #18646] DEBUG -- :   [1m[35m (1.0ms)[0m  COMMIT
+D, [2013-04-10T14:38:25.594869 #18646] DEBUG -- :   [1m[36m (1.6ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:38:25.597429 #18646] DEBUG -- :   [1m[35mSQL (1.6ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Aerosoles', '2013-04-10 14:38:25', '(23% off MSRP $69.00)', 'http://6pm.com/aerosoles-wip-zone-silver', 'http://a1.zassets.com/images/z/2/1/5/1/1/3/2151139-p-LARGE_SEARCH.jpg', '$52.99', NULL, 'Wip Zone', '2013-04-10 14:38:25')
+D, [2013-04-10T14:38:25.600145 #18646] DEBUG -- :   [1m[36m (2.4ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:38:28.257113 #18646] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:38:28.263165 #18646] DEBUG -- :   [1m[36mSQL (5.1ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Sesto Meucci', '2013-04-10 14:38:28', '(38% off MSRP $284.00)', 'http://6pm.com/sesto-meucci-1591-silver-metallic-pewter', 'http://l4.zassets.com/images/z/2/3/6/3/3/7/2363378-p-LARGE_SEARCH.jpg', '$175.99', NULL, '1591', '2013-04-10 14:38:28')[0m
+D, [2013-04-10T14:38:28.267184 #18646] DEBUG -- :   [1m[35m (3.5ms)[0m  COMMIT
+D, [2013-04-10T14:38:31.231536 #18646] DEBUG -- :   [1m[36m (1.2ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:38:31.232786 #18646] DEBUG -- :   [1m[35mSQL (0.3ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Sesto Meucci', '2013-04-10 14:38:31', '(35% off MSRP $84.00)', 'http://6pm.com/sesto-meucci-835-turquoise-lona', 'http://l4.zassets.com/images/z/2/3/6/3/3/8/2363381-p-LARGE_SEARCH.jpg', '$54.99', NULL, '835', '2013-04-10 14:38:31')
+D, [2013-04-10T14:38:31.233944 #18646] DEBUG -- :   [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:38:33.182357 #18646] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:38:33.183744 #18646] DEBUG -- :   [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Vaneli', '2013-04-10 14:38:33', '(26% off MSRP $103.00)', 'http://6pm.com/vaneli-kaija-denim-nubuck', 'http://a2.zassets.com/images/z/2/3/7/7/2/0/2377207-p-LARGE_SEARCH.jpg', '$75.99', NULL, 'Kaija', '2013-04-10 14:38:33')[0m
+D, [2013-04-10T14:38:33.185224 #18646] DEBUG -- :   [1m[35m (1.2ms)[0m  COMMIT
+D, [2013-04-10T14:38:38.104717 #18646] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:38:38.105781 #18646] DEBUG -- :   [1m[35mSQL (0.3ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Vaneli', '2013-04-10 14:38:38', '(25% off MSRP $91.00)', 'http://6pm.com/vaneli-bice-black-patent', 'http://l4.zassets.com/images/z/2/3/7/4/7/0/2374705-p-LARGE_SEARCH.jpg', '$67.99', NULL, 'Bice', '2013-04-10 14:38:38')
+D, [2013-04-10T14:38:38.112375 #18646] DEBUG -- :   [1m[36m (6.2ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:38:42.625061 #18646] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:38:42.627153 #18646] DEBUG -- :   [1m[36mSQL (1.3ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Vaneli', '2013-04-10 14:38:42', '(26% off MSRP $103.00)', 'http://6pm.com/vaneli-kaija-black-nappa', 'http://a1.zassets.com/images/z/2/3/7/7/2/0/2377208-p-LARGE_SEARCH.jpg', '$75.99', NULL, 'Kaija', '2013-04-10 14:38:42')[0m
+D, [2013-04-10T14:38:42.628659 #18646] DEBUG -- :   [1m[35m (1.2ms)[0m  COMMIT
+D, [2013-04-10T14:38:50.567677 #18646] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:38:50.568729 #18646] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Vaneli', '2013-04-10 14:38:50', '(25% off MSRP $91.00)', 'http://6pm.com/vaneli-bice-white-pearl-nappa', 'http://l3.zassets.com/images/z/2/3/7/4/7/0/2374706-p-LARGE_SEARCH.jpg', '$67.99', NULL, 'Bice', '2013-04-10 14:38:50')
+D, [2013-04-10T14:38:50.570044 #18646] DEBUG -- :   [1m[36m (1.1ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:39:01.584648 #18646] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:39:01.585841 #18646] DEBUG -- :   [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Sesto Meucci', '2013-04-10 14:39:01', '(38% off MSRP $284.00)', 'http://6pm.com/sesto-meucci-1591-bronze-metallic-pewter', 'http://a3.zassets.com/images/z/2/3/6/3/3/7/2363379-p-LARGE_SEARCH.jpg', '$175.99', NULL, '1591', '2013-04-10 14:39:01')[0m
+D, [2013-04-10T14:39:01.587305 #18646] DEBUG -- :   [1m[35m (1.2ms)[0m  COMMIT
+D, [2013-04-10T14:39:05.825899 #18646] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:39:05.826941 #18646] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Vaneli', '2013-04-10 14:39:05', '(25% off MSRP $151.00)', 'http://6pm.com/product/8070761/color/388565', 'http://a3.zassets.com/images/z/2/0/9/8/9/4/2098946-p-LARGE_SEARCH.jpg', '$112.99', NULL, 'Della', '2013-04-10 14:39:05')
+D, [2013-04-10T14:39:05.828440 #18646] DEBUG -- :   [1m[36m (1.2ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:39:10.810219 #18646] DEBUG -- :   [1m[35m (0.3ms)[0m  BEGIN
+D, [2013-04-10T14:39:10.811254 #18646] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Vaneli', '2013-04-10 14:39:10', '(25% off MSRP $151.00)', 'http://6pm.com/product/8070761/color/388598', 'http://a2.zassets.com/images/z/2/0/9/8/9/4/2098944-p-LARGE_SEARCH.jpg', '$112.99', NULL, 'Della', '2013-04-10 14:39:10')[0m
+D, [2013-04-10T14:39:10.813275 #18646] DEBUG -- :   [1m[35m (1.8ms)[0m  COMMIT
+D, [2013-04-10T14:39:13.570952 #18646] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:39:13.571987 #18646] DEBUG -- :   [1m[35mSQL (0.3ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Vaneli', '2013-04-10 14:39:13', '(25% off MSRP $151.00)', 'http://6pm.com/product/8070761/color/388564', 'http://l4.zassets.com/images/z/2/0/9/8/9/4/2098945-p-LARGE_SEARCH.jpg', '$112.99', NULL, 'Della', '2013-04-10 14:39:13')
+D, [2013-04-10T14:39:13.573549 #18646] DEBUG -- :   [1m[36m (1.3ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:39:16.592150 #18646] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:39:16.593198 #18646] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Aerosoles', '2013-04-10 14:39:16', '(27% off MSRP $45.00)', 'http://6pm.com/aerosoles-savvy-silver', 'http://a3.zassets.com/images/z/2/1/2/7/3/6/2127365-p-LARGE_SEARCH.jpg', '$32.99', NULL, 'Savvy', '2013-04-10 14:39:16')[0m
+D, [2013-04-10T14:39:16.594076 #18646] DEBUG -- :   [1m[35m (0.7ms)[0m  COMMIT
+D, [2013-04-10T14:39:20.165874 #18646] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:39:20.166892 #18646] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Aerosoles', '2013-04-10 14:39:20', '(23% off MSRP $39.00)', 'http://6pm.com/aerosoles-branchlet-blue-green-combo', 'http://l3.zassets.com/images/z/2/1/5/6/7/7/2156779-p-LARGE_SEARCH.jpg', '$29.99', NULL, 'Branchlet', '2013-04-10 14:39:20')
+D, [2013-04-10T14:39:20.168440 #18646] DEBUG -- :   [1m[36m (1.2ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:39:23.184988 #18646] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:39:23.186001 #18646] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Aerosoles', '2013-04-10 14:39:23', '(21% off MSRP $39.00)', 'http://6pm.com/aerosoles-branchlet-red', 'http://l4.zassets.com/images/z/2/1/9/3/9/9/2193993-p-LARGE_SEARCH.jpg', '$30.99', NULL, 'Branchlet', '2013-04-10 14:39:23')[0m
+D, [2013-04-10T14:39:23.187374 #18646] DEBUG -- :   [1m[35m (1.2ms)[0m  COMMIT
+D, [2013-04-10T14:39:25.472079 #18646] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:39:25.473575 #18646] DEBUG -- :   [1m[35mSQL (0.4ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('DKNY', '2013-04-10 14:39:25', '(14% off MSRP $59.00)', 'http://6pm.com/dkny-lara-taupe-stretch', 'http://l4.zassets.com/images/z/2/2/1/5/4/8/2215487-p-LARGE_SEARCH.jpg', '$50.99', NULL, 'Lara', '2013-04-10 14:39:25')
+D, [2013-04-10T14:39:25.475089 #18646] DEBUG -- :   [1m[36m (1.2ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:39:27.976010 #18646] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:39:27.977163 #18646] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Born', '2013-04-10 14:39:27', '(47% off MSRP $115.00)', 'http://6pm.com/born-delilah-papaya-suede-orange', 'http://a3.zassets.com/images/z/1/7/4/0/3/2/1740323-p-LARGE_SEARCH.jpg', '$60.99', NULL, 'Delilah', '2013-04-10 14:39:27')[0m
+D, [2013-04-10T14:39:27.978100 #18646] DEBUG -- :   [1m[35m (0.7ms)[0m  COMMIT
+D, [2013-04-10T14:39:31.760778 #18646] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:39:31.761862 #18646] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Naturalizer', '2013-04-10 14:39:31', '(45% off MSRP $69.00)', 'http://6pm.com/naturalizer-sudi-snake', 'http://l4.zassets.com/images/z/1/8/3/5/7/8/1835786-p-LARGE_SEARCH.jpg', '$37.99', NULL, 'Sudi', '2013-04-10 14:39:31')
+D, [2013-04-10T14:39:31.762817 #18646] DEBUG -- :   [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:39:34.573898 #18646] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:39:34.575044 #18646] DEBUG -- :   [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('LifeStride', '2013-04-10 14:39:34', '(40% off MSRP $59.99)', 'http://6pm.com/lifestride-mookie-teal-durant', 'http://a3.zassets.com/images/z/2/1/4/0/9/5/2140958-p-LARGE_SEARCH.jpg', '$35.99', NULL, 'Mookie', '2013-04-10 14:39:34')[0m
+D, [2013-04-10T14:39:34.575997 #18646] DEBUG -- :   [1m[35m (0.7ms)[0m  COMMIT
+D, [2013-04-10T14:39:37.727203 #18646] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:39:37.728241 #18646] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('LifeStride', '2013-04-10 14:39:37', '(40% off MSRP $59.99)', 'http://6pm.com/lifestride-mookie-black-durant', 'http://a3.zassets.com/images/z/2/1/4/0/9/5/2140957-p-LARGE_SEARCH.jpg', '$35.99', NULL, 'Mookie', '2013-04-10 14:39:37')
+D, [2013-04-10T14:39:37.729272 #18646] DEBUG -- :   [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:39:40.438174 #18646] DEBUG -- :   [1m[35m (1.3ms)[0m  BEGIN
+D, [2013-04-10T14:39:40.442327 #18646] DEBUG -- :   [1m[36mSQL (3.1ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('LifeStride', '2013-04-10 14:39:40', '(40% off MSRP $59.99)', 'http://6pm.com/lifestride-mookie-edgewood-durant', 'http://a2.zassets.com/images/z/2/1/4/0/9/5/2140959-p-LARGE_SEARCH.jpg', '$35.99', NULL, 'Mookie', '2013-04-10 14:39:40')[0m
+D, [2013-04-10T14:39:40.443596 #18646] DEBUG -- :   [1m[35m (1.0ms)[0m  COMMIT
+D, [2013-04-10T14:39:44.127170 #18646] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:39:44.128174 #18646] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Cliffs by White Mountain', '2013-04-10 14:39:44', '(27% off MSRP $49.00)', 'http://6pm.com/cliffs-by-white-mountain-chyme-navy-floral', 'http://a1.zassets.com/images/z/2/1/8/5/2/1/2185210-p-LARGE_SEARCH.jpg', '$35.99', NULL, 'Chyme', '2013-04-10 14:39:44')
+D, [2013-04-10T14:39:44.129363 #18646] DEBUG -- :   [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:39:47.454134 #18646] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:39:47.455277 #18646] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Rialto', '2013-04-10 14:39:47', '(27% off MSRP $49.00)', 'http://6pm.com/rialto-gwen-black', 'http://a1.zassets.com/images/z/2/1/8/5/4/1/2185411-p-LARGE_SEARCH.jpg', '$35.99', NULL, 'Gwen', '2013-04-10 14:39:47')[0m
+D, [2013-04-10T14:39:47.457449 #18646] DEBUG -- :   [1m[35m (2.0ms)[0m  COMMIT
+D, [2013-04-10T14:39:50.454542 #18646] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:39:50.455750 #18646] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Rialto', '2013-04-10 14:39:50', '(27% off MSRP $49.00)', 'http://6pm.com/rialto-geneva-silver', 'http://a2.zassets.com/images/z/2/1/8/5/4/7/2185471-p-LARGE_SEARCH.jpg', '$35.99', NULL, 'Geneva', '2013-04-10 14:39:50')
+D, [2013-04-10T14:39:50.458382 #18646] DEBUG -- :   [1m[36m (1.4ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:39:55.735177 #18646] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:39:55.736226 #18646] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Rialto', '2013-04-10 14:39:55', '(27% off MSRP $49.00)', 'http://6pm.com/rialto-galina-ice', 'http://a3.zassets.com/images/z/2/1/8/5/4/7/2185473-p-LARGE_SEARCH.jpg', '$35.99', NULL, 'Galina', '2013-04-10 14:39:55')[0m
+D, [2013-04-10T14:39:55.737360 #18646] DEBUG -- :   [1m[35m (0.9ms)[0m  COMMIT
+D, [2013-04-10T14:39:59.012458 #18646] DEBUG -- :   [1m[36m (3.9ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:39:59.013872 #18646] DEBUG -- :   [1m[35mSQL (0.3ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Rialto', '2013-04-10 14:39:59', '(25% off MSRP $44.00)', 'http://6pm.com/rialto-irene-blue', 'http://l3.zassets.com/images/z/2/1/8/5/4/8/2185487-p-LARGE_SEARCH.jpg', '$32.99', NULL, 'Irene', '2013-04-10 14:39:59')
+D, [2013-04-10T14:39:59.015196 #18646] DEBUG -- :   [1m[36m (1.1ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:40:02.635901 #18646] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:40:02.636938 #18646] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Rialto', '2013-04-10 14:40:02', '(24% off MSRP $54.00)', 'http://6pm.com/rialto-barracuda-walnut', 'http://a1.zassets.com/images/z/2/1/8/5/6/6/2185664-p-LARGE_SEARCH.jpg', '$40.99', NULL, 'Barracuda', '2013-04-10 14:40:02')[0m
+D, [2013-04-10T14:40:02.638138 #18646] DEBUG -- :   [1m[35m (1.0ms)[0m  COMMIT
+D, [2013-04-10T14:40:05.395021 #18646] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:40:05.396056 #18646] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Rialto', '2013-04-10 14:40:05', '(25% off MSRP $44.00)', 'http://6pm.com/rialto-irene-red', 'http://a3.zassets.com/images/z/2/1/8/5/4/8/2185489-p-LARGE_SEARCH.jpg', '$32.99', NULL, 'Irene', '2013-04-10 14:40:05')
+D, [2013-04-10T14:40:05.397193 #18646] DEBUG -- :   [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:40:08.381938 #18646] DEBUG -- :   [1m[35m (0.2ms)[0m  BEGIN
+D, [2013-04-10T14:40:08.382930 #18646] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Rialto', '2013-04-10 14:40:08', '(25% off MSRP $44.00)', 'http://6pm.com/rialto-irene-natural-cork', 'http://a2.zassets.com/images/z/2/1/8/5/4/9/2185491-p-LARGE_SEARCH.jpg', '$32.99', NULL, 'Irene', '2013-04-10 14:40:08')[0m
+D, [2013-04-10T14:40:08.386963 #18646] DEBUG -- :   [1m[35m (3.8ms)[0m  COMMIT
+D, [2013-04-10T14:40:11.694738 #18646] DEBUG -- :   [1m[36m (1.8ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:40:11.696042 #18646] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Cliffs by White Mountain', '2013-04-10 14:40:11', '(27% off MSRP $49.00)', 'http://6pm.com/cliffs-by-white-mountain-chyme-black-floral', 'http://l4.zassets.com/images/z/2/1/8/5/2/0/2185209-p-LARGE_SEARCH.jpg', '$35.99', NULL, 'Chyme', '2013-04-10 14:40:11')
+D, [2013-04-10T14:40:11.697707 #18646] DEBUG -- :   [1m[36m (1.3ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:40:14.617789 #18646] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:40:14.618792 #18646] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Cliffs by White Mountain', '2013-04-10 14:40:14', '(27% off MSRP $49.00)', 'http://6pm.com/cliffs-by-white-mountain-chyme-red-floral', 'http://a3.zassets.com/images/z/2/1/8/5/2/1/2185211-p-LARGE_SEARCH.jpg', '$35.99', NULL, 'Chyme', '2013-04-10 14:40:14')[0m
+D, [2013-04-10T14:40:14.620398 #18646] DEBUG -- :   [1m[35m (1.3ms)[0m  COMMIT
+D, [2013-04-10T14:40:18.195054 #18646] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:40:18.196214 #18646] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Bare Traps', '2013-04-10 14:40:18', '(24% off MSRP $59.00)', 'http://6pm.com/bare-traps-jump-back-white-leather', 'http://l4.zassets.com/images/z/2/1/8/9/3/7/2189370-p-LARGE_SEARCH.jpg', '$44.99', NULL, 'Jump Back', '2013-04-10 14:40:18')
+D, [2013-04-10T14:40:18.197274 #18646] DEBUG -- :   [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:40:21.458517 #18646] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:40:21.459624 #18646] DEBUG -- :   [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Bare Traps', '2013-04-10 14:40:21', '(24% off MSRP $59.00)', 'http://6pm.com/bare-traps-jump-out-auburn-leather', 'http://l4.zassets.com/images/z/2/1/8/9/3/7/2189376-p-LARGE_SEARCH.jpg', '$44.99', NULL, 'Jump Out', '2013-04-10 14:40:21')[0m
+D, [2013-04-10T14:40:21.461228 #18646] DEBUG -- :   [1m[35m (1.3ms)[0m  COMMIT
+D, [2013-04-10T14:40:29.040610 #18646] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:40:29.041691 #18646] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Bare Traps', '2013-04-10 14:40:29', '(24% off MSRP $59.00)', 'http://6pm.com/bare-traps-jump-back-black-leather', 'http://a1.zassets.com/images/z/2/1/8/9/3/7/2189371-p-LARGE_SEARCH.jpg', '$44.99', NULL, 'Jump Back', '2013-04-10 14:40:29')
+D, [2013-04-10T14:40:29.042575 #18646] DEBUG -- :   [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:40:31.226043 #18646] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:40:31.227107 #18646] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Bare Traps', '2013-04-10 14:40:31', '(24% off MSRP $59.00)', 'http://6pm.com/bare-traps-jump-out-black-leather', 'http://a2.zassets.com/images/z/2/1/8/9/3/7/2189377-p-LARGE_SEARCH.jpg', '$44.99', NULL, 'Jump Out', '2013-04-10 14:40:31')[0m
+D, [2013-04-10T14:40:31.228033 #18646] DEBUG -- :   [1m[35m (0.7ms)[0m  COMMIT
+D, [2013-04-10T14:40:34.077809 #18646] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+D, [2013-04-10T14:40:34.078818 #18646] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Rialto', '2013-04-10 14:40:34', '(27% off MSRP $49.00)', 'http://6pm.com/rialto-geneva-black', 'http://l4.zassets.com/images/z/2/1/8/5/4/7/2185472-p-LARGE_SEARCH.jpg', '$35.99', NULL, 'Geneva', '2013-04-10 14:40:34')
+D, [2013-04-10T14:40:34.080502 #18646] DEBUG -- :   [1m[36m (1.4ms)[0m  [1mCOMMIT[0m
+D, [2013-04-10T14:40:37.686086 #18646] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
+D, [2013-04-10T14:40:37.687298 #18646] DEBUG -- :   [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Rialto', '2013-04-10 14:40:37', '(27% off MSRP $49.00)', 'http://6pm.com/rialto-galina-blue', 'http://a1.zassets.com/images/z/2/1/8/5/4/7/2185474-p-LARGE_SEARCH.jpg', '$35.99', NULL, 'Galina', '2013-04-10 14:40:37')[0m
