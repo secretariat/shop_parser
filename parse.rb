@@ -7,8 +7,8 @@ require 'logger'
 require 'yaml'
 
 SITE_URL = "http://6pm.com"
-# HOME_DIR = File.join( Dir.home, "ror/garderob4ik/app/assets/images" )
-HOME_DIR = "/var/www/sites/garderob4ik/app/assets/images"
+HOME_DIR = File.join( Dir.home, "ror/garderob4ik/app/assets/images" )
+# HOME_DIR = "/var/www/sites/garderob4ik/app/assets/images"
 $sum = 0
 CURRENCY = 8.15
 
@@ -18,7 +18,14 @@ ActiveRecord::Base.establish_connection( db_config )
 ActiveRecord::Base.logger = Logger.new(File.open('./log/database.log', 'a'))
 ######################################################
 
+class Departments < ActiveRecord::Base
+end
+
+class Subdepartments < ActiveRecord::Base
+end
+
 class Shoes < ActiveRecord::Base
+	belongs_to :wcategory
 	belongs_to :wcategory
 end
 
@@ -26,6 +33,14 @@ class Wcategory < ActiveRecord::Base
 	has_many :shoess
 end
 
+def get_departments
+	page = Nokogiri::HTML(open(SITE_URL))
+	nav_block = page.css("div#nav").css("ul").last
+	links = nav_block.css("a")
+	links.each do |l|
+		Departments.create(:dep_name_en => l.text, :dep_link => "#{SITE_URL}#{l['href']}" )
+	end
+end
 
 def get_price( price_usd )
 	price = (price_usd*CURRENCY)+200
@@ -139,5 +154,7 @@ def BrowseCategories( model )
 end
 
 
-GetWomenShoesCategories()
-BrowseCategories( Wcategory )
+# GetWomenShoesCategories()
+# BrowseCategories( Wcategory )
+
+get_departments
