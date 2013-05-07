@@ -1,21 +1,24 @@
 shoes:
   id: 1
-  name_en: shoes
+  name_en: Shoes
   name_ru: Туфли
   link: "http://6pm.com/shoes"
-shoes1:
+  active: true
+clothing:
   id: 2
-  name_en: clothes
-  name_ru: Обувь
-  link: "http://6pm.com/clothes"
-# shoes2:
-# shoes3:
-#   id: 1
-#   name_en: shoes
-#   name_ru: Туфли
-#   link: "http://6pm.com/shoes"
-# clothes:
-#   id: 2
-#   name_en: clothes
-#   name_ru: Обувь
-#   link: "http://6pm.com/clothes"
+  name_en: Clothing
+  name_ru: Одежда
+  link: "http://www.6pm.com/clothing"
+  active: true
+bags:
+  id: 3
+  name_en: Bags
+  name_ru: Сумки
+  link: "http://www.6pm.com/bags"
+  active: false
+accessories:
+  id: 4
+  name_en: Accessories
+  name_ru: Aксессуары
+  link: "http://www.6pm.com/accessories"
+  active: false

@@ -5,6 +5,7 @@ class CreateDepartment < ActiveRecord::Migration
       t.string :dep_name_en
       t.string :dep_name_ru
       t.string :dep_link
+      t.boolean :active
       t.timestamps
     end
   end

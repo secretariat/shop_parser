@@ -26,15 +26,10 @@ end
 
 class Shoes < ActiveRecord::Base
 	belongs_to :wcategory
-	belongs_to :wcategory
 end
 
 class Wcategory < ActiveRecord::Base
 	has_many :shoess
-end
-
-def departs_to_db
-	
 end
 
 
