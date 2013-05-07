@@ -38,7 +38,20 @@ def get_departments
 	nav_block = page.css("div#nav").css("ul").last
 	links = nav_block.css("a")
 	links.each do |l|
-		Departments.create(:dep_name_en => l.text, :dep_link => "#{SITE_URL}#{l['href']}" )
+		next if l.text =~ /Women/ || l.text =~ /Men/ || l.text =~ /Kids/ || l.text =~ /brands/u
+		dep_url = "#{SITE_URL}#{l['href']}"
+		Departments.create(:dep_name_en => l.text, :dep_link => dep_url )
+		get_subdepartments( dep_url )
+	end
+end
+
+def get_subdepartments( department_link )
+	puts department_link
+	page = Nokogiri::HTML(open( department_link ))
+	left_block = page.css("div#tcSideCol")
+	view_all_links = left_block.css("a")
+	view_all_links.each do |link|
+		puts link['href'] if link['class'] =~ /view-all last/
 	end
 end
 
