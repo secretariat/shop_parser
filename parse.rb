@@ -33,6 +33,11 @@ class Wcategory < ActiveRecord::Base
 	has_many :shoess
 end
 
+def departs_to_db
+	
+end
+
+
 def get_departments
 	page = Nokogiri::HTML(open(SITE_URL))
 	nav_block = page.css("div#nav").css("ul").last
@@ -157,4 +162,4 @@ end
 # GetWomenShoesCategories()
 # BrowseCategories( Wcategory )
 
-get_departments
+# get_departments

@@ -1,0 +1,21 @@
+shoes:
+  id: 1
+  name_en: shoes
+  name_ru: Туфли
+  link: "http://6pm.com/shoes"
+shoes1:
+  id: 2
+  name_en: clothes
+  name_ru: Обувь
+  link: "http://6pm.com/clothes"
+# shoes2:
+# shoes3:
+#   id: 1
+#   name_en: shoes
+#   name_ru: Туфли
+#   link: "http://6pm.com/shoes"
+# clothes:
+#   id: 2
+#   name_en: clothes
+#   name_ru: Обувь
+#   link: "http://6pm.com/clothes"
