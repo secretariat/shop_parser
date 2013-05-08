@@ -4,6 +4,7 @@ require 'yaml'
 require 'nokogiri'
 require 'open-uri'
 require 'active_record'
+require './lib/funcs.rb'
 
 #############################################################
 SITE_URL = "http://6pm.com"
@@ -48,14 +49,15 @@ class ShopParser
 		end
 	end
 
-	def get_subdepartments_links department_link
+	def get_subdepartments_links( department_link )
 		page = Nokogiri::HTML(open( department_link ))
 		left_block = page.css("div#tcSideCol")
 		view_all_links = left_block.css("a")
 		view_all_links.each do |link|
 			if link['class'] =~ /view-all last/
 				full_link = "#{SITE_URL}#{link['href']}"
-				GetGenderShoesCategories full_link
+				puts full_link
+				# GetGenderCategories( full_link )
 			end
 		end
 	end
@@ -67,7 +69,7 @@ class ShopParser
 		end
 	end
 
-	def GetGenderShoesCategories gender_cat_link
+	def GetGenderCategories( gender_cat_link )
 		page = Nokogiri::HTML( open( gender_cat_link ) )
 		category_block = page.css("div#FCTzc2Select")
 		male_category_links = category_block.css("a")
@@ -89,12 +91,12 @@ class ShopParser
 			page_link = cur_page_link_tmp.gsub(/pageX/, "page#{i}")
 			page_link = page_link.gsub(/p=Z/, "p=#{i-1}")
 			ready_link = "#{SITE_URL}#{page_link}"
-			# BrowseItemsFromPage( ready_link, cat_id )
+			BrowseItemsFromPage( ready_link, cat_id )
 			break
 		end
 	end
 
-	def pagination page
+	def pagination( page )
 		pagin_block = page.css("div.pagination")
 		link_template = ""
 		pages_num = 0
@@ -106,6 +108,50 @@ class ShopParser
 		end
 
 		return link_template, pages_num
+	end
+
+
+	def BrowseItemsFromPage( page_link, cat_id )
+		page = Nokogiri::HTML(open( page_link ))
+		search_result = page.css("div#searchResults")
+		item_links = search_result.css("a")
+		item_links.each do |link|
+			ilink = "#{SITE_URL}#{link['href']}"
+			# GetItemDetails( ilink )
+			image_link = link.css("img.productImg")[0]['src']
+			image_full_path = "#{HOME_DIR}/#{(image_link.split(/\//).last).split("-").first}.jpg"
+			image_path = "#{(image_link.split(/\//).last).split("-").first}.jpg"
+			ImageDownload( image_link, image_full_path )
+			brandName = link.css("span.brandName").text
+			productName = link.css("span.productName").text
+			price_usd = link.css("span.price-6pm").text.gsub!("$","").to_f
+			price_ua = (get_price( link.css("span.price-6pm").text.gsub!("$","").to_f )).to_i
+			discount = link.css("span.discount").text
+			wc = Wcategory.find( cat_id )
+			sh = Shoes.create( :image_path => image_path,
+										:brandname => brandName,
+										:productname => productName,
+										:price_usd => price_usd,
+										:price_ua => price_ua,
+										:discount => discount )
+			wc.shoess << sh
+			puts "#{image_path}\n#{brandName}\n#{productName}\n#{price_usd}\n#{price_ua}"
+			# {discount}\n"
+			puts "-------------------------------"
+			$sum += 1
+		end
+	end
+	
+	def get_price( price_usd )
+		price = (price_usd*CURRENCY)+200
+	end
+
+	def ImageDownload( image_url, image_path )
+		open( image_url ) do |f|
+	  	File.open( image_path ,"wb" ) do |file|
+		  	file.puts f.read
+			end
+		end
 	end
 
 end
