@@ -9,7 +9,7 @@ clothing:
   name_en: Clothing
   name_ru: Одежда
   link: "http://www.6pm.com/clothing"
-  active: true
+  active: false
 bags:
   id: 3
   name_en: Bags

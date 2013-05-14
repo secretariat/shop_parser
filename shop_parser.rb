@@ -4,70 +4,55 @@ require 'yaml'
 require 'nokogiri'
 require 'open-uri'
 require 'active_record'
+require './lib/funcs.rb'
+require './lib/configer.rb'
 
 #############################################################
 SITE_URL = "http://6pm.com"
 #############################################################
 
-
-class Departments < ActiveRecord::Base
-	has_many :subdepartments
-end
-
-class Subdepartments < ActiveRecord::Base
-	belongs_to :departments
-end
-
-class Category < ActiveRecord::Base
-	# has_many :shoess
-end
-
-class Shoes < ActiveRecord::Base
-	# belongs_to :category
-end
-
 class ShopParser
 
-	def initialize
-		@config = YAML::load(File.open('./config/config.yml'))
+	def initialize( global_config )
 		@db_config = YAML::load(File.open('./config/database.yml'))
+		@gconfig = global_config
 		ActiveRecord::Base.establish_connection( @db_config )
-		# @cur_gender = nil
+		@cur_dep = nil
+		@cur_gender = nil
 	end
 
-	def get_departments
-		@config.each do |dep|
-			cur_dep = Departments.find_by_id( dep[1]['id'] )
-			if cur_dep.present?
-				if (cur_dep.dep_link != dep[1]['link']) || (cur_dep.active != dep[1]['active'])
-					Departments.update( dep[1]['id'], :dep_link => dep[1]['link'], :active => dep[1]['active'] )
-				end
-			else
-				Departments.create( :id => dep[1]['id'], :dep_name_en => dep[1]['name_en'], :dep_name_ru => dep[1]['name_ru'], :dep_link => dep[1]['link'], :active => dep[1]['active'] )
+	def process_departments
+		deps = Departments.where( :active => true )
+		deps.each do |d|
+			@cur_dep = d
+			case d.dep_name_en
+				when "Shoes" ; process_shoes( d.dep_link )
+				when "Clothing" ; puts "Clothing"
+				when "Accessories" ; puts "Accessories"
+				when "Bags" ; puts "Bags"
 			end
 		end
 	end
 
-	def get_subdepartments_links department_link
+	def process_shoes( dep_link )
+		get_subdepartments_links( dep_link )
+	end
+
+	def get_subdepartments_links( department_link )
 		page = Nokogiri::HTML(open( department_link ))
 		left_block = page.css("div#tcSideCol")
 		view_all_links = left_block.css("a")
 		view_all_links.each do |link|
 			if link['class'] =~ /view-all last/
 				full_link = "#{SITE_URL}#{link['href']}"
-				GetGenderShoesCategories full_link
+				gender = Gender.find_by_gender_name( get_gender_from_link( full_link ) )
+				@cur_gender = gender
+				get_gender_shoes_categories( full_link )
 			end
 		end
 	end
 
-	def get_subdepartments
-		deps = Departments.where( :active => true )
-		deps.each do |d|
-			get_subdepartments_links( d.dep_link )
-		end
-	end
-
-	def GetGenderShoesCategories gender_cat_link
+	def get_gender_shoes_categories( gender_cat_link )
 		page = Nokogiri::HTML( open( gender_cat_link ) )
 		category_block = page.css("div#FCTzc2Select")
 		male_category_links = category_block.css("a")
@@ -76,12 +61,14 @@ class ShopParser
 			cat_name = cat_name.split("(")[0].chomp
 			cat_link = "#{SITE_URL}#{link['href']}"
 			if !Category.exists?( :cat_link => cat_link )
-				Category.create( :cat_name_en => cat_name, :cat_link => cat_link)
+				cat = Category.create( :cat_name_en => cat_name, :cat_link => cat_link)
+				@cur_dep.categories << cat
+				@cur_gender.categories << cat
 			end
 		end
 	end
 
-	def BrowsePagesFromCategory( page, cat_id )
+	def BrowsePagesFromCategory( page )
 		link_template, pages_num = pagination( page )
 	 	cur_page_link = link_template.gsub!(/page[0-9]/, "pageX")
 	 	cur_page_link_tmp = link_template.gsub!(/p=[0-9]/, "p=Z")
@@ -108,8 +95,23 @@ class ShopParser
 		return link_template, pages_num
 	end
 
+	def BrowseCategories( model )
+		links = model.find(:all)
+		links.each do |l|
+			page = Nokogiri::HTML(open(l.cat_link))
+			puts "CATEGORY: #{l.cat_name_en.upcase}"
+			sleep(1)
+			BrowsePagesFromCategory( page, l.id )
+			puts $sum
+		end
+	end
+
+
 end
 
-parse = ShopParser.new
-parse.get_departments
-parse.get_subdepartments
+conf = Configer.new
+conf.process_config
+
+parse = ShopParser.new( conf )
+parse.process_departments
+# parse.get_subdepartments
