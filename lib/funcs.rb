@@ -17,9 +17,13 @@ def get_price( price_usd )
 end
 
 def ImageDownload( image_url, image_path )
-	open( image_url ) do |f|
-  	File.open( image_path ,"wb" ) do |file|
-	  	file.puts f.read
+	begin
+		open( image_url ) do |f|
+	  	File.open( image_path ,"wb" ) do |file|
+		  	file.puts f.read
+			end
 		end
+	rescue
+		puts "Image not found"
 	end
 end
