@@ -5,13 +5,12 @@ require 'nokogiri'
 require 'open-uri'
 require 'active_record'
 require './lib/funcs.rb'
-<<<<<<< HEAD
 require './lib/configer.rb'
-=======
->>>>>>> bea835d4b0064551e7d63603b8cf8ad9d427607b
 
 #############################################################
 SITE_URL = "http://6pm.com"
+# HOME_DIR = File.join( Dir.home, "ror/garderob4ik/app/assets/images" )
+HOME_DIR = "/var/www/sites/garderob4ik/app/assets/images"
 #############################################################
 
 class ShopParser
@@ -21,7 +20,16 @@ class ShopParser
 		@gconfig = global_config
 		ActiveRecord::Base.establish_connection( @db_config )
 		@cur_dep = nil
+		@cur_category = nil
 		@cur_gender = nil
+	end
+
+	def process_brands( brand_name )
+		if !Brand.exists?( :brand_name => brand_name )
+			@cur_brand = Brand.create( :brand_name => brand_name )
+		else
+			@cur_brand = Brand.find_by_brand_name( brand_name )
+		end
 	end
 
 	def process_departments
@@ -37,44 +45,26 @@ class ShopParser
 		end
 	end
 
-<<<<<<< HEAD
 	def process_shoes( dep_link )
-		get_subdepartments_links( dep_link )
+		get_view_all_links( dep_link )
+		browse_categories
 	end
 
-=======
->>>>>>> bea835d4b0064551e7d63603b8cf8ad9d427607b
-	def get_subdepartments_links( department_link )
+	def get_view_all_links( department_link )
 		page = Nokogiri::HTML(open( department_link ))
 		left_block = page.css("div#tcSideCol")
 		view_all_links = left_block.css("a")
 		view_all_links.each do |link|
 			if link['class'] =~ /view-all last/
 				full_link = "#{SITE_URL}#{link['href']}"
-<<<<<<< HEAD
 				gender = Gender.find_by_gender_name( get_gender_from_link( full_link ) )
 				@cur_gender = gender
 				get_gender_shoes_categories( full_link )
-=======
-				puts full_link
-				# GetGenderCategories( full_link )
->>>>>>> bea835d4b0064551e7d63603b8cf8ad9d427607b
 			end
 		end
 	end
 
-<<<<<<< HEAD
 	def get_gender_shoes_categories( gender_cat_link )
-=======
-	def get_subdepartments
-		deps = Departments.where( :active => true )
-		deps.each do |d|
-			get_subdepartments_links( d.dep_link )
-		end
-	end
-
-	def GetGenderCategories( gender_cat_link )
->>>>>>> bea835d4b0064551e7d63603b8cf8ad9d427607b
 		page = Nokogiri::HTML( open( gender_cat_link ) )
 		category_block = page.css("div#FCTzc2Select")
 		male_category_links = category_block.css("a")
@@ -98,8 +88,8 @@ class ShopParser
 			page_link = cur_page_link_tmp.gsub(/pageX/, "page#{i}")
 			page_link = page_link.gsub(/p=Z/, "p=#{i-1}")
 			ready_link = "#{SITE_URL}#{page_link}"
-			BrowseItemsFromPage( ready_link, cat_id )
-			break
+			BrowseItemsFromPage( ready_link )
+			# break
 		end
 	end
 
@@ -110,70 +100,68 @@ class ShopParser
 		pagin_block.each do |pag|
 			links = pag.css("a")
 			link_template = links[0]['href']
-			pages_num = pagin_block.css("span.last")[0].text.gsub!("...","").strip.to_i
+			puts link_template
+			if pagin_block.css("span.last")[0]
+				pages_num = pagin_block.css("span.last")[0].text.gsub!("...","").strip.to_i
+			else
+				pages_num = 4
+			end
 			break
 		end
 
 		return link_template, pages_num
 	end
 
-<<<<<<< HEAD
-	def BrowseCategories( model )
-		links = model.find(:all)
-		links.each do |l|
-			page = Nokogiri::HTML(open(l.cat_link))
-			puts "CATEGORY: #{l.cat_name_en.upcase}"
-			sleep(1)
-			BrowsePagesFromCategory( page, l.id )
-			puts $sum
+	def browse_categories
+		categories = Category.where( :departments_id => @cur_dep.id )
+		categories.each do |c|
+			@cur_category = c
+			page = Nokogiri::HTML(open(c.cat_link))
+			puts "CATEGORY: #{c.cat_name_en.upcase}"
+			# sleep(1)
+			BrowsePagesFromCategory( page )
 		end
 	end
 
-=======
-
-	def BrowseItemsFromPage( page_link, cat_id )
-		page = Nokogiri::HTML(open( page_link ))
+	def BrowseItemsFromPage( page_link )
+		begin
+			page = Nokogiri::HTML(open( page_link ))
+		rescue
+			return
+		end
 		search_result = page.css("div#searchResults")
 		item_links = search_result.css("a")
 		item_links.each do |link|
 			ilink = "#{SITE_URL}#{link['href']}"
+			product_id = link['data-product-id']
+			style_id = link['data-style-id']
 			# GetItemDetails( ilink )
 			image_link = link.css("img.productImg")[0]['src']
 			image_full_path = "#{HOME_DIR}/#{(image_link.split(/\//).last).split("-").first}.jpg"
 			image_path = "#{(image_link.split(/\//).last).split("-").first}.jpg"
 			ImageDownload( image_link, image_full_path )
 			brandName = link.css("span.brandName").text
+			process_brands( brandName )
 			productName = link.css("span.productName").text
 			price_usd = link.css("span.price-6pm").text.gsub!("$","").to_f
 			price_ua = (get_price( link.css("span.price-6pm").text.gsub!("$","").to_f )).to_i
 			discount = link.css("span.discount").text
-			wc = Wcategory.find( cat_id )
-			sh = Shoes.create( :image_path => image_path,
-										:brandname => brandName,
-										:productname => productName,
-										:price_usd => price_usd,
-										:price_ua => price_ua,
-										:discount => discount )
-			wc.shoess << sh
-			puts "#{image_path}\n#{brandName}\n#{productName}\n#{price_usd}\n#{price_ua}"
-			# {discount}\n"
-			puts "-------------------------------"
-			$sum += 1
-		end
-	end
-	
-	def get_price( price_usd )
-		price = (price_usd*CURRENCY)+200
-	end
-
-	def ImageDownload( image_url, image_path )
-		open( image_url ) do |f|
-	  	File.open( image_path ,"wb" ) do |file|
-		  	file.puts f.read
+			if( !Item.exists?( :product_id => product_id.to_i, :style_id => style_id.to_i ) )
+				item = Item.new( :image_path => image_path,
+											:product_id => product_id.to_i,
+											:style_id => style_id.to_i,
+											:productname => productName,
+											:price_usd => price_usd,
+											:price_ua => price_ua,
+											:discount => discount )
+				@cur_category.items << item
+				@cur_brand.items << item
+				puts "#{product_id}\n#{style_id}\n#{image_path}\n#{brandName}\n#{productName}\n#{price_usd}\n#{price_ua}"
+				# {discount}\n"
 			end
+			puts "-------------------------------"
 		end
 	end
->>>>>>> bea835d4b0064551e7d63603b8cf8ad9d427607b
 
 end
 
