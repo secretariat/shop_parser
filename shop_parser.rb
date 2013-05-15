@@ -139,7 +139,7 @@ class ShopParser
 			image_link = link.css("img.productImg")[0]['src']
 			image_full_path = "#{HOME_DIR}/#{(image_link.split(/\//).last).split("-").first}.jpg"
 			image_path = "#{(image_link.split(/\//).last).split("-").first}.jpg"
-			ImageDownload( image_link, image_full_path )
+			# ImageDownload( image_link, image_full_path )
 			brandName = link.css("span.brandName").text
 			process_brands( brandName )
 			productName = link.css("span.productName").text
@@ -157,6 +157,7 @@ class ShopParser
 				@cur_category.items << item
 				@cur_brand.items << item
 				puts "#{product_id}\n#{style_id}\n#{image_path}\n#{brandName}\n#{productName}\n#{price_usd}\n#{price_ua}"
+				ImageDownload( image_link, image_full_path )
 				# {discount}\n"
 			end
 			puts "-------------------------------"
