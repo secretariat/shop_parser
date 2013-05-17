@@ -5,10 +5,10 @@ CURRENCY = 8.15
 
 def get_gender_from_link( link )
 	case link
-		when /Men/ ; return "Men"
-		when /Women/ ; return "Women"
-		when /Boys/i ; return "Boys"
-		when /Girls/i ; return "Girls"
+		when /\/mens/i ; return "Men"
+		when /womens/i ; return "Women"
+		when /boys/i ; return "Boys"
+		when /girls/i ; return "Girls"
 	end
 end
 

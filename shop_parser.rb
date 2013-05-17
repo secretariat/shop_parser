@@ -9,8 +9,9 @@ require './lib/configer.rb'
 
 #############################################################
 SITE_URL = "http://6pm.com"
+# HOME_DIR = File.join( Dir.home, "ror/garderob4ik/public/images" )
 # HOME_DIR = File.join( Dir.home, "ror/garderob4ik/app/assets/images" )
-HOME_DIR = "/var/www/sites/garderob4ik/app/assets/images"
+HOME_DIR = "/var/www/sites/garderob4ik/public/images"
 #############################################################
 
 class ShopParser
@@ -58,6 +59,7 @@ class ShopParser
 			if link['class'] =~ /view-all last/
 				full_link = "#{SITE_URL}#{link['href']}"
 				gender = Gender.find_by_gender_name( get_gender_from_link( full_link ) )
+				# puts gender.gender_name
 				@cur_gender = gender
 				get_gender_shoes_categories( full_link )
 			end
