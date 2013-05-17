@@ -9,9 +9,8 @@ require './lib/configer.rb'
 
 #############################################################
 SITE_URL = "http://6pm.com"
-# HOME_DIR = File.join( Dir.home, "ror/garderob4ik/public/images" )
-# HOME_DIR = File.join( Dir.home, "ror/garderob4ik/app/assets/images" )
-HOME_DIR = "/var/www/sites/garderob4ik/public/images"
+HOME_DIR = File.join( Dir.home, "ror/garderob4ik/public/images" )
+# HOME_DIR = "/var/www/sites/garderob4ik/public/images"
 #############################################################
 
 class ShopParser
@@ -91,7 +90,7 @@ class ShopParser
 			page_link = page_link.gsub(/p=Z/, "p=#{i-1}")
 			ready_link = "#{SITE_URL}#{page_link}"
 			BrowseItemsFromPage( ready_link )
-			# break
+			break
 		end
 	end
 
@@ -129,6 +128,8 @@ class ShopParser
 		begin
 			page = Nokogiri::HTML(open( page_link ))
 		rescue
+			puts "PAGE NOT FOUND"
+			sleep(10)
 			return
 		end
 		search_result = page.css("div#searchResults")
@@ -137,7 +138,7 @@ class ShopParser
 			ilink = "#{SITE_URL}#{link['href']}"
 			product_id = link['data-product-id']
 			style_id = link['data-style-id']
-			# GetItemDetails( ilink )
+			GetItemDetails( ilink )
 			image_link = link.css("img.productImg")[0]['src']
 			image_full_path = "#{HOME_DIR}/#{(image_link.split(/\//).last).split("-").first}.jpg"
 			image_path = "#{(image_link.split(/\//).last).split("-").first}.jpg"
@@ -163,6 +164,20 @@ class ShopParser
 				# {discount}\n"
 			end
 			puts "-------------------------------"
+		end
+	end
+
+	def GetItemDetails( item_url )
+		page = Nokogiri::HTML(open( item_url ))
+		puts sku = page.css("span#sku").text.split("#")[1].to_i
+		main_image_div = page.css("div#detailImage")
+		puts main_image_path = main_image_div.css("img")[0]['src']
+		thumbnails_block = page.css("div#productImages")
+		# image_links_block = thumbnails_block.css('a[id^="frontrow-"]').text
+		image_links_block = thumbnails_block.css('img')
+		image_links_block.each do |link|
+			# puts link['src'] if link =~ /MULTIVIEW_THUMBNAILS/
+			# path = link['src']
 		end
 	end
 

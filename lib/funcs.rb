@@ -24,6 +24,6 @@ def ImageDownload( image_url, image_path )
 			end
 		end
 	rescue
-		puts "Image not found"
+		puts "Image not found: #{image_url}"
 	end
 end
