@@ -138,7 +138,7 @@ class ShopParser
 			ilink = "#{SITE_URL}#{link['href']}"
 			product_id = link['data-product-id']
 			style_id = link['data-style-id']
-			GetItemDetails( ilink )
+			# GetItemDetails( ilink )
 			image_link = link.css("img.productImg")[0]['src']
 			image_full_path = "#{HOME_DIR}/#{(image_link.split(/\//).last).split("-").first}.jpg"
 			image_path = "#{(image_link.split(/\//).last).split("-").first}.jpg"
@@ -157,27 +157,45 @@ class ShopParser
 											:price_usd => price_usd,
 											:price_ua => price_ua,
 											:discount => discount )
+				GetItemDetails( item, ilink )
 				@cur_category.items << item
 				@cur_brand.items << item
 				puts "#{product_id}\n#{style_id}\n#{image_path}\n#{brandName}\n#{productName}\n#{price_usd}\n#{price_ua}"
 				ImageDownload( image_link, image_full_path )
+				# GetItemDetails( item, ilink )
 				# {discount}\n"
 			end
 			puts "-------------------------------"
 		end
 	end
 
-	def GetItemDetails( item_url )
-		page = Nokogiri::HTML(open( item_url ))
+	def GetItemDetails( item, item_url )
+		puts item_url
+		begin
+			page = Nokogiri::HTML(open( item_url ))
+		rescue Exception => e
+			puts ">>>>>>>>>>>>ERROR: #{e.message}"
+			return
+		end
 		puts sku = page.css("span#sku").text.split("#")[1].to_i
 		main_image_div = page.css("div#detailImage")
-		puts main_image_path = main_image_div.css("img")[0]['src']
+		# puts main_image_path = main_image_div.css("img")[0]['src']
 		thumbnails_block = page.css("div#productImages")
 		# image_links_block = thumbnails_block.css('a[id^="frontrow-"]').text
 		image_links_block = thumbnails_block.css('img')
+		desc = Description.new( :sku => sku.to_i )
+		item.description = desc
 		image_links_block.each do |link|
-			# puts link['src'] if link =~ /MULTIVIEW_THUMBNAILS/
-			# path = link['src']
+			if link['src'] =~ /MULTIVIEW_THUMBNAILS/
+				puts thumb_image_name = "#{link['src'].split(/\//).last.split(/-/)[0..1].join("-")}-thumb.jpg"
+				puts large_image_name = "#{link['src'].split(/\//).last.split(/-/)[0..1].join("-")}.jpg"
+				thumb_image_full_path = "#{HOME_DIR}/descriptions/#{thumb_image_name}"
+				large_image_full_path = "#{HOME_DIR}/descriptions/#{large_image_name}"
+				large_image_download_link = link['src'].gsub("_THUMBNAILS","")
+				desc.images << Image.new( :thumb_path => thumb_image_name, :image_path => large_image_name )
+				ImageDownload( link['src'], thumb_image_full_path )
+				ImageDownload( large_image_download_link, large_image_full_path )
+			end
 		end
 	end
 
