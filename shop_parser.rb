@@ -17,8 +17,8 @@ class ShopParser
 
 	def initialize( global_config )
 		@db_config = YAML::load(File.open('./config/database.yml'))
-		@gconfig = global_config
 		ActiveRecord::Base.establish_connection( @db_config )
+		@gconfig = global_config
 		@cur_dep = nil
 		@cur_category = nil
 		@cur_gender = nil
@@ -178,10 +178,11 @@ class ShopParser
 			return
 		end
 		puts sku = page.css("span#sku").text.split("#")[1].to_i
+		color = process_color( page )
+		color.items << item
 		main_image_div = page.css("div#detailImage")
 		# puts main_image_path = main_image_div.css("img")[0]['src']
 		thumbnails_block = page.css("div#productImages")
-		# image_links_block = thumbnails_block.css('a[id^="frontrow-"]').text
 		image_links_block = thumbnails_block.css('img')
 		desc = Description.new( :sku => sku.to_i )
 		item.description = desc
@@ -197,6 +198,29 @@ class ShopParser
 				ImageDownload( large_image_download_link, large_image_full_path )
 			end
 		end
+	end
+
+	def process_color( page )
+		cur_color = nil
+		color_values = nil
+
+		color_block = page.css("select#color")
+		if !color_block then
+			color_block = page.css("li#colors")
+			color_values = color_block.css("p.note")
+		else
+			color_values = color_block.css("option")
+		end
+
+		color_values.each do |color|
+			if( !Color.exists?(:color_name => color.text) )
+				cur_color = Color.create( :color_name => color.text )
+			else
+				cur_color = Color.find_by_color_name( color.text )
+			end
+		end
+
+		return cur_color
 	end
 
 end

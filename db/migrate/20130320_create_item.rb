@@ -4,6 +4,7 @@ class CreateItem < ActiveRecord::Migration
     create_table :items do |t|
       t.integer :category_id
       t.integer :product_id
+      t.integer :color_id
       t.integer :style_id
       t.integer :brand_id
       t.string :image_path
@@ -16,5 +17,6 @@ class CreateItem < ActiveRecord::Migration
     end
     add_index("items", "category_id")
     add_index("items", "brand_id")
+    add_index("items", "color_id")
   end
 end

@@ -7,10 +7,12 @@ class Configer
 
 	def initialize
 		@departs = YAML::load(File.open('./config/departments.yml'))
+		@brands = YAML::load(File.open('./config/brands.yml'))
 		@gender = YAML::load(File.open('./config/gender.yml'))
 		@db_config = YAML::load(File.open('./config/database.yml'))
 		ActiveRecord::Base.establish_connection( @db_config )
 	end
+
 
 	def get_gender_table
 		1.upto(@gender['gender'].size) do |i|
