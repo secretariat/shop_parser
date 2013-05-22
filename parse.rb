@@ -59,13 +59,7 @@ def get_price( price_usd )
 	price = (price_usd*CURRENCY)+200
 end
 
-def ImageDownload( image_url, image_path )
-	open( image_url ) do |f|
-  	File.open( image_path ,"wb" ) do |file|
-	  	file.puts f.read
-		end
-	end
-end
+
 
 def GetItemDetails( item_url )
 	# page = Nokogiri::HTML(open( item_url ))

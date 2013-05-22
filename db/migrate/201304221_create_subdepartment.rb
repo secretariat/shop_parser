@@ -2,12 +2,14 @@
 class CreateSubdepartment < ActiveRecord::Migration
   def change
     create_table :subdepartments do |t|
-    	t.integer :department_id
+      t.integer :department_id
+    	t.integer :gender_id
       t.string :subdep_name_en
       t.string :subdep_name_ru
       t.string :cat_link
       t.timestamps
     end
     add_index("subdepartments", "department_id")
+    add_index("subdepartments", "gender_id")
   end
 end
