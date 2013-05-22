@@ -4,12 +4,13 @@ require 'active_record'
 require './lib/db_configer.rb'
 
 class Configer
-
+	attr_accessor :cat_by_gender
 	def initialize
 		@departs = YAML::load(File.open('./config/departments.yml'))
 		@brands = YAML::load(File.open('./config/brands.yml'))
 		@gender = YAML::load(File.open('./config/gender.yml'))
 		@db_config = YAML::load(File.open('./config/database.yml'))
+		@cat_by_gender = YAML::load(File.open('./config/category_by_gender.yml'))
 		ActiveRecord::Base.establish_connection( @db_config )
 	end
 

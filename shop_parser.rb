@@ -14,7 +14,7 @@ HOME_DIR = File.join( Dir.home, "ror/garderob4ik/public/images" )
 #############################################################
 
 class ShopParser
-
+	attr_accessor :gconfig
 	def initialize( global_config )
 		@db_config = YAML::load(File.open('./config/database.yml'))
 		ActiveRecord::Base.establish_connection( @db_config )
@@ -58,7 +58,7 @@ class ShopParser
 			if link['class'] =~ /view-all last/
 				full_link = "#{SITE_URL}#{link['href']}"
 				gender = Gender.find_by_gender_name( get_gender_from_link( full_link ) )
-				# puts gender.gender_name
+				puts full_link
 				@cur_gender = gender
 				get_gender_shoes_categories( full_link )
 			end
@@ -74,7 +74,8 @@ class ShopParser
 			cat_name = cat_name.split("(")[0].chomp
 			cat_link = "#{SITE_URL}#{link['href']}"
 			if !Category.exists?( :cat_link => cat_link )
-				cat = Category.create( :cat_name_en => cat_name, :cat_link => cat_link)
+				activity = gconfig.cat_by_gender["#{@cur_dep.dep_name_en}"]["#{@cur_gender.gender_name}"]
+				cat = Category.create( :cat_name_en => cat_name, :cat_link => cat_link, :active => activity )
 				@cur_dep.categories << cat
 				@cur_gender.categories << cat
 			end
@@ -114,7 +115,7 @@ class ShopParser
 	end
 
 	def browse_categories
-		categories = Category.where( :departments_id => @cur_dep.id )
+		categories = Category.where( :departments_id => @cur_dep.id, :active => true )
 		categories.each do |c|
 			@cur_category = c
 			page = Nokogiri::HTML(open(c.cat_link))
@@ -170,7 +171,6 @@ class ShopParser
 	end
 
 	def GetItemDetails( item, item_url )
-		puts item.inspect
 		begin
 			page = Nokogiri::HTML(open( item_url ))
 		rescue Exception => e
@@ -178,7 +178,7 @@ class ShopParser
 			return
 		end
 		puts sku = page.css("span#sku").text.split("#")[1].to_i
-		process_color( item, page )
+		# process_color( item, page )
 		main_image_div = page.css("div#detailImage")
 		# puts main_image_path = main_image_div.css("img")[0]['src']
 		thumbnails_block = page.css("div#productImages")
@@ -187,8 +187,8 @@ class ShopParser
 		item.description = desc
 		image_links_block.each do |link|
 			if link['src'] =~ /MULTIVIEW_THUMBNAILS/
-				puts thumb_image_name = "#{link['src'].split(/\//).last.split(/-/)[0..1].join("-")}-thumb.jpg"
-				puts large_image_name = "#{link['src'].split(/\//).last.split(/-/)[0..1].join("-")}.jpg"
+				thumb_image_name = "#{link['src'].split(/\//).last.split(/-/)[0..1].join("-")}-thumb.jpg"
+				large_image_name = "#{link['src'].split(/\//).last.split(/-/)[0..1].join("-")}.jpg"
 				thumb_image_full_path = "#{HOME_DIR}/descriptions/#{thumb_image_name}"
 				large_image_full_path = "#{HOME_DIR}/descriptions/#{large_image_name}"
 				large_image_download_link = link['src'].gsub("_THUMBNAILS","")
@@ -223,13 +223,14 @@ class ShopParser
 
 			item.colors << cur_color
 		end
-		
+
 	end
 
 end
 
 conf = Configer.new
 conf.process_config
+
 
 parse = ShopParser.new( conf )
 parse.process_departments

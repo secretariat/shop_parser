@@ -7,6 +7,7 @@ class CreateCategory < ActiveRecord::Migration
       t.string :cat_name_en
       t.string :cat_name_ru
       t.string :cat_link
+      t.boolean :active
       t.timestamps
     end
     add_index("categories", "gender_id")

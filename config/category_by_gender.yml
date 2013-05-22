@@ -1,0 +1,10 @@
+Shoes:
+  Women: true
+  Men: false
+  Boys: false
+  Girls: false
+Clothing:
+  Women: false
+  Men: false
+  Boys: false
+  Girls: false
