@@ -11,7 +11,8 @@ end
 class Item < ActiveRecord::Base
 	belongs_to :category
 	belongs_to :brand
-	belongs_to :color
+	has_many :colors
+	has_many :sizes
 	has_one :description
 end
 
@@ -35,5 +36,9 @@ class Image< ActiveRecord::Base
 end
 
 class Color< ActiveRecord::Base
-	has_many :items
+	belongs_to :item
+end
+
+class Size< ActiveRecord::Base
+	belongs_to :item
 end

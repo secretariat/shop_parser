@@ -170,7 +170,7 @@ class ShopParser
 	end
 
 	def GetItemDetails( item, item_url )
-		puts item_url
+		puts item.inspect
 		begin
 			page = Nokogiri::HTML(open( item_url ))
 		rescue Exception => e
@@ -178,8 +178,7 @@ class ShopParser
 			return
 		end
 		puts sku = page.css("span#sku").text.split("#")[1].to_i
-		color = process_color( page )
-		color.items << item
+		process_color( item, page )
 		main_image_div = page.css("div#detailImage")
 		# puts main_image_path = main_image_div.css("img")[0]['src']
 		thumbnails_block = page.css("div#productImages")
@@ -200,16 +199,19 @@ class ShopParser
 		end
 	end
 
-	def process_color( page )
+	def process_color( item, page )
+		# puts item.inspect
 		cur_color = nil
 		color_values = nil
 
 		color_block = page.css("select#color")
-		if !color_block then
+		if !color_block.present? then
 			color_block = page.css("li#colors")
 			color_values = color_block.css("p.note")
+			# puts color_values
 		else
 			color_values = color_block.css("option")
+			# puts color_values
 		end
 
 		color_values.each do |color|
@@ -218,9 +220,10 @@ class ShopParser
 			else
 				cur_color = Color.find_by_color_name( color.text )
 			end
-		end
 
-		return cur_color
+			item.colors << cur_color
+		end
+		
 	end
 
 end
@@ -230,4 +233,15 @@ conf.process_config
 
 parse = ShopParser.new( conf )
 parse.process_departments
-# parse.get_subdepartments
+
+# db_config = YAML::load(File.open('./config/database.yml'))
+# ActiveRecord::Base.establish_connection( db_config )
+
+# i = Item.find(:all)
+# i.each do |item| 
+# 	puts item.productname
+# 	colors = item.colors
+# 	colors.each do |c|
+# 		puts "\t>>>>#{c.color_name}"
+# 	end
+# end
