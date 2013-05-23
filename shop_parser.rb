@@ -177,11 +177,11 @@ class ShopParser
 			puts ">>>>>>>>>>>>ERROR: #{e.message}"
 			return
 		end
-		puts sku = page.css("span#sku").text.split("#")[1].to_i
+		sku = page.css("span#sku").text.split("#")[1].to_i
 		# process_color( item, page )
 		main_image_div = page.css("div#detailImage")
 		# puts main_image_path = main_image_div.css("img")[0]['src']
-		puts description_block = page.css("div.description")
+		description_block = page.css("div.description")
 		thumbnails_block = page.css("div#productImages")
 		image_links_block = thumbnails_block.css('img')
 		desc = Description.new( :sku => sku.to_i, :description => description_block.to_s )
