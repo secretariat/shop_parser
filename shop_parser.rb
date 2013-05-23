@@ -9,8 +9,8 @@ require './lib/configer.rb'
 
 #############################################################
 SITE_URL = "http://6pm.com"
-HOME_DIR = File.join( Dir.home, "ror/garderob4ik/public/images" )
-# HOME_DIR = "/var/www/sites/garderob4ik/public/images"
+# HOME_DIR = File.join( Dir.home, "ror/garderob4ik/public/images" )
+HOME_DIR = "/var/www/sites/garderob4ik/public/images"
 #############################################################
 
 class ShopParser
@@ -149,7 +149,7 @@ class ShopParser
 			productName = link.css("span.productName").text
 			price_usd = link.css("span.price-6pm").text.gsub!("$","").to_f
 			price_ua = (get_price( link.css("span.price-6pm").text.gsub!("$","").to_f )).to_i
-			discount = link.css("span.discount").text
+			puts discount = $1 if link.css("span.discount").text =~ /\(([\d+])%/
 			if( !Item.exists?( :product_id => product_id.to_i, :style_id => style_id.to_i ) )
 				item = Item.new( :image_path => image_path,
 											:product_id => product_id.to_i,
@@ -181,9 +181,10 @@ class ShopParser
 		# process_color( item, page )
 		main_image_div = page.css("div#detailImage")
 		# puts main_image_path = main_image_div.css("img")[0]['src']
+		puts description_block = page.css("div.description")
 		thumbnails_block = page.css("div#productImages")
 		image_links_block = thumbnails_block.css('img')
-		desc = Description.new( :sku => sku.to_i )
+		desc = Description.new( :sku => sku.to_i, :description => description_block.to_s )
 		item.description = desc
 		image_links_block.each do |link|
 			if link['src'] =~ /MULTIVIEW_THUMBNAILS/

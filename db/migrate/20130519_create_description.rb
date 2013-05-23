@@ -6,6 +6,7 @@ class CreateDescription < ActiveRecord::Migration
       t.float :price
       t.integer :sku
       t.integer :color_id
+      t.text :description
       t.timestamps
     end
     add_index( "descriptions", "item_id")
