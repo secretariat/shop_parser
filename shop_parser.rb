@@ -178,7 +178,8 @@ class ShopParser
 			return
 		end
 		sku = page.css("span#sku").text.split("#")[1].to_i
-		# process_color( item, page )
+		process_color( item, page )
+		process_size( item, page )
 		main_image_div = page.css("div#detailImage")
 		# puts main_image_path = main_image_div.css("img")[0]['src']
 		description_block = page.css("div.description")
@@ -196,6 +197,30 @@ class ShopParser
 				desc.images << Image.new( :thumb_path => thumb_image_name, :image_path => large_image_name )
 				ImageDownload( link['src'], thumb_image_full_path )
 				ImageDownload( large_image_download_link, large_image_full_path )
+			end
+		end
+	end
+
+	def process_size( item, page )
+		size_block = page.css("select#d3")
+		if !size_block.present? then
+			size_block = page.css("li#colors")
+			size_values = size_block.css("p.note")
+			# puts color_values
+		else
+			size_values = size_block.css("option")
+			# puts size_values
+		end
+
+		size_values.each do |size|
+			if !(size.text =~ /select/i) then
+				if( !Size.exists?(:size_value => size.text) )
+					cur_size = Size.create( :size_value => size.text )
+				else
+					cur_size = Size.find_by_size_value( size.text )
+				end
+
+				item.sizes << cur_size
 			end
 		end
 	end
@@ -240,10 +265,10 @@ parse.process_departments
 # ActiveRecord::Base.establish_connection( db_config )
 
 # i = Item.find(:all)
-# i.each do |item| 
+# i.each do |item|
 # 	puts item.productname
 # 	colors = item.colors
 # 	colors.each do |c|
-# 		puts "\t>>>>#{c.color_name}"
+# 		puts "\t>>>>#{c.id}--#{c.color_name}"
 # 	end
 # end
