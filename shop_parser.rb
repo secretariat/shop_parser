@@ -9,8 +9,8 @@ require './lib/configer.rb'
 
 #############################################################
 SITE_URL = "http://6pm.com"
-# HOME_DIR = File.join( Dir.home, "ror/garderob4ik/public/images" )
-HOME_DIR = "/var/www/sites/garderob4ik/public/images"
+HOME_DIR = File.join( Dir.home, "ror/garderob4ik/public/images" )
+# HOME_DIR = "/var/www/sites/garderob4ik/public/images"
 #############################################################
 
 class ShopParser
@@ -250,6 +250,10 @@ class ShopParser
 			item.colors << cur_color
 		end
 
+	end
+
+	def process_styles( link )
+		
 	end
 
 end
