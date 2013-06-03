@@ -11,6 +11,7 @@ class CreateItem < ActiveRecord::Migration
       t.float :price_usd
       t.float :price_ua
       t.string :discount
+      t.float :msrp_ua
 
       t.timestamps
     end

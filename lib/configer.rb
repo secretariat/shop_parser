@@ -1,4 +1,5 @@
 require 'yaml'
+require 'fileutils'
 require 'active_record'
 # require File.expand_path('db_configer.rb', File.dirname(__FILE__))
 require './lib/db_configer.rb'
@@ -36,7 +37,13 @@ class Configer
 		end
 	end
 
+	def lspath_create
+		FileUtils.mkdir_p HOME_DIR
+		FileUtils.mkdir_p "#{HOME_DIR}/descriptions"
+	end
+
 	def process_config
+		lspath_create
 		get_gender_table
 		get_departments
 	end

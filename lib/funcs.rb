@@ -25,7 +25,7 @@ def ImageDownload( image_url, image_path )
 		  	file.puts f.read
 			end
 		end
-	rescue
-		puts "Image not found: #{image_url}"
+	rescue Exception => e
+		puts "ERROR while downloading image: #{e.message}"
 	end
 end

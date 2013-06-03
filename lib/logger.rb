@@ -1,19 +1,18 @@
 require 'logger'
+require 'singleton'
 
-class Log
-	def initialize
-		@logger ||= Logger.new( "logfile.log", "daily" )
-		original_formatter = Logger::Formatter.new
-		@logger.formatter = proc { |severity, datetime, progname, msg|
-		  original_formatter.call(severity, datetime, progname, msg.dump)
-		}
-	end
+class Log < Logger
 
-	def write message
-		@logger.info message
-	end
+  include Singleton
+
+  class Formatter
+  	def call(severity, datetime, progname, msg)
+  		datetime_format = "%Y-%m-%d %H:%M:%S"
+		  "#{datetime}:\t#{msg}\n"
+  	end
+  end
 
 end
 
-g = Log.new
-g.write "test"
+g = Log.new( "../log/logfile.log", "daily" )
+g.info("test")

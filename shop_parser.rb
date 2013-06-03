@@ -4,6 +4,7 @@ require 'yaml'
 require 'nokogiri'
 require 'open-uri'
 require 'active_record'
+require './lib/shoes.rb'
 require './lib/funcs.rb'
 require './lib/configer.rb'
 
@@ -149,7 +150,23 @@ class ShopParser
 			productName = link.css("span.productName").text
 			price_usd = link.css("span.price-6pm").text.gsub!("$","").to_f
 			price_ua = (get_price( link.css("span.price-6pm").text.gsub!("$","").to_f )).to_i
-			puts discount = $1 if link.css("span.discount").text =~ /\(([\d+])%/
+			discount = $1 if link.css("span.discount").text =~ /([\d]+)%/
+			# msrp = $1 if link.css("span.discount").text =~ /\$([\d]+)\./
+			puts msrp_ua = (price_ua/((100-discount.to_f)/100.00)).to_i
+
+			h_item = Hash.new
+			h_item = {
+									:image_path => image_path,
+									:product_id => product_id.to_i,
+									:style_id => style_id.to_i,
+									:productname => productName,
+									:price_usd => price_usd,
+									:price_ua => price_ua,
+									:discount => discount,
+									:msrp_ua => msrp_ua
+								}
+			# Shoes.new( h_item )
+
 			if( !Item.exists?( :product_id => product_id.to_i, :style_id => style_id.to_i ) )
 				item = Item.new( :image_path => image_path,
 											:product_id => product_id.to_i,
@@ -157,14 +174,15 @@ class ShopParser
 											:productname => productName,
 											:price_usd => price_usd,
 											:price_ua => price_ua,
-											:discount => discount )
+											:discount => discount,
+											:msrp_ua => msrp_ua )
+
 				GetItemDetails( item, ilink )
 				@cur_category.items << item
 				@cur_brand.items << item
-				puts "#{product_id}\n#{style_id}\n#{image_path}\n#{brandName}\n#{productName}\n#{price_usd}\n#{price_ua}"
+				puts "#{product_id}\n#{style_id}\n#{image_path}\n#{brandName}\n#{productName}\n#{price_usd}\n#{price_ua}\nDISC: #{discount}\n"
 				ImageDownload( image_link, image_full_path )
-				# GetItemDetails( item, ilink )
-				# {discount}\n"
+				GetItemDetails( item, ilink )
 			end
 			puts "-------------------------------"
 		end
