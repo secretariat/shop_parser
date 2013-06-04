@@ -15,6 +15,13 @@ class Configer
 		ActiveRecord::Base.establish_connection( @db_config )
 	end
 
+	def get_brands
+		@brands.each do |s|
+			if !Brand.exists?( :brand_name => s )
+				Brand.create( :brand_name => s )
+			end
+		end
+	end
 
 	def get_gender_table
 		1.upto(@gender['gender'].size) do |i|
@@ -44,6 +51,7 @@ class Configer
 
 	def process_config
 		lspath_create
+		get_brands
 		get_gender_table
 		get_departments
 	end

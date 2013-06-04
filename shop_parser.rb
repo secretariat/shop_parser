@@ -26,10 +26,9 @@ class ShopParser
 	end
 
 	def process_brands( brand_name )
-		if !Brand.exists?( :brand_name => brand_name )
-			@cur_brand = Brand.create( :brand_name => brand_name )
-		else
-			@cur_brand = Brand.find_by_brand_name( brand_name )
+		if Brand.exists?( :brand_name => brand_name )
+			@cur_brand = Brand.find_by_brand_name( brand_name.downcase )
+			@cur_brand.update_attributes( :brand_name_shown => brand_name)
 		end
 	end
 
@@ -85,6 +84,7 @@ class ShopParser
 
 	def BrowsePagesFromCategory( page )
 		link_template, pages_num = pagination( page )
+		return
 	 	cur_page_link = link_template.gsub!(/page[0-9]/, "pageX")
 	 	cur_page_link_tmp = link_template.gsub!(/p=[0-9]/, "p=Z")
 		1.upto(pages_num) do |i|
@@ -102,6 +102,13 @@ class ShopParser
 		pages_num = 0
 		pagin_block.each do |pag|
 			links = pag.css("a")
+			ar = Array.new
+			links.each do |link|
+				ar << link.text.to_i
+			end
+
+			puts ar.max
+
 			link_template = links[0]['href']
 			puts link_template
 			if pagin_block.css("span.last")[0]
@@ -137,6 +144,10 @@ class ShopParser
 		search_result = page.css("div#searchResults")
 		item_links = search_result.css("a")
 		item_links.each do |link|
+			brandName = link.css("span.brandName").text
+
+			next if !process_brands( brandName )
+
 			ilink = "#{SITE_URL}#{link['href']}"
 			product_id = link['data-product-id']
 			style_id = link['data-style-id']
@@ -144,9 +155,7 @@ class ShopParser
 			image_link = link.css("img.productImg")[0]['src']
 			image_full_path = "#{HOME_DIR}/#{(image_link.split(/\//).last).split("-").first}.jpg"
 			image_path = "#{(image_link.split(/\//).last).split("-").first}.jpg"
-			# ImageDownload( image_link, image_full_path )
-			brandName = link.css("span.brandName").text
-			process_brands( brandName )
+
 			productName = link.css("span.productName").text
 			price_usd = link.css("span.price-6pm").text.gsub!("$","").to_f
 			price_ua = (get_price( link.css("span.price-6pm").text.gsub!("$","").to_f )).to_i
@@ -154,17 +163,17 @@ class ShopParser
 			# msrp = $1 if link.css("span.discount").text =~ /\$([\d]+)\./
 			puts msrp_ua = (price_ua/((100-discount.to_f)/100.00)).to_i
 
-			h_item = Hash.new
-			h_item = {
-									:image_path => image_path,
-									:product_id => product_id.to_i,
-									:style_id => style_id.to_i,
-									:productname => productName,
-									:price_usd => price_usd,
-									:price_ua => price_ua,
-									:discount => discount,
-									:msrp_ua => msrp_ua
-								}
+			# h_item = Hash.new
+			# h_item = {
+			# 						:image_path => image_path,
+			# 						:product_id => product_id.to_i,
+			# 						:style_id => style_id.to_i,
+			# 						:productname => productName,
+			# 						:price_usd => price_usd,
+			# 						:price_ua => price_ua,
+			# 						:discount => discount,
+			# 						:msrp_ua => msrp_ua
+			# 					}
 			# Shoes.new( h_item )
 
 			if( !Item.exists?( :product_id => product_id.to_i, :style_id => style_id.to_i ) )
@@ -182,7 +191,7 @@ class ShopParser
 				@cur_brand.items << item
 				puts "#{product_id}\n#{style_id}\n#{image_path}\n#{brandName}\n#{productName}\n#{price_usd}\n#{price_ua}\nDISC: #{discount}\n"
 				ImageDownload( image_link, image_full_path )
-				GetItemDetails( item, ilink )
+				# GetItemDetails( item, ilink )
 			end
 			puts "-------------------------------"
 		end
