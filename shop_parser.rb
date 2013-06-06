@@ -84,10 +84,10 @@ class ShopParser
 
 	def BrowsePagesFromCategory( page )
 		link_template, pages_num = pagination( page )
-		return
 	 	cur_page_link = link_template.gsub!(/page[0-9]/, "pageX")
 	 	cur_page_link_tmp = link_template.gsub!(/p=[0-9]/, "p=Z")
 		1.upto(pages_num) do |i|
+			puts "CURRENT PAGE: -->#{i}"
 			page_link = cur_page_link_tmp.gsub(/pageX/, "page#{i}")
 			page_link = page_link.gsub(/p=Z/, "p=#{i-1}")
 			ready_link = "#{SITE_URL}#{page_link}"
@@ -107,15 +107,15 @@ class ShopParser
 				ar << link.text.to_i
 			end
 
-			puts ar.max
+			pages_num = ar.max
 
 			link_template = links[0]['href']
 			puts link_template
-			if pagin_block.css("span.last")[0]
-				pages_num = pagin_block.css("span.last")[0].text.gsub!("...","").strip.to_i
-			else
-				pages_num = 4
-			end
+			# if pagin_block.css("span.last")[0]
+			# 	pages_num = pagin_block.css("span.last")[0].text.gsub!("...","").strip.to_i
+			# else
+			# 	pages_num = 4
+			# end
 			break
 		end
 
@@ -160,40 +160,42 @@ class ShopParser
 			price_usd = link.css("span.price-6pm").text.gsub!("$","").to_f
 			price_ua = (get_price( link.css("span.price-6pm").text.gsub!("$","").to_f )).to_i
 			discount = $1 if link.css("span.discount").text =~ /([\d]+)%/
-			# msrp = $1 if link.css("span.discount").text =~ /\$([\d]+)\./
 			puts msrp_ua = (price_ua/((100-discount.to_f)/100.00)).to_i
 
-			# h_item = Hash.new
-			# h_item = {
-			# 						:image_path => image_path,
-			# 						:product_id => product_id.to_i,
-			# 						:style_id => style_id.to_i,
-			# 						:productname => productName,
-			# 						:price_usd => price_usd,
-			# 						:price_ua => price_ua,
-			# 						:discount => discount,
-			# 						:msrp_ua => msrp_ua
-			# 					}
-			# Shoes.new( h_item )
+			h_item = Hash.new
+			h_item = {
+									:image_path => image_path,
+									:product_id => product_id.to_i,
+									:style_id => style_id.to_i,
+									:productname => productName,
+									:price_usd => price_usd,
+									:price_ua => price_ua,
+									:discount => discount,
+									:msrp_ua => msrp_ua
+								}
+			shoe = Shoes.new( h_item, ilink )
+			shoe.check_item
+			shoe.get_shoes_description
+			@cur_brand.items << shoe.get_item
+			@cur_category.items << shoe.get_item
+			# if( !Item.exists?( :product_id => product_id.to_i, :style_id => style_id.to_i ) )
+			# 	item = Item.new( :image_path => image_path,
+			# 								:product_id => product_id.to_i,
+			# 								:style_id => style_id.to_i,
+			# 								:productname => productName,
+			# 								:price_usd => price_usd,
+			# 								:price_ua => price_ua,
+			# 								:discount => discount,
+			# 								:msrp_ua => msrp_ua )
 
-			if( !Item.exists?( :product_id => product_id.to_i, :style_id => style_id.to_i ) )
-				item = Item.new( :image_path => image_path,
-											:product_id => product_id.to_i,
-											:style_id => style_id.to_i,
-											:productname => productName,
-											:price_usd => price_usd,
-											:price_ua => price_ua,
-											:discount => discount,
-											:msrp_ua => msrp_ua )
-
-				GetItemDetails( item, ilink )
-				@cur_category.items << item
-				@cur_brand.items << item
-				puts "#{product_id}\n#{style_id}\n#{image_path}\n#{brandName}\n#{productName}\n#{price_usd}\n#{price_ua}\nDISC: #{discount}\n"
+				# GetItemDetails( item, ilink )
+				# @cur_category.items << item
+				# @cur_brand.items << item
+				# puts "#{product_id}\n#{style_id}\n#{image_path}\n#{brandName}\n#{productName}\n#{price_usd}\n#{price_ua}\nDISC: #{discount}\n"
 				ImageDownload( image_link, image_full_path )
 				# GetItemDetails( item, ilink )
-			end
-			puts "-------------------------------"
+			# end
+			# puts "-------------------------------"
 		end
 	end
 

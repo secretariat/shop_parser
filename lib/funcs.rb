@@ -29,3 +29,11 @@ def ImageDownload( image_url, image_path )
 		puts "ERROR while downloading image: #{e.message}"
 	end
 end
+
+def open_page( page_link )
+	begin
+		page = Nokogiri::HTML(open( page_link ))
+	rescue Exception => e
+		puts "ERROR: #{e.message}"
+	end
+end
