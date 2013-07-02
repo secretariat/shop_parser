@@ -7,7 +7,8 @@ require 'logger'
 require 'yaml'
 
 SITE_URL = "http://6pm.com"
-HOME_DIR = File.join( Dir.home, "ror/garderob4ik/app/assets/images" )
+# HOME_DIR = File.join( Dir.home, "ror/garderob4ik/app/assets/images" )
+HOME_DIR = "/var/www/sites/garderob4ik/app/assets/images"
 $sum = 0
 CURRENCY = 8.15
 
@@ -86,7 +87,7 @@ def BrowseItemsFromPage( page_link, cat_id )
 end
 
 
-def BrowsePagesFromCategory( page,cat_id )
+def BrowsePagesFromCategory( page, cat_id )
 
 	link_template, pages_num = pagination( page )
  	cur_page_link = link_template.gsub!(/page[0-9]/, "pageX")
