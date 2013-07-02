@@ -2,6 +2,7 @@
 class CreateShoes < ActiveRecord::Migration
   def change
     create_table :shoes do |t|
+      t.integer :wcategory_id
       t.string :image_path
       t.string :brandname
       t.string :productname
@@ -11,5 +12,6 @@ class CreateShoes < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index("shoes", "wcategory_id")
   end
 end

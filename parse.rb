@@ -7,7 +7,7 @@ require 'logger'
 require 'yaml'
 
 SITE_URL = "http://6pm.com"
-HOME_DIR = Dir.home
+HOME_DIR = File.join( Dir.home, "ror/garderob4ik/app/assets/images" )
 $sum = 0
 CURRENCY = 8.15
 
@@ -18,9 +18,11 @@ ActiveRecord::Base.logger = Logger.new(File.open('./log/database.log', 'a'))
 ######################################################
 
 class Shoes < ActiveRecord::Base
+	belongs_to :wcategory
 end
 
 class Wcategory < ActiveRecord::Base
+	has_many :shoess
 end
 
 
@@ -52,7 +54,7 @@ def GetItemDetails( item_url )
 	# puts header_block.css("span.sku").text
 end
 
-def BrowseItemsFromPage( page_link )
+def BrowseItemsFromPage( page_link, cat_id )
 	page = Nokogiri::HTML(open( page_link ))
 	search_result = page.css("div#searchResults")
 	item_links = search_result.css("a")
@@ -60,19 +62,22 @@ def BrowseItemsFromPage( page_link )
 		ilink = "#{SITE_URL}#{link['href']}"
 		# GetItemDetails( ilink )
 		image_link = link.css("img.productImg")[0]['src']
-		image_path = "#{HOME_DIR}/garderob4ik/#{(image_link.split(/\//).last).split("-").first}.jpg"
-		ImageDownload( image_link, image_path )
+		image_full_path = "#{HOME_DIR}/#{(image_link.split(/\//).last).split("-").first}.jpg"
+		image_path = "#{(image_link.split(/\//).last).split("-").first}.jpg"
+		ImageDownload( image_link, image_full_path )
 		brandName = link.css("span.brandName").text
 		productName = link.css("span.productName").text
 		price_usd = link.css("span.price-6pm").text.gsub!("$","").to_f
 		price_ua = (get_price( link.css("span.price-6pm").text.gsub!("$","").to_f )).to_i
 		discount = link.css("span.discount").text
-		Shoes.create( :image_path => image_path,
+		wc = Wcategory.find( cat_id )
+		sh = Shoes.create( :image_path => image_path,
 									:brandname => brandName,
 									:productname => productName,
 									:price_usd => price_usd,
 									:price_ua => price_ua,
 									:discount => discount )
+		wc.shoess << sh
 		puts "#{image_path}\n#{brandName}\n#{productName}\n#{price_usd}\n#{price_ua}"
 		# {discount}\n"
 		puts "-------------------------------"
@@ -81,7 +86,7 @@ def BrowseItemsFromPage( page_link )
 end
 
 
-def BrowsePagesFromCategory( page )
+def BrowsePagesFromCategory( page,cat_id )
 
 	link_template, pages_num = pagination( page )
  	cur_page_link = link_template.gsub!(/page[0-9]/, "pageX")
@@ -90,7 +95,8 @@ def BrowsePagesFromCategory( page )
 		page_link = cur_page_link_tmp.gsub(/pageX/, "page#{i}")
 		page_link = page_link.gsub(/p=Z/, "p=#{i-1}")
 		ready_link = "#{SITE_URL}#{page_link}"
-		BrowseItemsFromPage( ready_link )
+		BrowseItemsFromPage( ready_link, cat_id )
+		break
 	end
 end
 
@@ -125,8 +131,8 @@ def BrowseCategories( model )
 	links.each do |l|
 		page = Nokogiri::HTML(open(l.cat_link))
 		puts "CATEGORY: #{l.cat_name_en.upcase}"
-		sleep(10)
-		BrowsePagesFromCategory( page )
+		sleep(1)
+		BrowsePagesFromCategory( page, l.id )
 		puts $sum
 	end
 end
