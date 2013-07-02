@@ -6,6 +6,8 @@ require 'active_record'
 require 'logger'
 require 'yaml'
 
+SITE_URL = "http://6pm.com"
+$sum = 0
 
 #########---Getting database connection---############
 db_config = YAML::load(File.open('./config/database.yml'))
@@ -47,21 +49,38 @@ def GetItemDetails( item_url )
 	# puts header_block.css("span.sku").text
 end
 
-def BrowseItemsFromCategory( page )
+def BrowseItemsFromPage( page_link )
+	page = Nokogiri::HTML(open( page_link ))
 	search_result = page.css("div#searchResults")
 	item_links = search_result.css("a")
 	item_links.each do |link|
-		puts link
 		ilink = "http://6pm.com#{link['href']}"
-		GetItemDetails( ilink )
+		# GetItemDetails( ilink )
 		image = link.css("img.productImg")[0]['src']
-		puts brandName = link.css("span.brandName").text
+		brandName = link.css("span.brandName").text
 		productName = link.css("span.productName").text
 		price = link.css("span.price-6pm").text
 		discount = link.css("span.discount").text
-		Shoes.create( :ilink => ilink, :image => image.to_s, :brandname => brandName, :productname => productName, :price_orig => price, :discount => discount)
+		# Shoes.create( :ilink => ilink, :image => image.to_s, :brandname => brandName, :productname => productName, :price_orig => price, :discount => discount)
 		puts "#{image}\n#{brandName}\n#{productName}\n#{price}\n#{discount}\n"
 		puts "-------------------------------"
+		puts $sum += 1
+	end
+end
+
+
+def BrowsePagesFromCategory( page )
+
+	link_template, pages_num = pagination( page )
+ 	# puts link_template
+ 	cur_page_link = link_template.gsub!(/page[0-9]/, "pageX")
+ 	cur_page_link_tmp = link_template.gsub!(/p=[0-9]/, "p=Z")
+	1.upto(pages_num) do |i|
+		page_link = cur_page_link_tmp.gsub(/pageX/, "page#{i}")
+		page_link = page_link.gsub(/p=Z/, "p=#{i-1}")
+		ready_link = "#{SITE_URL}#{page_link}"
+		# puts ready_link
+		BrowseItemsFromPage( ready_link )
 	end
 end
 
@@ -72,21 +91,38 @@ def GetWomenShoesCategories()
 	male_category_links.each do |link|
 		cat_name = link.text.strip
 		cat_name = cat_name.split("(")[0].chomp
-		puts cat_name
 		cat_link = "http://6pm.com#{link['href']}"
 		Wcategory.create( :cat_name_en => cat_name, :cat_link => cat_link)
 	end
+end
+
+def pagination( page )
+	pagin_block = page.css("div.pagination")
+	link_template = ""
+	pages_num = 0
+	pagin_block.each do |pag|
+		links = pag.css("a")
+		link_template = links[0]['href']
+		pages_num = pagin_block.css("span.last")[0].text.gsub!("...","").strip.to_i
+		# puts link_template
+		break
+	end
+
+	return link_template, pages_num
 end
 
 def BrowseCategories( model )
 	links = model.find(:all)
 	links.each do |l|
 		page = Nokogiri::HTML(open(l.cat_link))
-		puts "CATEGORY: #{l.cat_name_en}.upcase:"
-		BrowseItemsFromCategory( page )
+		puts "CATEGORY: #{l.cat_name_en.upcase}"
+		BrowsePagesFromCategory( page )
+		break
 	end
 end
 
 
-GetWomenShoesCategories()
+# GetWomenShoesCategories()
 BrowseCategories( Wcategory )
+
+puts $sum

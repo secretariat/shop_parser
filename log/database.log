@@ -478,3 +478,270 @@ D, [2013-04-10T14:40:34.078818 #18646] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  IN
 D, [2013-04-10T14:40:34.080502 #18646] DEBUG -- :   [1m[36m (1.4ms)[0m  [1mCOMMIT[0m
 D, [2013-04-10T14:40:37.686086 #18646] DEBUG -- :   [1m[35m (0.1ms)[0m  BEGIN
 D, [2013-04-10T14:40:37.687298 #18646] DEBUG -- :   [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `shoes` (`brandname`, `created_at`, `discount`, `ilink`, `image`, `price_orig`, `price_ukr`, `productname`, `updated_at`) VALUES ('Rialto', '2013-04-10 14:40:37', '(27% off MSRP $49.00)', 'http://6pm.com/rialto-galina-blue', 'http://a1.zassets.com/images/z/2/1/8/5/4/7/2185474-p-LARGE_SEARCH.jpg', '$35.99', NULL, 'Galina', '2013-04-10 14:40:37')[0m
+D, [2013-07-02T09:53:04.158669 #1206] DEBUG -- :   [1m[36m (74.8ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+D, [2013-07-02T09:53:04.179615 #1206] DEBUG -- :   [1m[35m (19.4ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)
+D, [2013-07-02T09:53:04.188411 #1206] DEBUG -- :   [1m[36m (2.0ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+I, [2013-07-02T09:53:04.188568 #1206]  INFO -- : Migrating to CreateShoes (20130320)
+D, [2013-07-02T09:53:04.202490 #1206] DEBUG -- :   [1m[35m (6.1ms)[0m  CREATE TABLE `shoes` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `ilink` varchar(255), `image` varchar(255), `brandname` varchar(255), `productname` varchar(255), `price_orig` varchar(255), `price_ukr` varchar(255), `discount` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+D, [2013-07-02T09:53:04.211435 #1206] DEBUG -- :   [1m[36m (8.3ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20130320')[0m
+I, [2013-07-02T09:53:04.211575 #1206]  INFO -- : Migrating to CreateWcategory (20130408)
+D, [2013-07-02T09:53:04.235629 #1206] DEBUG -- :   [1m[35m (10.9ms)[0m  CREATE TABLE `wcategories` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `cat_name_en` varchar(255), `cat_name_ru` varchar(255), `cat_link` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+D, [2013-07-02T09:53:04.311736 #1206] DEBUG -- :   [1m[36m (75.5ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20130408')[0m
+D, [2013-07-02T09:58:53.622305 #4716] DEBUG -- :   [1m[36mWcategory Load (7.8ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T09:59:35.808760 #5128] DEBUG -- :   [1m[36mWcategory Load (0.5ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T10:00:07.479500 #5439] DEBUG -- :   [1m[36mWcategory Load (2.3ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T10:01:51.269281 #6436] DEBUG -- :   [1m[36m (0.8ms)[0m  [1mBEGIN[0m
+D, [2013-07-02T10:01:51.337526 #6436] DEBUG -- :   [1m[35mSQL (0.9ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/womens-sandals~S?s=goliveRecentSalesStyle/desc/', 'Sandals', NULL, '2013-07-02 10:01:51', '2013-07-02 10:01:51')
+D, [2013-07-02T10:01:51.353567 #6436] DEBUG -- :   [1m[36m (15.4ms)[0m  [1mCOMMIT[0m
+D, [2013-07-02T10:01:51.355038 #6436] DEBUG -- :   [1m[35m (0.3ms)[0m  BEGIN
+D, [2013-07-02T10:01:51.356986 #6436] DEBUG -- :   [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-heels/CK_XARC41wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Heels', NULL, '2013-07-02 10:01:51', '2013-07-02 10:01:51')[0m
+D, [2013-07-02T10:01:51.359438 #6436] DEBUG -- :   [1m[35m (2.0ms)[0m  COMMIT
+D, [2013-07-02T10:01:51.360207 #6436] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+D, [2013-07-02T10:01:51.367263 #6436] DEBUG -- :   [1m[35mSQL (6.2ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/womens-boots~1e?s=goliveRecentSalesStyle/desc/', 'Boots', NULL, '2013-07-02 10:01:51', '2013-07-02 10:01:51')
+D, [2013-07-02T10:01:51.370143 #6436] DEBUG -- :   [1m[36m (2.5ms)[0m  [1mCOMMIT[0m
+D, [2013-07-02T10:01:51.370850 #6436] DEBUG -- :   [1m[35m (0.2ms)[0m  BEGIN
+D, [2013-07-02T10:01:51.372409 #6436] DEBUG -- :   [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-flats/CK_XARC11wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Flats', NULL, '2013-07-02 10:01:51', '2013-07-02 10:01:51')[0m
+D, [2013-07-02T10:01:51.374965 #6436] DEBUG -- :   [1m[35m (2.2ms)[0m  COMMIT
+D, [2013-07-02T10:01:51.375677 #6436] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+D, [2013-07-02T10:01:51.377168 #6436] DEBUG -- :   [1m[35mSQL (0.6ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-sneakers-athletic-shoes/CK_XARC81wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Sneakers & Athletic Shoes', NULL, '2013-07-02 10:01:51', '2013-07-02 10:01:51')
+D, [2013-07-02T10:01:51.382902 #6436] DEBUG -- :   [1m[36m (5.2ms)[0m  [1mCOMMIT[0m
+D, [2013-07-02T10:01:51.383770 #6436] DEBUG -- :   [1m[35m (0.2ms)[0m  BEGIN
+D, [2013-07-02T10:01:51.385082 #6436] DEBUG -- :   [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-loafers/CK_XARC21wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Loafers', NULL, '2013-07-02 10:01:51', '2013-07-02 10:01:51')[0m
+D, [2013-07-02T10:01:51.387506 #6436] DEBUG -- :   [1m[35m (2.1ms)[0m  COMMIT
+D, [2013-07-02T10:01:51.388217 #6436] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+D, [2013-07-02T10:01:51.389498 #6436] DEBUG -- :   [1m[35mSQL (0.4ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-clogs-mules/CK_XARC01wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Clogs & Mules', NULL, '2013-07-02 10:01:51', '2013-07-02 10:01:51')
+D, [2013-07-02T10:01:51.392725 #6436] DEBUG -- :   [1m[36m (2.9ms)[0m  [1mCOMMIT[0m
+D, [2013-07-02T10:01:51.393392 #6436] DEBUG -- :   [1m[35m (0.2ms)[0m  BEGIN
+D, [2013-07-02T10:01:51.394632 #6436] DEBUG -- :   [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-oxfords/CK_XARC31wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Oxfords', NULL, '2013-07-02 10:01:51', '2013-07-02 10:01:51')[0m
+D, [2013-07-02T10:01:51.398160 #6436] DEBUG -- :   [1m[35m (3.2ms)[0m  COMMIT
+D, [2013-07-02T10:01:51.398852 #6436] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+D, [2013-07-02T10:01:51.400141 #6436] DEBUG -- :   [1m[35mSQL (0.4ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-slippers/CK_XARC71wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Slippers', NULL, '2013-07-02 10:01:51', '2013-07-02 10:01:51')
+D, [2013-07-02T10:01:51.402736 #6436] DEBUG -- :   [1m[36m (2.2ms)[0m  [1mCOMMIT[0m
+D, [2013-07-02T10:01:51.403541 #6436] DEBUG -- :   [1m[35m (0.3ms)[0m  BEGIN
+D, [2013-07-02T10:01:51.404976 #6436] DEBUG -- :   [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-boat-shoes/CK_XARCy1wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Boat Shoes', NULL, '2013-07-02 10:01:51', '2013-07-02 10:01:51')[0m
+D, [2013-07-02T10:01:51.407946 #6436] DEBUG -- :   [1m[35m (2.2ms)[0m  COMMIT
+D, [2013-07-02T10:01:51.408624 #6436] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+D, [2013-07-02T10:01:51.410373 #6436] DEBUG -- :   [1m[35mSQL (0.5ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-insoles-accessories/CK_XARC61wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Insoles & Accessories', NULL, '2013-07-02 10:01:51', '2013-07-02 10:01:51')
+D, [2013-07-02T10:01:51.414527 #6436] DEBUG -- :   [1m[36m (3.8ms)[0m  [1mCOMMIT[0m
+D, [2013-07-02T10:01:51.415727 #6436] DEBUG -- :   [1m[35m (0.2ms)[0m  BEGIN
+D, [2013-07-02T10:01:51.417152 #6436] DEBUG -- :   [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-climbing/CK_XARDK2QHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Climbing', NULL, '2013-07-02 10:01:51', '2013-07-02 10:01:51')[0m
+D, [2013-07-02T10:01:51.419538 #6436] DEBUG -- :   [1m[35m (2.1ms)[0m  COMMIT
+D, [2013-07-02T10:01:51.421302 #6436] DEBUG -- :   [1m[36mWcategory Load (0.8ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T10:03:18.416916 #7257] DEBUG -- :   [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+D, [2013-07-02T10:03:18.430004 #7257] DEBUG -- :   [1m[35mSQL (0.6ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/womens-sandals~S?s=goliveRecentSalesStyle/desc/', 'Sandals', NULL, '2013-07-02 10:03:18', '2013-07-02 10:03:18')
+D, [2013-07-02T10:03:18.435249 #7257] DEBUG -- :   [1m[36m (4.6ms)[0m  [1mCOMMIT[0m
+D, [2013-07-02T10:03:18.436622 #7257] DEBUG -- :   [1m[35m (0.2ms)[0m  BEGIN
+D, [2013-07-02T10:03:18.438362 #7257] DEBUG -- :   [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-heels/CK_XARC41wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Heels', NULL, '2013-07-02 10:03:18', '2013-07-02 10:03:18')[0m
+D, [2013-07-02T10:03:18.441757 #7257] DEBUG -- :   [1m[35m (3.0ms)[0m  COMMIT
+D, [2013-07-02T10:03:18.442544 #7257] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+D, [2013-07-02T10:03:18.446630 #7257] DEBUG -- :   [1m[35mSQL (0.5ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/womens-boots~1e?s=goliveRecentSalesStyle/desc/', 'Boots', NULL, '2013-07-02 10:03:18', '2013-07-02 10:03:18')
+D, [2013-07-02T10:03:18.450544 #7257] DEBUG -- :   [1m[36m (2.7ms)[0m  [1mCOMMIT[0m
+D, [2013-07-02T10:03:18.451591 #7257] DEBUG -- :   [1m[35m (0.2ms)[0m  BEGIN
+D, [2013-07-02T10:03:18.452914 #7257] DEBUG -- :   [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-flats/CK_XARC11wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Flats', NULL, '2013-07-02 10:03:18', '2013-07-02 10:03:18')[0m
+D, [2013-07-02T10:03:18.455469 #7257] DEBUG -- :   [1m[35m (2.2ms)[0m  COMMIT
+D, [2013-07-02T10:03:18.456290 #7257] DEBUG -- :   [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+D, [2013-07-02T10:03:18.458737 #7257] DEBUG -- :   [1m[35mSQL (1.4ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-sneakers-athletic-shoes/CK_XARC81wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Sneakers & Athletic Shoes', NULL, '2013-07-02 10:03:18', '2013-07-02 10:03:18')
+D, [2013-07-02T10:03:18.462326 #7257] DEBUG -- :   [1m[36m (3.2ms)[0m  [1mCOMMIT[0m
+D, [2013-07-02T10:03:18.463099 #7257] DEBUG -- :   [1m[35m (0.2ms)[0m  BEGIN
+D, [2013-07-02T10:03:18.464707 #7257] DEBUG -- :   [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-loafers/CK_XARC21wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Loafers', NULL, '2013-07-02 10:03:18', '2013-07-02 10:03:18')[0m
+D, [2013-07-02T10:03:18.467534 #7257] DEBUG -- :   [1m[35m (2.5ms)[0m  COMMIT
+D, [2013-07-02T10:03:18.468350 #7257] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+D, [2013-07-02T10:03:18.469830 #7257] DEBUG -- :   [1m[35mSQL (0.6ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-clogs-mules/CK_XARC01wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Clogs & Mules', NULL, '2013-07-02 10:03:18', '2013-07-02 10:03:18')
+D, [2013-07-02T10:03:18.472834 #7257] DEBUG -- :   [1m[36m (2.7ms)[0m  [1mCOMMIT[0m
+D, [2013-07-02T10:03:18.473562 #7257] DEBUG -- :   [1m[35m (0.2ms)[0m  BEGIN
+D, [2013-07-02T10:03:18.475675 #7257] DEBUG -- :   [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-oxfords/CK_XARC31wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Oxfords', NULL, '2013-07-02 10:03:18', '2013-07-02 10:03:18')[0m
+D, [2013-07-02T10:03:18.478489 #7257] DEBUG -- :   [1m[35m (2.4ms)[0m  COMMIT
+D, [2013-07-02T10:03:18.479267 #7257] DEBUG -- :   [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+D, [2013-07-02T10:03:18.481395 #7257] DEBUG -- :   [1m[35mSQL (0.7ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-slippers/CK_XARC71wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Slippers', NULL, '2013-07-02 10:03:18', '2013-07-02 10:03:18')
+D, [2013-07-02T10:03:18.483996 #7257] DEBUG -- :   [1m[36m (2.2ms)[0m  [1mCOMMIT[0m
+D, [2013-07-02T10:03:18.484705 #7257] DEBUG -- :   [1m[35m (0.2ms)[0m  BEGIN
+D, [2013-07-02T10:03:18.486067 #7257] DEBUG -- :   [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-boat-shoes/CK_XARCy1wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Boat Shoes', NULL, '2013-07-02 10:03:18', '2013-07-02 10:03:18')[0m
+D, [2013-07-02T10:03:18.488692 #7257] DEBUG -- :   [1m[35m (2.3ms)[0m  COMMIT
+D, [2013-07-02T10:03:18.489400 #7257] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+D, [2013-07-02T10:03:18.490701 #7257] DEBUG -- :   [1m[35mSQL (0.4ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-insoles-accessories/CK_XARC61wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Insoles & Accessories', NULL, '2013-07-02 10:03:18', '2013-07-02 10:03:18')
+D, [2013-07-02T10:03:18.493590 #7257] DEBUG -- :   [1m[36m (2.6ms)[0m  [1mCOMMIT[0m
+D, [2013-07-02T10:03:18.494467 #7257] DEBUG -- :   [1m[35m (0.2ms)[0m  BEGIN
+D, [2013-07-02T10:03:18.495769 #7257] DEBUG -- :   [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-climbing/CK_XARDK2QHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Climbing', NULL, '2013-07-02 10:03:18', '2013-07-02 10:03:18')[0m
+D, [2013-07-02T10:03:18.503706 #7257] DEBUG -- :   [1m[35m (7.4ms)[0m  COMMIT
+D, [2013-07-02T10:03:18.505560 #7257] DEBUG -- :   [1m[36mWcategory Load (0.7ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T10:03:59.103423 #7633] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+D, [2013-07-02T10:03:59.114779 #7633] DEBUG -- :   [1m[35mSQL (0.4ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/womens-sandals~S?s=goliveRecentSalesStyle/desc/', 'Sandals', NULL, '2013-07-02 10:03:59', '2013-07-02 10:03:59')
+D, [2013-07-02T10:03:59.125314 #7633] DEBUG -- :   [1m[36m (10.0ms)[0m  [1mCOMMIT[0m
+D, [2013-07-02T10:03:59.127100 #7633] DEBUG -- :   [1m[35m (0.2ms)[0m  BEGIN
+D, [2013-07-02T10:03:59.134419 #7633] DEBUG -- :   [1m[36mSQL (6.1ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-heels/CK_XARC41wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Heels', NULL, '2013-07-02 10:03:59', '2013-07-02 10:03:59')[0m
+D, [2013-07-02T10:03:59.141582 #7633] DEBUG -- :   [1m[35m (6.0ms)[0m  COMMIT
+D, [2013-07-02T10:03:59.142370 #7633] DEBUG -- :   [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+D, [2013-07-02T10:03:59.143686 #7633] DEBUG -- :   [1m[35mSQL (0.4ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/womens-boots~1e?s=goliveRecentSalesStyle/desc/', 'Boots', NULL, '2013-07-02 10:03:59', '2013-07-02 10:03:59')
+D, [2013-07-02T10:03:59.145821 #7633] DEBUG -- :   [1m[36m (1.8ms)[0m  [1mCOMMIT[0m
+D, [2013-07-02T10:03:59.147356 #7633] DEBUG -- :   [1m[35m (0.9ms)[0m  BEGIN
+D, [2013-07-02T10:03:59.148860 #7633] DEBUG -- :   [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-flats/CK_XARC11wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Flats', NULL, '2013-07-02 10:03:59', '2013-07-02 10:03:59')[0m
+D, [2013-07-02T10:03:59.151300 #7633] DEBUG -- :   [1m[35m (2.1ms)[0m  COMMIT
+D, [2013-07-02T10:03:59.152007 #7633] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+D, [2013-07-02T10:03:59.153666 #7633] DEBUG -- :   [1m[35mSQL (0.4ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-sneakers-athletic-shoes/CK_XARC81wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Sneakers & Athletic Shoes', NULL, '2013-07-02 10:03:59', '2013-07-02 10:03:59')
+D, [2013-07-02T10:03:59.155818 #7633] DEBUG -- :   [1m[36m (1.8ms)[0m  [1mCOMMIT[0m
+D, [2013-07-02T10:03:59.156566 #7633] DEBUG -- :   [1m[35m (0.2ms)[0m  BEGIN
+D, [2013-07-02T10:03:59.158611 #7633] DEBUG -- :   [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-loafers/CK_XARC21wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Loafers', NULL, '2013-07-02 10:03:59', '2013-07-02 10:03:59')[0m
+D, [2013-07-02T10:03:59.160783 #7633] DEBUG -- :   [1m[35m (1.8ms)[0m  COMMIT
+D, [2013-07-02T10:03:59.161527 #7633] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+D, [2013-07-02T10:03:59.162828 #7633] DEBUG -- :   [1m[35mSQL (0.4ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-clogs-mules/CK_XARC01wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Clogs & Mules', NULL, '2013-07-02 10:03:59', '2013-07-02 10:03:59')
+D, [2013-07-02T10:03:59.165891 #7633] DEBUG -- :   [1m[36m (2.7ms)[0m  [1mCOMMIT[0m
+D, [2013-07-02T10:03:59.166602 #7633] DEBUG -- :   [1m[35m (0.2ms)[0m  BEGIN
+D, [2013-07-02T10:03:59.168322 #7633] DEBUG -- :   [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-oxfords/CK_XARC31wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Oxfords', NULL, '2013-07-02 10:03:59', '2013-07-02 10:03:59')[0m
+D, [2013-07-02T10:03:59.171127 #7633] DEBUG -- :   [1m[35m (2.5ms)[0m  COMMIT
+D, [2013-07-02T10:03:59.171820 #7633] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+D, [2013-07-02T10:03:59.173127 #7633] DEBUG -- :   [1m[35mSQL (0.4ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-slippers/CK_XARC71wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Slippers', NULL, '2013-07-02 10:03:59', '2013-07-02 10:03:59')
+D, [2013-07-02T10:03:59.175437 #7633] DEBUG -- :   [1m[36m (2.0ms)[0m  [1mCOMMIT[0m
+D, [2013-07-02T10:03:59.176225 #7633] DEBUG -- :   [1m[35m (0.3ms)[0m  BEGIN
+D, [2013-07-02T10:03:59.177512 #7633] DEBUG -- :   [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-boat-shoes/CK_XARCy1wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Boat Shoes', NULL, '2013-07-02 10:03:59', '2013-07-02 10:03:59')[0m
+D, [2013-07-02T10:03:59.183445 #7633] DEBUG -- :   [1m[35m (5.6ms)[0m  COMMIT
+D, [2013-07-02T10:03:59.184155 #7633] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+D, [2013-07-02T10:03:59.185427 #7633] DEBUG -- :   [1m[35mSQL (0.4ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-insoles-accessories/CK_XARC61wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Insoles & Accessories', NULL, '2013-07-02 10:03:59', '2013-07-02 10:03:59')
+D, [2013-07-02T10:03:59.187567 #7633] DEBUG -- :   [1m[36m (1.8ms)[0m  [1mCOMMIT[0m
+D, [2013-07-02T10:03:59.188477 #7633] DEBUG -- :   [1m[35m (0.2ms)[0m  BEGIN
+D, [2013-07-02T10:03:59.189861 #7633] DEBUG -- :   [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-climbing/CK_XARDK2QHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Climbing', NULL, '2013-07-02 10:03:59', '2013-07-02 10:03:59')[0m
+D, [2013-07-02T10:03:59.192246 #7633] DEBUG -- :   [1m[35m (2.1ms)[0m  COMMIT
+D, [2013-07-02T10:03:59.193997 #7633] DEBUG -- :   [1m[36mWcategory Load (0.7ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T10:05:48.433087 #8664] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+D, [2013-07-02T10:05:48.449298 #8664] DEBUG -- :   [1m[35mSQL (1.2ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/womens-sandals~S?s=goliveRecentSalesStyle/desc/', 'Sandals', NULL, '2013-07-02 10:05:48', '2013-07-02 10:05:48')
+D, [2013-07-02T10:05:48.483973 #8664] DEBUG -- :   [1m[36m (34.0ms)[0m  [1mCOMMIT[0m
+D, [2013-07-02T10:05:48.486185 #8664] DEBUG -- :   [1m[35m (0.6ms)[0m  BEGIN
+D, [2013-07-02T10:05:48.497609 #8664] DEBUG -- :   [1m[36mSQL (3.9ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-heels/CK_XARC41wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Heels', NULL, '2013-07-02 10:05:48', '2013-07-02 10:05:48')[0m
+D, [2013-07-02T10:05:48.501245 #8664] DEBUG -- :   [1m[35m (2.8ms)[0m  COMMIT
+D, [2013-07-02T10:05:48.502312 #8664] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+D, [2013-07-02T10:05:48.506094 #8664] DEBUG -- :   [1m[35mSQL (2.4ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/womens-boots~1e?s=goliveRecentSalesStyle/desc/', 'Boots', NULL, '2013-07-02 10:05:48', '2013-07-02 10:05:48')
+D, [2013-07-02T10:05:48.509482 #8664] DEBUG -- :   [1m[36m (3.0ms)[0m  [1mCOMMIT[0m
+D, [2013-07-02T10:05:48.510315 #8664] DEBUG -- :   [1m[35m (0.3ms)[0m  BEGIN
+D, [2013-07-02T10:05:48.511864 #8664] DEBUG -- :   [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-flats/CK_XARC11wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Flats', NULL, '2013-07-02 10:05:48', '2013-07-02 10:05:48')[0m
+D, [2013-07-02T10:05:48.515127 #8664] DEBUG -- :   [1m[35m (2.3ms)[0m  COMMIT
+D, [2013-07-02T10:05:48.516168 #8664] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+D, [2013-07-02T10:05:48.517730 #8664] DEBUG -- :   [1m[35mSQL (0.4ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-sneakers-athletic-shoes/CK_XARC81wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Sneakers & Athletic Shoes', NULL, '2013-07-02 10:05:48', '2013-07-02 10:05:48')
+D, [2013-07-02T10:05:48.520966 #8664] DEBUG -- :   [1m[36m (2.8ms)[0m  [1mCOMMIT[0m
+D, [2013-07-02T10:05:48.521900 #8664] DEBUG -- :   [1m[35m (0.2ms)[0m  BEGIN
+D, [2013-07-02T10:05:48.523463 #8664] DEBUG -- :   [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-loafers/CK_XARC21wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Loafers', NULL, '2013-07-02 10:05:48', '2013-07-02 10:05:48')[0m
+D, [2013-07-02T10:05:48.553916 #8664] DEBUG -- :   [1m[35m (29.6ms)[0m  COMMIT
+D, [2013-07-02T10:05:48.556518 #8664] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+D, [2013-07-02T10:05:48.558796 #8664] DEBUG -- :   [1m[35mSQL (0.5ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-clogs-mules/CK_XARC01wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Clogs & Mules', NULL, '2013-07-02 10:05:48', '2013-07-02 10:05:48')
+D, [2013-07-02T10:05:48.563334 #8664] DEBUG -- :   [1m[36m (4.1ms)[0m  [1mCOMMIT[0m
+D, [2013-07-02T10:05:48.564366 #8664] DEBUG -- :   [1m[35m (0.2ms)[0m  BEGIN
+D, [2013-07-02T10:05:48.566308 #8664] DEBUG -- :   [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-oxfords/CK_XARC31wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Oxfords', NULL, '2013-07-02 10:05:48', '2013-07-02 10:05:48')[0m
+D, [2013-07-02T10:05:48.637031 #8664] DEBUG -- :   [1m[35m (70.3ms)[0m  COMMIT
+D, [2013-07-02T10:05:48.637740 #8664] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+D, [2013-07-02T10:05:48.639303 #8664] DEBUG -- :   [1m[35mSQL (0.4ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-slippers/CK_XARC71wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Slippers', NULL, '2013-07-02 10:05:48', '2013-07-02 10:05:48')
+D, [2013-07-02T10:05:48.642097 #8664] DEBUG -- :   [1m[36m (2.5ms)[0m  [1mCOMMIT[0m
+D, [2013-07-02T10:05:48.642754 #8664] DEBUG -- :   [1m[35m (0.2ms)[0m  BEGIN
+D, [2013-07-02T10:05:48.644035 #8664] DEBUG -- :   [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-boat-shoes/CK_XARCy1wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Boat Shoes', NULL, '2013-07-02 10:05:48', '2013-07-02 10:05:48')[0m
+D, [2013-07-02T10:05:48.646332 #8664] DEBUG -- :   [1m[35m (2.0ms)[0m  COMMIT
+D, [2013-07-02T10:05:48.647148 #8664] DEBUG -- :   [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+D, [2013-07-02T10:05:48.648791 #8664] DEBUG -- :   [1m[35mSQL (0.6ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-insoles-accessories/CK_XARC61wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Insoles & Accessories', NULL, '2013-07-02 10:05:48', '2013-07-02 10:05:48')
+D, [2013-07-02T10:05:48.652782 #8664] DEBUG -- :   [1m[36m (3.4ms)[0m  [1mCOMMIT[0m
+D, [2013-07-02T10:05:48.653844 #8664] DEBUG -- :   [1m[35m (0.4ms)[0m  BEGIN
+D, [2013-07-02T10:05:48.655819 #8664] DEBUG -- :   [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-climbing/CK_XARDK2QHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Climbing', NULL, '2013-07-02 10:05:48', '2013-07-02 10:05:48')[0m
+D, [2013-07-02T10:05:48.658866 #8664] DEBUG -- :   [1m[35m (2.6ms)[0m  COMMIT
+D, [2013-07-02T10:05:48.661928 #8664] DEBUG -- :   [1m[36mWcategory Load (1.1ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T10:08:32.777048 #10201] DEBUG -- :   [1m[36m (2.0ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+I, [2013-07-02T10:08:32.781585 #10201]  INFO -- : Migrating to CreateShoes (20130320)
+I, [2013-07-02T10:08:32.781795 #10201]  INFO -- : Migrating to CreateWcategory (20130408)
+D, [2013-07-02T10:12:14.460042 #12314] DEBUG -- : Mysql2::Error: Table 'garderob.wcategories' doesn't exist: SHOW FULL FIELDS FROM `wcategories`
+D, [2013-07-02T10:12:44.531727 #12607] DEBUG -- :   [1m[36m (1.9ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+I, [2013-07-02T10:12:44.531936 #12607]  INFO -- : Migrating to CreateShoes (20130320)
+I, [2013-07-02T10:12:44.531996 #12607]  INFO -- : Migrating to CreateWcategory (20130408)
+D, [2013-07-02T10:13:28.432763 #13021] DEBUG -- :   [1m[36m (25.8ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+D, [2013-07-02T10:13:28.461376 #13021] DEBUG -- :   [1m[35m (27.4ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)
+D, [2013-07-02T10:13:28.470169 #13021] DEBUG -- :   [1m[36m (1.9ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+I, [2013-07-02T10:13:28.470325 #13021]  INFO -- : Migrating to CreateShoes (20130320)
+D, [2013-07-02T10:13:28.485541 #13021] DEBUG -- :   [1m[35m (6.2ms)[0m  CREATE TABLE `shoes` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `ilink` varchar(255), `image` varchar(255), `brandname` varchar(255), `productname` varchar(255), `price_orig` varchar(255), `price_ukr` varchar(255), `discount` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+D, [2013-07-02T10:13:28.495775 #13021] DEBUG -- :   [1m[36m (9.1ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20130320')[0m
+I, [2013-07-02T10:13:28.495906 #13021]  INFO -- : Migrating to CreateWcategory (20130408)
+D, [2013-07-02T10:13:28.524601 #13021] DEBUG -- :   [1m[35m (9.8ms)[0m  CREATE TABLE `wcategories` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `cat_name_en` varchar(255), `cat_name_ru` varchar(255), `cat_link` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+D, [2013-07-02T10:13:28.532593 #13021] DEBUG -- :   [1m[36m (7.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20130408')[0m
+D, [2013-07-02T10:13:39.755667 #13134] DEBUG -- :   [1m[36m (0.6ms)[0m  [1mBEGIN[0m
+D, [2013-07-02T10:13:39.792711 #13134] DEBUG -- :   [1m[35mSQL (27.1ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/womens-sandals~S?s=goliveRecentSalesStyle/desc/', 'Sandals', NULL, '2013-07-02 10:13:39', '2013-07-02 10:13:39')
+D, [2013-07-02T10:13:39.804524 #13134] DEBUG -- :   [1m[36m (11.2ms)[0m  [1mCOMMIT[0m
+D, [2013-07-02T10:13:39.806182 #13134] DEBUG -- :   [1m[35m (0.2ms)[0m  BEGIN
+D, [2013-07-02T10:13:39.808622 #13134] DEBUG -- :   [1m[36mSQL (1.2ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-heels/CK_XARC41wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Heels', NULL, '2013-07-02 10:13:39', '2013-07-02 10:13:39')[0m
+D, [2013-07-02T10:13:39.811641 #13134] DEBUG -- :   [1m[35m (2.5ms)[0m  COMMIT
+D, [2013-07-02T10:13:39.812447 #13134] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+D, [2013-07-02T10:13:39.813832 #13134] DEBUG -- :   [1m[35mSQL (0.4ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/womens-boots~1e?s=goliveRecentSalesStyle/desc/', 'Boots', NULL, '2013-07-02 10:13:39', '2013-07-02 10:13:39')
+D, [2013-07-02T10:13:39.816115 #13134] DEBUG -- :   [1m[36m (1.9ms)[0m  [1mCOMMIT[0m
+D, [2013-07-02T10:13:39.816857 #13134] DEBUG -- :   [1m[35m (0.2ms)[0m  BEGIN
+D, [2013-07-02T10:13:39.818167 #13134] DEBUG -- :   [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-flats/CK_XARC11wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Flats', NULL, '2013-07-02 10:13:39', '2013-07-02 10:13:39')[0m
+D, [2013-07-02T10:13:39.823246 #13134] DEBUG -- :   [1m[35m (4.8ms)[0m  COMMIT
+D, [2013-07-02T10:13:39.824828 #13134] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+D, [2013-07-02T10:13:39.826789 #13134] DEBUG -- :   [1m[35mSQL (0.7ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-sneakers-athletic-shoes/CK_XARC81wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Sneakers & Athletic Shoes', NULL, '2013-07-02 10:13:39', '2013-07-02 10:13:39')
+D, [2013-07-02T10:13:39.829514 #13134] DEBUG -- :   [1m[36m (2.4ms)[0m  [1mCOMMIT[0m
+D, [2013-07-02T10:13:39.830233 #13134] DEBUG -- :   [1m[35m (0.2ms)[0m  BEGIN
+D, [2013-07-02T10:13:39.831805 #13134] DEBUG -- :   [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-loafers/CK_XARC21wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Loafers', NULL, '2013-07-02 10:13:39', '2013-07-02 10:13:39')[0m
+D, [2013-07-02T10:13:39.834099 #13134] DEBUG -- :   [1m[35m (2.0ms)[0m  COMMIT
+D, [2013-07-02T10:13:39.834757 #13134] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+D, [2013-07-02T10:13:39.836096 #13134] DEBUG -- :   [1m[35mSQL (0.4ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-clogs-mules/CK_XARC01wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Clogs & Mules', NULL, '2013-07-02 10:13:39', '2013-07-02 10:13:39')
+D, [2013-07-02T10:13:39.838317 #13134] DEBUG -- :   [1m[36m (1.9ms)[0m  [1mCOMMIT[0m
+D, [2013-07-02T10:13:39.838993 #13134] DEBUG -- :   [1m[35m (0.2ms)[0m  BEGIN
+D, [2013-07-02T10:13:39.841209 #13134] DEBUG -- :   [1m[36mSQL (1.3ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-oxfords/CK_XARC31wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Oxfords', NULL, '2013-07-02 10:13:39', '2013-07-02 10:13:39')[0m
+D, [2013-07-02T10:13:39.843638 #13134] DEBUG -- :   [1m[35m (2.1ms)[0m  COMMIT
+D, [2013-07-02T10:13:39.844475 #13134] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+D, [2013-07-02T10:13:39.846103 #13134] DEBUG -- :   [1m[35mSQL (0.3ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-slippers/CK_XARC71wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Slippers', NULL, '2013-07-02 10:13:39', '2013-07-02 10:13:39')
+D, [2013-07-02T10:13:39.848463 #13134] DEBUG -- :   [1m[36m (2.0ms)[0m  [1mCOMMIT[0m
+D, [2013-07-02T10:13:39.849416 #13134] DEBUG -- :   [1m[35m (0.2ms)[0m  BEGIN
+D, [2013-07-02T10:13:39.850694 #13134] DEBUG -- :   [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-boat-shoes/CK_XARCy1wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Boat Shoes', NULL, '2013-07-02 10:13:39', '2013-07-02 10:13:39')[0m
+D, [2013-07-02T10:13:39.852971 #13134] DEBUG -- :   [1m[35m (2.0ms)[0m  COMMIT
+D, [2013-07-02T10:13:39.853954 #13134] DEBUG -- :   [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+D, [2013-07-02T10:13:39.855615 #13134] DEBUG -- :   [1m[35mSQL (0.4ms)[0m  INSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-insoles-accessories/CK_XARC61wHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Insoles & Accessories', NULL, '2013-07-02 10:13:39', '2013-07-02 10:13:39')
+D, [2013-07-02T10:13:39.858848 #13134] DEBUG -- :   [1m[36m (2.9ms)[0m  [1mCOMMIT[0m
+D, [2013-07-02T10:13:39.859561 #13134] DEBUG -- :   [1m[35m (0.2ms)[0m  BEGIN
+D, [2013-07-02T10:13:39.860998 #13134] DEBUG -- :   [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `wcategories` (`cat_link`, `cat_name_en`, `cat_name_ru`, `created_at`, `updated_at`) VALUES ('http://6pm.com/women-climbing/CK_XARDK2QHAAQHiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/', 'Climbing', NULL, '2013-07-02 10:13:39', '2013-07-02 10:13:39')[0m
+D, [2013-07-02T10:13:39.864295 #13134] DEBUG -- :   [1m[35m (2.9ms)[0m  COMMIT
+D, [2013-07-02T10:15:26.514299 #14152] DEBUG -- :   [1m[36mWcategory Load (1.8ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T11:46:58.105100 #2407] DEBUG -- :   [1m[36mWcategory Load (4.8ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T11:47:14.025991 #2665] DEBUG -- :   [1m[36mWcategory Load (2.0ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T11:48:23.473149 #3418] DEBUG -- :   [1m[36mWcategory Load (2.2ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T11:48:53.645965 #3716] DEBUG -- :   [1m[36mWcategory Load (2.1ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T12:15:45.253025 #19249] DEBUG -- :   [1m[36mWcategory Load (3.3ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T12:19:12.657497 #21266] DEBUG -- :   [1m[36mWcategory Load (3.1ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T12:19:40.687069 #21546] DEBUG -- :   [1m[36mWcategory Load (2.0ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T12:20:11.817569 #21856] DEBUG -- :   [1m[36mWcategory Load (2.3ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T12:20:55.248554 #22283] DEBUG -- :   [1m[36mWcategory Load (1.9ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T12:46:10.750689 #4684] DEBUG -- :   [1m[36mWcategory Load (4.7ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T12:46:51.127529 #5076] DEBUG -- :   [1m[36mWcategory Load (1.6ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T12:47:17.541239 #5332] DEBUG -- :   [1m[36mWcategory Load (1.6ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T12:47:51.448966 #5658] DEBUG -- :   [1m[36mWcategory Load (1.7ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T12:48:03.146068 #5775] DEBUG -- :   [1m[36mWcategory Load (1.7ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T12:49:25.847041 #6569] DEBUG -- :   [1m[36mWcategory Load (2.5ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T12:49:36.811101 #6678] DEBUG -- :   [1m[36mWcategory Load (3.4ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T12:50:01.162166 #6915] DEBUG -- :   [1m[36mWcategory Load (3.0ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T12:50:22.212136 #7125] DEBUG -- :   [1m[36mWcategory Load (2.3ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T12:50:49.599427 #7391] DEBUG -- :   [1m[36mWcategory Load (2.1ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T12:51:47.800131 #7949] DEBUG -- :   [1m[36mWcategory Load (2.4ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T12:51:58.347235 #8056] DEBUG -- :   [1m[36mWcategory Load (1.8ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T12:57:25.150146 #11146] DEBUG -- :   [1m[36mWcategory Load (11.4ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T12:57:47.607121 #11364] DEBUG -- :   [1m[36mWcategory Load (2.1ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T12:58:02.913805 #11524] DEBUG -- :   [1m[36mWcategory Load (1.5ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T12:58:32.418908 #11804] DEBUG -- :   [1m[36mWcategory Load (1.6ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T12:59:19.970487 #12267] DEBUG -- :   [1m[36mWcategory Load (1.7ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T12:59:35.144328 #12408] DEBUG -- :   [1m[36mWcategory Load (1.8ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T13:00:20.983022 #12853] DEBUG -- :   [1m[36mWcategory Load (2.1ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T13:00:48.949047 #13123] DEBUG -- :   [1m[36mWcategory Load (5.2ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T13:01:11.939339 #13365] DEBUG -- :   [1m[36mWcategory Load (1.7ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T13:01:46.439040 #13699] DEBUG -- :   [1m[36mWcategory Load (1.7ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T13:36:32.696239 #1253] DEBUG -- :   [1m[36mWcategory Load (2.4ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T13:37:59.298461 #2130] DEBUG -- :   [1m[36mWcategory Load (2.4ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T13:40:23.600191 #3725] DEBUG -- :   [1m[36mWcategory Load (13.6ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T13:38:16.558332 #2317] DEBUG -- :   [1m[36mWcategory Load (1.6ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T13:42:20.966222 #4887] DEBUG -- :   [1m[36mWcategory Load (1.9ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T13:49:54.428867 #9292] DEBUG -- :   [1m[36mWcategory Load (1.9ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T13:50:39.091412 #9736] DEBUG -- :   [1m[36mWcategory Load (1.6ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T13:51:20.594005 #10144] DEBUG -- :   [1m[36mWcategory Load (2.8ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T13:54:11.611785 #11824] DEBUG -- :   [1m[36mWcategory Load (1.8ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T13:54:31.662425 #12022] DEBUG -- :   [1m[36mWcategory Load (2.4ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T14:07:24.957573 #19366] DEBUG -- :   [1m[36mWcategory Load (2.8ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T14:08:53.087737 #20208] DEBUG -- :   [1m[36mWcategory Load (2.1ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T14:13:48.299601 #23014] DEBUG -- :   [1m[36mWcategory Load (3.3ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T14:16:20.587934 #24486] DEBUG -- :   [1m[36mWcategory Load (6.5ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T14:16:45.232932 #24729] DEBUG -- :   [1m[36mWcategory Load (1.5ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T14:16:57.935084 #24860] DEBUG -- :   [1m[36mWcategory Load (2.1ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T14:17:55.968321 #25417] DEBUG -- :   [1m[36mWcategory Load (3.0ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T14:19:56.190152 #26601] DEBUG -- :   [1m[36mWcategory Load (2.4ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T14:20:30.464363 #26940] DEBUG -- :   [1m[36mWcategory Load (1.6ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T14:20:55.973868 #27194] DEBUG -- :   [1m[36mWcategory Load (1.6ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T14:21:08.248163 #27314] DEBUG -- :   [1m[36mWcategory Load (4.7ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T14:25:35.129900 #29647] DEBUG -- :   [1m[36mWcategory Load (7.4ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
+D, [2013-07-02T14:26:04.629832 #29912] DEBUG -- :   [1m[36mWcategory Load (11.6ms)[0m  [1mSELECT `wcategories`.* FROM `wcategories` [0m
