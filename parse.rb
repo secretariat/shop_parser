@@ -125,7 +125,9 @@ def BrowseCategories( model )
 	links.each do |l|
 		page = Nokogiri::HTML(open(l.cat_link))
 		puts "CATEGORY: #{l.cat_name_en.upcase}"
+		sleep(10)
 		BrowsePagesFromCategory( page )
+		puts $sum
 	end
 end
 
