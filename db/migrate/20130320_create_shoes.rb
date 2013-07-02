@@ -2,12 +2,11 @@
 class CreateShoes < ActiveRecord::Migration
   def change
     create_table :shoes do |t|
-      t.string :ilink
-      t.string :image
+      t.string :image_path
       t.string :brandname
       t.string :productname
-      t.string :price_orig
-      t.string :price_ukr
+      t.float :price_usd
+      t.float :price_ua
       t.string :discount
 
       t.timestamps
