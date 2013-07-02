@@ -46,19 +46,34 @@ end
 
 
 # page = Nokogiri::HTML(open("http://www.6pm.com/mens-shoes~s?s=goliveRecentSalesStyle/desc/#!/men-sneakers-athletic-shoes/CK_XARC81wHAAQLiAgMBGAI.zso?s=goliveRecentSalesStyle/desc/"))
+# page = Nokogiri::HTML(open("http://www.6pm.com/womens-shoes~1gp?s=recentSalesStyle/desc#!/womens-sandals~yD?s=recentSalesStyle/desc/"))
+# page = Nokogiri::HTML(open("http://www.6pm.com/women-sandals-page1/CK_XARC51wHAAQHiAgMBGAI.zso?p=1&s=goliveRecentSalesStyle/desc/"))
 # SearchResult = page.css("div#searchResults")
 # item_links = SearchResult.css("a")
 # item_links.each do |link|
-# 	ilink = "http://6pm.com#{link['href']}"
-# 	GetItemDetails( ilink )
-# 	image = link.css("img.productImg")[0]['src']
-# 	brandName = link.css("span.brandName").text
-# 	productName = link.css("span.productName").text
-# 	price = link.css("span.price-6pm").text
-# 	discount = link.css("span.discount").text
-# 	# Shoes.create( :ilink => ilink, :image => image.to_s, :brandname => brandName, :productname => productName, :price_orig => price, :discount => discount)
-# 	puts "#{image}\n#{brandName}\n#{productName}\n#{price}\n#{discount}\n"
-# 	puts "-------------------------------"
+	# puts link
+	# ilink = "http://6pm.com#{link['href']}"
+	# GetItemDetails( ilink )
+	# image = link.css("img.productImg")[0]['src']
+	# puts brandName = link.css("span.brandName").text
+	# productName = link.css("span.productName").text
+	# price = link.css("span.price-6pm").text
+	# discount = link.css("span.discount").text
+	# Shoes.create( :ilink => ilink, :image => image.to_s, :brandname => brandName, :productname => productName, :price_orig => price, :discount => discount)
+	# puts "#{image}\n#{brandName}\n#{productName}\n#{price}\n#{discount}\n"
+	# puts "-------------------------------"
 # end
 
-GetItemDetails( "http://www.6pm.com/vibram-fivefingers-kmd-sport-yellow-black-silver-grey" )
+
+def GetWomenShoesCategories()
+	page = Nokogiri::HTML(open("http://www.6pm.com/shoes"))
+	category_block = page.css("div.sideColumn")
+	male_category_block = category_block.css("h5")
+	# puts male_category_block.text
+	category_links = category_block.css("a.gae-click.*ALP-Shoes.*Category-Navigation.*Shoes-Women-")
+	category_links.each do |link|
+		puts link
+	end
+end
+
+GetWomenShoesCategories()
