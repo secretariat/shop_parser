@@ -15,7 +15,9 @@ HOME_DIR = File.join( Dir.home, "ror/garderob4ik/public/images" )
 #############################################################
 
 class ShopParser
+
 	attr_accessor :gconfig
+
 	def initialize( global_config )
 		@db_config = YAML::load(File.open('./config/database.yml'))
 		ActiveRecord::Base.establish_connection( @db_config )
@@ -126,7 +128,10 @@ class ShopParser
 		categories = Category.where( :departments_id => @cur_dep.id, :active => true )
 		categories.each do |c|
 			@cur_category = c
-			page = Nokogiri::HTML(open(c.cat_link))
+			page = open_page( c.cat_link )
+
+			return if page.blank?
+
 			puts "CATEGORY: #{c.cat_name_en.upcase}"
 			# sleep(1)
 			BrowsePagesFromCategory( page )
@@ -134,13 +139,11 @@ class ShopParser
 	end
 
 	def BrowseItemsFromPage( page_link )
-		begin
-			page = Nokogiri::HTML(open( page_link ))
-		rescue
-			puts "PAGE NOT FOUND"
-			sleep(10)
-			return
-		end
+
+		page = open_page( page_link )
+
+		return if page.blank?
+
 		search_result = page.css("div#searchResults")
 		item_links = search_result.css("a")
 		item_links.each do |link|
