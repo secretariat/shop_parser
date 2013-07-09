@@ -129,11 +129,8 @@ class ShopParser
 		categories.each do |c|
 			@cur_category = c
 			page = open_page( c.cat_link )
-
 			return if page.blank?
-
 			puts "CATEGORY: #{c.cat_name_en.upcase}"
-			# sleep(1)
 			BrowsePagesFromCategory( page )
 		end
 	end
@@ -154,7 +151,6 @@ class ShopParser
 			ilink = "#{SITE_URL}#{link['href']}"
 			product_id = link['data-product-id']
 			style_id = link['data-style-id']
-			# GetItemDetails( ilink )
 			image_link = link.css("img.productImg")[0]['src']
 			image_full_path = "#{HOME_DIR}/#{(image_link.split(/\//).last).split("-").first}.jpg"
 			image_path = "#{(image_link.split(/\//).last).split("-").first}.jpg"
@@ -165,7 +161,6 @@ class ShopParser
 			discount = $1 if link.css("span.discount").text =~ /([\d]+)%/
 			puts msrp_ua = (price_ua/((100-discount.to_f)/100.00)).to_i
 
-			h_item = Hash.new
 			h_item = {
 									:image_path => image_path,
 									:product_id => product_id.to_i,
@@ -181,111 +176,11 @@ class ShopParser
 			shoe.get_shoes_description
 			@cur_brand.items << shoe.get_item
 			@cur_category.items << shoe.get_item
-			# if( !Item.exists?( :product_id => product_id.to_i, :style_id => style_id.to_i ) )
-			# 	item = Item.new( :image_path => image_path,
-			# 								:product_id => product_id.to_i,
-			# 								:style_id => style_id.to_i,
-			# 								:productname => productName,
-			# 								:price_usd => price_usd,
-			# 								:price_ua => price_ua,
-			# 								:discount => discount,
-			# 								:msrp_ua => msrp_ua )
-
-				# GetItemDetails( item, ilink )
-				# @cur_category.items << item
-				# @cur_brand.items << item
-				# puts "#{product_id}\n#{style_id}\n#{image_path}\n#{brandName}\n#{productName}\n#{price_usd}\n#{price_ua}\nDISC: #{discount}\n"
-				ImageDownload( image_link, image_full_path )
-				# GetItemDetails( item, ilink )
-			# end
-			# puts "-------------------------------"
+			ImageDownload( image_link, image_full_path )
 		end
-	end
-
-	def GetItemDetails( item, item_url )
-		begin
-			page = Nokogiri::HTML(open( item_url ))
-		rescue Exception => e
-			puts ">>>>>>>>>>>>ERROR: #{e.message}"
-			return
-		end
-		sku = page.css("span#sku").text.split("#")[1].to_i
-		process_color( item, page )
-		process_size( item, page )
-		main_image_div = page.css("div#detailImage")
-		# puts main_image_path = main_image_div.css("img")[0]['src']
-		description_block = page.css("div.description")
-		thumbnails_block = page.css("div#productImages")
-		image_links_block = thumbnails_block.css('img')
-		desc = Description.new( :sku => sku.to_i, :description => description_block.to_s )
-		item.description = desc
-		image_links_block.each do |link|
-			if link['src'] =~ /MULTIVIEW_THUMBNAILS/
-				thumb_image_name = "#{link['src'].split(/\//).last.split(/-/)[0..1].join("-")}-thumb.jpg"
-				large_image_name = "#{link['src'].split(/\//).last.split(/-/)[0..1].join("-")}.jpg"
-				thumb_image_full_path = "#{HOME_DIR}/descriptions/#{thumb_image_name}"
-				large_image_full_path = "#{HOME_DIR}/descriptions/#{large_image_name}"
-				large_image_download_link = link['src'].gsub("_THUMBNAILS","")
-				desc.images << Image.new( :thumb_path => thumb_image_name, :image_path => large_image_name )
-				ImageDownload( link['src'], thumb_image_full_path )
-				ImageDownload( large_image_download_link, large_image_full_path )
-			end
-		end
-	end
-
-	def process_size( item, page )
-		size_block = page.css("select#d3")
-		if !size_block.present? then
-			size_block = page.css("li#colors")
-			size_values = size_block.css("p.note")
-			# puts color_values
-		else
-			size_values = size_block.css("option")
-			# puts size_values
-		end
-
-		size_values.each do |size|
-			if !(size.text =~ /select/i) then
-				if( !Size.exists?(:size_value => size.text) )
-					cur_size = Size.create( :size_value => size.text )
-				else
-					cur_size = Size.find_by_size_value( size.text )
-				end
-
-				item.sizes << cur_size
-			end
-		end
-	end
-
-	def process_color( item, page )
-		# puts item.inspect
-		cur_color = nil
-		color_values = nil
-
-		color_block = page.css("select#color")
-		if !color_block.present? then
-			color_block = page.css("li#colors")
-			color_values = color_block.css("p.note")
-			# puts color_values
-		else
-			color_values = color_block.css("option")
-			# puts color_values
-		end
-
-		color_values.each do |color|
-			if( !Color.exists?(:color_name => color.text) )
-				cur_color = Color.create( :color_name => color.text )
-			else
-				cur_color = Color.find_by_color_name( color.text )
-			end
-
-			item.colors << cur_color
-		end
-
 	end
 
 	def process_styles( link )
-		
 	end
 
 end
