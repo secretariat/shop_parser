@@ -28,9 +28,9 @@ class ShopParser
 	end
 
 	def process_brands( brand_name )
-		if Brand.exists?( :brand_name => brand_name )
-			@cur_brand = Brand.find_by_brand_name( brand_name.downcase )
-			@cur_brand.update_attributes( :brand_name_shown => brand_name)
+		if Brand.exists?( :name => brand_name )
+			@cur_brand = Brand.find_by_name( brand_name.downcase )
+			@cur_brand.update_attributes( :name_shown => brand_name)
 		end
 	end
 

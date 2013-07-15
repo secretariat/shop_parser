@@ -12,6 +12,10 @@ class CreateItem < ActiveRecord::Migration
       t.float :price_ua
       t.string :discount
       t.float :msrp_ua
+      t.string :title, :default => "", :null => false
+      t.string :meta_d, :default => "", :null => false
+      t.string :meta_k, :default => "", :null => false
+      t.boolean :active, :default => true
 
       t.timestamps
     end

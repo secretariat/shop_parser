@@ -19,8 +19,8 @@ class Configer
 
 	def get_brands
 		@brands.each do |s|
-			if !Brand.exists?( :brand_name => s )
-				Brand.create( :brand_name => s )
+			if !Brand.exists?( :name => s )
+				Brand.create( :name => s )
 			end
 		end
 	end

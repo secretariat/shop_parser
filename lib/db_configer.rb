@@ -23,7 +23,7 @@ class Category < ActiveRecord::Base
 end
 
 class Brand< ActiveRecord::Base
-	has_many :items
+	has_many :items, :dependent => :destroy
 end
 
 class Description< ActiveRecord::Base
