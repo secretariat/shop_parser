@@ -9,6 +9,7 @@ class CreateBrand < ActiveRecord::Migration
       t.text :text, :default => "", :null => false
       t.string :name
       t.string :name_shown
+      t.boolean :show_on_index, :default => false
       t.boolean :active, :default => true
       t.timestamps
     end

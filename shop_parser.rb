@@ -171,9 +171,10 @@ class ShopParser
 									:discount => discount,
 									:msrp_ua => msrp_ua
 								}
+
 			shoe = Shoes.new( h_item, ilink )
 			shoe.check_item
-			shoe.get_shoes_description
+			shoe.get_item_details
 			@cur_brand.items << shoe.get_item
 			@cur_category.items << shoe.get_item
 			ImageDownload( image_link, image_full_path )

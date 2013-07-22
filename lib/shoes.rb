@@ -18,16 +18,13 @@ class Shoes
 	def update_item
 		@item[:updated_at] = Time.now+1
 		@current_item = Item.where( :product_id => @item[:product_id], :style_id => @item[:style_id] ).first
+		@current_item.get_item_details
 		@current_item.update_attributes( @item )
 		@current_item.save
 	end
 
 	def get_item
 		@current_item
-	end
-
-	def item_details
-
 	end
 
 	def delete_item
@@ -41,14 +38,15 @@ class Shoes
 		end
 	end
 
-	def get_shoes_description
+	def get_item_details
 		page = open_page( @item_link )
 
 		return if page.blank?
 
-		sku = page.css("span#sku").text.split("#")[1].to_i
 		process_color( page )
 		process_size( page )
+
+		sku = page.css("span#sku").text.split("#")[1].to_i
 		main_image_div = page.css("div#detailImage")
 		# puts main_image_path = main_image_div.css("img")[0]['src']
 		description_block = page.css("div.description")
@@ -67,12 +65,13 @@ class Shoes
 				large_image_full_path = "#{HOME_DIR}/descriptions/#{large_image_name}"
 				zoom_image_full_path = "#{HOME_DIR}/descriptions/#{zoom_image_name}"
 
-				puts large_image_download_link = link['src'].gsub("_THUMBNAILS","")
-				puts zoom_image_download_link = link['src'].gsub("MULTIVIEW_THUMBNAILS","4x")
-				desc.images << Image.new( :thumb_path => thumb_image_name, :image_path => large_image_name )
+				large_image_download_link = link['src'].gsub("_THUMBNAILS","")
+				zoom_image_download_link = link['src'].gsub("MULTIVIEW_THUMBNAILS","4x")
+
 				ImageDownload( link['src'], thumb_image_full_path )
 				ImageDownload( large_image_download_link, large_image_full_path )
 				ImageDownload( zoom_image_download_link, zoom_image_full_path )
+				desc.images << Image.new( :thumb_path => thumb_image_name, :image_path => large_image_name, :zoom_path => zoom_image_name,  )
 			end
 		end
 	end
