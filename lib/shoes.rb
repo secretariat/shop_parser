@@ -55,14 +55,21 @@ class Shoes
 		@current_item.description = desc
 		image_links_block.each do |link|
 			if link['src'] =~ /MULTIVIEW_THUMBNAILS/
+
 				thumb_image_name = "#{link['src'].split(/\//).last.split(/-/)[0..1].join("-")}-thumb.jpg"
 				large_image_name = "#{link['src'].split(/\//).last.split(/-/)[0..1].join("-")}.jpg"
+				zoom_image_name = "#{link['src'].split(/\//).last.split(/-/)[0..1].join("-")}-4x.jpg"
+
 				thumb_image_full_path = "#{HOME_DIR}/descriptions/#{thumb_image_name}"
 				large_image_full_path = "#{HOME_DIR}/descriptions/#{large_image_name}"
-				large_image_download_link = link['src'].gsub("_THUMBNAILS","")
+				zoom_image_full_path = "#{HOME_DIR}/descriptions/#{zoom_image_name}"
+
+				puts large_image_download_link = link['src'].gsub("_THUMBNAILS","")
+				puts zoom_image_download_link = link['src'].gsub("MULTIVIEW_THUMBNAILS","4x")
 				desc.images << Image.new( :thumb_path => thumb_image_name, :image_path => large_image_name )
 				ImageDownload( link['src'], thumb_image_full_path )
 				ImageDownload( large_image_download_link, large_image_full_path )
+				ImageDownload( zoom_image_download_link, zoom_image_full_path )
 			end
 		end
 	end
