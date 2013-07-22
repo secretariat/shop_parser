@@ -161,6 +161,7 @@ class ShopParser
 			discount = $1 if link.css("span.discount").text =~ /([\d]+)%/
 			puts msrp_ua = (price_ua/((100-discount.to_f)/100.00)).to_i
 
+			ImageDownload( image_link, image_full_path )
 			h_item = {
 									:image_path => image_path,
 									:product_id => product_id.to_i,
@@ -175,10 +176,8 @@ class ShopParser
 
 			shoe = Shoes.new( h_item, ilink )
 			shoe.check_item
-			shoe.get_item_details
 			@cur_brand.items << shoe.get_item
 			@cur_category.items << shoe.get_item
-			ImageDownload( image_link, image_full_path )
 		end
 	end
 
@@ -190,18 +189,5 @@ end
 conf = Configer.new
 conf.process_config
 
-
 parse = ShopParser.new( conf )
 parse.process_departments
-
-# db_config = YAML::load(File.open('./config/database.yml'))
-# ActiveRecord::Base.establish_connection( db_config )
-
-# i = Item.find(:all)
-# i.each do |item|
-# 	puts item.productname
-# 	colors = item.colors
-# 	colors.each do |c|
-# 		puts "\t>>>>#{c.id}--#{c.color_name}"
-# 	end
-# end
