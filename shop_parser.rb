@@ -10,8 +10,8 @@ require './lib/configer.rb'
 
 #############################################################
 SITE_URL = "http://6pm.com"
-# HOME_DIR = File.join( Dir.home, "ror/garderob4ik/public/images" )
-HOME_DIR = "/var/www/sites/garderob4ik/public/images"
+HOME_DIR = File.join( Dir.home, "ror/garderob4ik/public/images" )
+# HOME_DIR = "/var/www/sites/garderob4ik/public/images"
 #############################################################
 
 class ShopParser
@@ -94,7 +94,7 @@ class ShopParser
 			page_link = page_link.gsub(/p=Z/, "p=#{i-1}")
 			ready_link = "#{SITE_URL}#{page_link}"
 			BrowseItemsFromPage( ready_link )
-			break
+			# break
 		end
 	end
 

@@ -43,6 +43,9 @@ class Shoes
 
 	def get_shoes_description
 		page = open_page( @item_link )
+
+		return if page.blank?
+
 		sku = page.css("span#sku").text.split("#")[1].to_i
 		process_color( page )
 		process_size( page )
