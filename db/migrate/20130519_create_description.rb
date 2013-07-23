@@ -5,7 +5,6 @@ class CreateDescription < ActiveRecord::Migration
     	t.integer :item_id
       t.float :price
       t.integer :sku
-      t.integer :color_id
       t.text :description
       t.timestamps
     end

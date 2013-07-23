@@ -1,4 +1,5 @@
 require 'thread'
+require 'future_proof'
 require 'open-uri'
 require 'yaml'
 require 'nokogiri'
@@ -19,9 +20,11 @@ $mutex = Mutex.new
 ActiveRecord::Base.establish_connection( @db_config )
 
 
-def get_item_details( page, item )
+def get_item_details( item )
 
-	puts item.productname
+	puts "#{item.id}\t#{item.productname} - started"
+
+	page = open_page( item.ilink )
 
 	process_color(page, item)
 	process_size(page, item)
@@ -32,28 +35,30 @@ def get_item_details( page, item )
 	description_block = page.css("div.description")
 	thumbnails_block = page.css("div#productImages")
 	image_links_block = thumbnails_block.css('img')
+
 	desc = Description.new( :sku => sku.to_i, :description => description_block.to_s )
 	item.description = desc
-	image_links_block.each do |link|
-		if link['src'] =~ /MULTIVIEW_THUMBNAILS/
+	# image_links_block.each do |link|
+	# 	if link['src'] =~ /MULTIVIEW_THUMBNAILS/
 
-			thumb_image_name = "#{link['src'].split(/\//).last.split(/-/)[0..1].join("-")}-thumb.jpg"
-			large_image_name = "#{link['src'].split(/\//).last.split(/-/)[0..1].join("-")}.jpg"
-			zoom_image_name = "#{link['src'].split(/\//).last.split(/-/)[0..1].join("-")}-4x.jpg"
+	# 		thumb_image_name = "#{link['src'].split(/\//).last.split(/-/)[0..1].join("-")}-thumb.jpg"
+	# 		large_image_name = "#{link['src'].split(/\//).last.split(/-/)[0..1].join("-")}.jpg"
+	# 		zoom_image_name = "#{link['src'].split(/\//).last.split(/-/)[0..1].join("-")}-4x.jpg"
 
-			thumb_image_full_path = "#{HOME_DIR}/descriptions/#{thumb_image_name}"
-			large_image_full_path = "#{HOME_DIR}/descriptions/#{large_image_name}"
-			zoom_image_full_path = "#{HOME_DIR}/descriptions/#{zoom_image_name}"
+	# 		thumb_image_full_path = "#{HOME_DIR}/descriptions/#{thumb_image_name}"
+	# 		large_image_full_path = "#{HOME_DIR}/descriptions/#{large_image_name}"
+	# 		zoom_image_full_path = "#{HOME_DIR}/descriptions/#{zoom_image_name}"
 
-			large_image_download_link = link['src'].gsub("_THUMBNAILS","")
-			zoom_image_download_link = link['src'].gsub("MULTIVIEW_THUMBNAILS","4x")
+	# 		large_image_download_link = link['src'].gsub("_THUMBNAILS","")
+	# 		zoom_image_download_link = link['src'].gsub("MULTIVIEW_THUMBNAILS","4x")
 
-			ImageDownload( link['src'], thumb_image_full_path )
-			ImageDownload( large_image_download_link, large_image_full_path )
-			ImageDownload( zoom_image_download_link, zoom_image_full_path )
-			desc.images << Image.new( :thumb_path => thumb_image_name, :image_path => large_image_name, :zoom_path => zoom_image_name,  )
-		end
-	end
+	# 		ImageDownload( link['src'], thumb_image_full_path )
+	# 		ImageDownload( large_image_download_link, large_image_full_path )
+	# 		ImageDownload( zoom_image_download_link, zoom_image_full_path )
+	# 		desc.images << Image.new( :thumb_path => thumb_image_name, :image_path => large_image_name, :zoom_path => zoom_image_name,  )
+	# 	end
+	# end
+	puts "#{item.id}\t#{item.productname} - ended"
 end
 
 def process_color( page, item )
@@ -116,49 +121,15 @@ def thredina( item )
 	end
 end
 
-def get_items
-	@items = Item.all
-	puts @items.size
+mutex = Mutex.new
 
-	counter = 0
-	thread_count = 0
-	threads = Array.new
-	$mutex.synchronize do
-	while counter <= @items.size do
-		while thread_count <= 10 do
-			threads[thread_count] = thredina(@items[counter])
-			counter += 1
-			thread_count += 1
-		end
-
-		threads.each do |t|
-			t.join
-		end
-
-		thread_count = 0
-	end
-	end
+thread_pool = FutureProof::ThreadPool.new(2)
+@items = Item.all
+@items.each do |item|
+  thread_pool.submit item do |i|
+   	get_item_details( i )
+  end
 end
 
-get_items
-
-
-# queue = Queue.new
-
-# @items = Item.all
-
-# producer = Thread.new do
-#   @items.each do |i|
-#     # sleep rand(i) # simulate expense
-#     queue << i
-#     # puts "#{i.productname} produced"
-#   end
-# end
-
-# tr = []
-# 10.times do |i|
-#   value = queue.pop
-#   tr << thredina( value )
-# end
-
-# tr.each { |t| t.join  }
+thread_pool.perform
+thread_pool.values
