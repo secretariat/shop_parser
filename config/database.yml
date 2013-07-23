@@ -1,5 +1,5 @@
 adapter: "mysql2"
-pool: 5
+pool: 15
 host: "localhost"
 encoding: "utf8"
 username: "root"

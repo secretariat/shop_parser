@@ -1,3 +1,4 @@
+require 'thread'
 require 'open-uri'
 require 'yaml'
 require 'nokogiri'
@@ -12,11 +13,15 @@ HOME_DIR = File.join( Dir.home, "ror/garderob4ik/public/images" )
 # HOME_DIR = "/var/www/sites/garderob4ik/public/images"
 #############################################################
 
+$mutex = Mutex.new
+
 @db_config = YAML::load(File.open('./config/database.yml'))
 ActiveRecord::Base.establish_connection( @db_config )
 
 
 def get_item_details( page, item )
+
+	puts item.productname
 
 	process_color(page, item)
 	process_size(page, item)
@@ -102,23 +107,58 @@ def process_size( page, item )
 	end
 end
 
+def thredina( item )
+	Thread.new(item) do |i|
+		page = open_page( i.ilink )
+		get_item_details( page, i )
+		ActiveRecord::Base.connection.close
+		puts "thr stopped"
+	end
+end
+
 def get_items
 	@items = Item.all
-	threads = []
-	@items.each do |item|
-		if threads.size < 4 then
-			threads << Thread.new(item) do |i|
-				puts i.productname
-				page = open_page( i.ilink )
-				get_item_details( page, i )
-			end
-		else
-			break
+	puts @items.size
+
+	counter = 0
+	thread_count = 0
+	threads = Array.new
+	$mutex.synchronize do
+	while counter <= @items.size do
+		while thread_count <= 10 do
+			threads[thread_count] = thredina(@items[counter])
+			counter += 1
+			thread_count += 1
 		end
+
+		threads.each do |t|
+			t.join
+		end
+
+		thread_count = 0
 	end
-	threads.each { |t| t.join  }
+	end
 end
 
 get_items
 
 
+# queue = Queue.new
+
+# @items = Item.all
+
+# producer = Thread.new do
+#   @items.each do |i|
+#     # sleep rand(i) # simulate expense
+#     queue << i
+#     # puts "#{i.productname} produced"
+#   end
+# end
+
+# tr = []
+# 10.times do |i|
+#   value = queue.pop
+#   tr << thredina( value )
+# end
+
+# tr.each { |t| t.join  }
