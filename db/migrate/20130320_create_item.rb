@@ -6,6 +6,9 @@ class CreateItem < ActiveRecord::Migration
       t.integer :product_id
       t.integer :style_id
       t.integer :brand_id
+      t.integer :width_id
+      t.integer :style_id
+      t.integer :material_id
       t.string :image_path
       t.string :productname
       t.float :price_usd
@@ -22,5 +25,8 @@ class CreateItem < ActiveRecord::Migration
     end
     add_index("items", "category_id")
     add_index("items", "brand_id")
+    add_index("items", "width_id")
+    add_index("items", "style_id")
+    add_index("items", "material_id")
   end
 end

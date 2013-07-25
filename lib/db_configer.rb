@@ -11,9 +11,11 @@ end
 class Item < ActiveRecord::Base
 	belongs_to :category
 	belongs_to :brand
+	belongs_to :width
 	has_and_belongs_to_many :colors
 	has_and_belongs_to_many :sizes
 	has_one :description
+	has_one :width
 end
 
 class Category < ActiveRecord::Base
@@ -27,6 +29,7 @@ class Brand< ActiveRecord::Base
 end
 
 class Description< ActiveRecord::Base
+	attr_accessible	:sku, :description
 	belongs_to :item
 	has_many :images
 end
@@ -40,10 +43,18 @@ class Color< ActiveRecord::Base
 	 has_and_belongs_to_many :items
 end
 
-class Size< ActiveRecord::Base
+class Size < ActiveRecord::Base
 	has_and_belongs_to_many :items
 end
 
-class ItemColor< ActiveRecord::Base
-	# belongs_to :item
+class Width < ActiveRecord::Base
+	has_many :items
+end
+
+class Style< ActiveRecord::Base
+	has_many :items
+end
+
+class Material< ActiveRecord::Base
+	has_many :items
 end

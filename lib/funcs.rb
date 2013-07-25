@@ -37,3 +37,4 @@ def open_page( page_link )
 		puts "ERROR: #{e.message}"
 	end
 end
+

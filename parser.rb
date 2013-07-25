@@ -7,6 +7,7 @@ require 'active_record'
 require './lib/shoes.rb'
 require './lib/funcs.rb'
 require './lib/configer.rb'
+require './lib/common.rb'
 
 #############################################################
 SITE_URL = "http://6pm.com"
@@ -15,6 +16,8 @@ HOME_DIR = File.join( Dir.home, "ror/garderob4ik/public/images" )
 #############################################################
 
 class ShopParser
+
+	include Common
 
 	attr_accessor :gconfig
 
@@ -56,11 +59,14 @@ class ShopParser
 		page = Nokogiri::HTML(open( department_link ))
 		left_block = page.css("div#tcSideCol")
 		view_all_links = left_block.css("a")
+		was_parsed = 0
 		view_all_links.each do |link|
 			if link['class'] =~ /view-all last/
 				full_link = "#{SITE_URL}#{link['href']}"
 				gender = Gender.find_by_gender_name( get_gender_from_link( full_link ) )
 				puts full_link
+				get_style_and_materila_links( full_link ) if was_parsed == 0
+				was_parsed = 1
 				@cur_gender = gender
 				get_gender_shoes_categories( full_link )
 			end
