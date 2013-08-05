@@ -14,7 +14,7 @@ GEM
       multi_json (~> 1.0)
     arel (3.0.2)
     builder (3.0.4)
-    daemons (1.1.9)
+    future_proof (0.1.0)
     i18n (0.6.1)
     logger (1.2.8)
     multi_json (1.7.1)
@@ -27,7 +27,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord
-  daemons
+  future_proof
   logger
   mysql2
   nokogiri

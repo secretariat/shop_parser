@@ -1,4 +1,5 @@
 module Common
+
 	def get_style_and_materila_links( link )
 
 		page = open_page( link )
@@ -24,4 +25,26 @@ module Common
 		end
 
 	end
+
+	def pagination( page )
+		pagin_block = page.css("div.pagination")
+		link_template = ""
+		pages_num = 0
+		pagin_block.each do |pag|
+			links = pag.css("a")
+			ar = Array.new
+			links.each do |link|
+				ar << link.text.to_i
+			end
+
+			pages_num = ar.max
+
+			link_template = links[0]['href']
+			puts link_template
+			break
+		end
+
+		return link_template, pages_num
+	end
+	
 end

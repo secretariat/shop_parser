@@ -10,8 +10,8 @@ require './lib/funcs.rb'
 
 #############################################################
 SITE_URL = "http://6pm.com"
-# HOME_DIR = File.join( Dir.home, "ror/garderob4ik/public/images" )
-HOME_DIR = "/home/user/www/sites/garderob4ik/public/images"
+HOME_DIR = File.join( Dir.home, "ror/garderob4ik/public/images" )
+# HOME_DIR = "/var/www/sites/garderob4ik/public/images"
 #############################################################
 
 @db_config = YAML::load(File.open('./config/database.yml'))
@@ -34,26 +34,26 @@ def get_item_details( item )
 
 	desc = Description.new( :sku => sku.to_i, :description => description_block.to_s )
 	item.description = desc
-	image_links_block.each do |link|
-		if link['src'] =~ /MULTIVIEW_THUMBNAILS/
+	# image_links_block.each do |link|
+	# 	if link['src'] =~ /MULTIVIEW_THUMBNAILS/
 
-			thumb_image_name = "#{link['src'].split(/\//).last.split(/-/)[0..1].join("-")}-thumb.jpg"
-			large_image_name = "#{link['src'].split(/\//).last.split(/-/)[0..1].join("-")}.jpg"
-			zoom_image_name = "#{link['src'].split(/\//).last.split(/-/)[0..1].join("-")}-4x.jpg"
+	# 		thumb_image_name = "#{link['src'].split(/\//).last.split(/-/)[0..1].join("-")}-thumb.jpg"
+	# 		large_image_name = "#{link['src'].split(/\//).last.split(/-/)[0..1].join("-")}.jpg"
+	# 		zoom_image_name = "#{link['src'].split(/\//).last.split(/-/)[0..1].join("-")}-4x.jpg"
 
-			thumb_image_full_path = "#{HOME_DIR}/descriptions/#{thumb_image_name}"
-			large_image_full_path = "#{HOME_DIR}/descriptions/#{large_image_name}"
-			zoom_image_full_path = "#{HOME_DIR}/descriptions/#{zoom_image_name}"
+	# 		thumb_image_full_path = "#{HOME_DIR}/descriptions/#{thumb_image_name}"
+	# 		large_image_full_path = "#{HOME_DIR}/descriptions/#{large_image_name}"
+	# 		zoom_image_full_path = "#{HOME_DIR}/descriptions/#{zoom_image_name}"
 
-			large_image_download_link = link['src'].gsub("_THUMBNAILS","")
-			zoom_image_download_link = link['src'].gsub("MULTIVIEW_THUMBNAILS","4x")
+	# 		large_image_download_link = link['src'].gsub("_THUMBNAILS","")
+	# 		zoom_image_download_link = link['src'].gsub("MULTIVIEW_THUMBNAILS","4x")
 
-			ImageDownload( link['src'], thumb_image_full_path )
-			ImageDownload( large_image_download_link, large_image_full_path )
-			ImageDownload( zoom_image_download_link, zoom_image_full_path )
-			desc.images << Image.new( :thumb_path => thumb_image_name, :image_path => large_image_name, :zoom_path => zoom_image_name,  )
-		end
-	end
+	# 		ImageDownload( link['src'], thumb_image_full_path )
+	# 		ImageDownload( large_image_download_link, large_image_full_path )
+	# 		ImageDownload( zoom_image_download_link, zoom_image_full_path )
+	# 		desc.images << Image.new( :thumb_path => thumb_image_name, :image_path => large_image_name, :zoom_path => zoom_image_name,  )
+	# 	end
+	# end
 	# end
 	puts "#{item.id}\t#{item.productname} - ended"
 end
@@ -111,33 +111,3 @@ end
 
 
 
-def process_width(page, item)
-	cur_width = ""
-	width_block = page.css("li.dimensions")
-	width_block.each do |dimensions_block|
-		if dimensions_block.css("label.d4")
-			puts width = dimensions_block.css("p.note").text.chomp
-			if !width.blank?
-				if( !Width.exists?(:name_us => width) )
-					cur_width = Width.create(:name_us => width)
-				else
-					cur_width = Width.find_by_name_us( width )
-				end
-				cur_width.items << item
-				cur_width.save
-				break
-			end
-		end
-	end
-end
-
-thread_pool = FutureProof::ThreadPool.new(1)
-@items = Item.all
-@items.each do |item|
-  thread_pool.submit item do |i|
-   	get_item_details( i )
-  end
-end
-
-thread_pool.perform
-thread_pool.values

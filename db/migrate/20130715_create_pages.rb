@@ -7,7 +7,7 @@ class CreatePages < ActiveRecord::Migration
       t.string :meta_d, :default=>"", :null=>false
       t.string :meta_k, :default=>"", :null=>false
       t.string :uri, :default=>"", :null=>false
-      t.text :text, :default=>"", :null=>false
+      t.text :text
       t.boolean :active, :null=>false, :default=>false
       t.timestamps
     end

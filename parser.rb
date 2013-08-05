@@ -11,8 +11,8 @@ require './lib/common.rb'
 
 #############################################################
 SITE_URL = "http://6pm.com"
-HOME_DIR = File.join( Dir.home, "ror/garderob4ik/public/images" )
-# HOME_DIR = "/var/www/sites/garderob4ik/public/images"
+# HOME_DIR = File.join( Dir.home, "ror/garderob4ik/public/images" )
+HOME_DIR = "/home/user/www/sites/garderob4ik/public/images"
 #############################################################
 
 class ShopParser
@@ -102,32 +102,6 @@ class ShopParser
 			BrowseItemsFromPage( ready_link )
 			# break
 		end
-	end
-
-	def pagination( page )
-		pagin_block = page.css("div.pagination")
-		link_template = ""
-		pages_num = 0
-		pagin_block.each do |pag|
-			links = pag.css("a")
-			ar = Array.new
-			links.each do |link|
-				ar << link.text.to_i
-			end
-
-			pages_num = ar.max
-
-			link_template = links[0]['href']
-			puts link_template
-			# if pagin_block.css("span.last")[0]
-			# 	pages_num = pagin_block.css("span.last")[0].text.gsub!("...","").strip.to_i
-			# else
-			# 	pages_num = 4
-			# end
-			break
-		end
-
-		return link_template, pages_num
 	end
 
 	def browse_categories
