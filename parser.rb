@@ -65,7 +65,7 @@ class ShopParser
 				full_link = "#{SITE_URL}#{link['href']}"
 				gender = Gender.find_by_gender_name( get_gender_from_link( full_link ) )
 				puts full_link
-				get_style_and_materila_links( full_link ) if was_parsed == 0
+				get_style_and_material_links( full_link ) if was_parsed == 0
 				was_parsed = 1
 				@cur_gender = gender
 				get_gender_shoes_categories( full_link )
