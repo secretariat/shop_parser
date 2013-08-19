@@ -5,6 +5,7 @@ require 'nokogiri'
 require 'open-uri'
 require 'active_record'
 require './lib/shoes.rb'
+require './lib/logwrite.rb'
 require './lib/funcs.rb'
 require './lib/configer.rb'
 require './lib/common.rb'
@@ -128,9 +129,10 @@ class ShopParser
 
 			next if !process_brands( brandName )
 
-			ilink = "#{SITE_URL}#{link['href']}"
 			product_id = link['data-product-id']
 			style_id = link['data-style-id']
+
+			ilink = "#{SITE_URL}#{link['href']}"
 			image_link = link.css("img.productImg")[0]['src']
 			image_full_path = "#{HOME_DIR}/#{(image_link.split(/\//).last).split("-").first}.jpg"
 			image_path = "#{(image_link.split(/\//).last).split("-").first}.jpg"
@@ -141,7 +143,6 @@ class ShopParser
 			discount = $1 if link.css("span.discount").text =~ /([\d]+)%/
 			puts msrp_ua = (price_ua/((100-discount.to_f)/100.00)).to_i
 
-			ImageDownload( image_link, image_full_path )
 			h_item = {
 									:image_path => image_path,
 									:product_id => product_id.to_i,
@@ -155,9 +156,16 @@ class ShopParser
 								}
 
 			shoe = Shoes.new( h_item, ilink )
-			shoe.check_item
-			@cur_brand.items << shoe.get_item
-			@cur_category.items << shoe.get_item
+
+			if Item.is_present?( product_id, style_id )
+				shoe.update_item
+			else
+				shoe.create_item
+				ImageDownload( image_link, image_full_path )
+				@cur_brand.items << shoe.get_item
+				@cur_category.items << shoe.get_item
+			end
+
 		end
 	end
 
@@ -171,3 +179,5 @@ conf.process_config
 
 parse = ShopParser.new( conf )
 parse.process_departments
+
+system("ruby item_parser.rb")

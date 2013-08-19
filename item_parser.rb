@@ -103,7 +103,6 @@ def process_size( page, item )
 			else
 				cur_size = Size.find_by_size_value( size.text )
 			end
-
 			item.sizes << cur_size
 		end
 	end
@@ -141,3 +140,5 @@ end
 
 thread_pool.perform
 thread_pool.values
+
+system("ruby style_parser.rb")

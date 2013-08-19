@@ -12,10 +12,17 @@ class Item < ActiveRecord::Base
 	belongs_to :category
 	belongs_to :brand
 	belongs_to :width
+	belongs_to :style
+	belongs_to :material
 	has_and_belongs_to_many :colors
 	has_and_belongs_to_many :sizes
 	has_one :description
 	has_one :width
+
+	def self.is_present?( product_id, style_id)
+		item = Item.find( :all, :conditions => { :product_id => product_id, :style_id => style_id } )
+		return (item.blank?) ? false : true
+	end
 end
 
 class Category < ActiveRecord::Base

@@ -3,7 +3,7 @@ require 'singleton'
 
 class Log < Logger
 
-  include Singleton
+  # include Singleton
 
   class Formatter
   	def call(severity, datetime, progname, msg)
@@ -14,5 +14,4 @@ class Log < Logger
 
 end
 
-g = Log.new( "../log/logfile.log", "daily" )
-g.info("test")
+$g = Log.new( "logfile.log", "daily" )
