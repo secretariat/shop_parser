@@ -1,21 +1,5 @@
 # -*- encoding : utf-8 -*-
-ROOT = File.expand_path(File.dirname(__FILE__))
-puts ROOT
-require 'yaml'
-require 'nokogiri'
-require 'open-uri'
-require 'active_record'
-require "#{ROOT}/lib/shoes.rb"
-require "#{ROOT}/logwrite.rb"
-require "#{ROOT}/funcs.rb"
-require "#{ROOT}/configer.rb"
-require "#{ROOT}/common.rb"
-
-#############################################################
-SITE_URL = "http://6pm.com"
-# HOME_DIR = File.join( Dir.home, "ror/garderob4ik/public/images" )
-HOME_DIR = "/home/user/www/sites/garderob4ik/public/images"
-#############################################################
+load 'header.rb'
 
 class ShopParser
 
