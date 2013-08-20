@@ -1,5 +1,6 @@
+ROOT = File.expand_path(File.dirname(__FILE__))
 require 'open-uri'
-require './lib/funcs.rb'
+require "#{ROOT}/lib/funcs.rb"
 
 class Shoes
 
