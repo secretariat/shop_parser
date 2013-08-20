@@ -1,13 +1,15 @@
+ROOT = File.expand_path(File.dirname(File.dirname(__FILE__)))
 require 'thread'
 require 'future_proof'
 require 'open-uri'
 require 'yaml'
 require 'nokogiri'
 require 'active_record'
-require './lib/shoes.rb'
-require './lib/configer.rb'
-require './lib/funcs.rb'
-require './lib/common.rb'
+require "#{ROOT}/lib/shoes.rb"
+require "#{ROOT}/lib/logwrite.rb"
+require "#{ROOT}/lib/funcs.rb"
+require "#{ROOT}/lib/configer.rb"
+require "#{ROOT}/lib/common.rb"
 
 #############################################################
 SITE_URL = "http://6pm.com"

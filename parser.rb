@@ -1,14 +1,15 @@
 # -*- encoding : utf-8 -*-
+ROOT = File.expand_path(File.dirname(File.dirname(__FILE__)))
 
 require 'yaml'
 require 'nokogiri'
 require 'open-uri'
 require 'active_record'
-require './lib/shoes.rb'
-require './lib/logwrite.rb'
-require './lib/funcs.rb'
-require './lib/configer.rb'
-require './lib/common.rb'
+require "#{ROOT}/lib/shoes.rb"
+require "#{ROOT}/lib/logwrite.rb"
+require "#{ROOT}/lib/funcs.rb"
+require "#{ROOT}/lib/configer.rb"
+require "#{ROOT}/lib/common.rb"
 
 #############################################################
 SITE_URL = "http://6pm.com"
@@ -174,10 +175,15 @@ class ShopParser
 
 end
 
+
+Log.info("---PARSER STARED---")
+
 conf = Configer.new
 conf.process_config
 
 parse = ShopParser.new( conf )
 parse.process_departments
+
+Log.info("---PARSER ENDED---")
 
 system("ruby item_parser.rb")
