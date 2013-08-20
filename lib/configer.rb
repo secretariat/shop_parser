@@ -1,8 +1,9 @@
+ROOT = File.expand_path(File.dirname(__FILE__))
 require 'yaml'
 require 'fileutils'
 require 'active_record'
 # require File.expand_path('db_configer.rb', File.dirname(__FILE__))
-require './lib/db_configer.rb'
+require "#{ROOT}/db_configer.rb"
 
 class Configer
 

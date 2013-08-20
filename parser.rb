@@ -6,7 +6,7 @@ require 'nokogiri'
 require 'open-uri'
 require 'active_record'
 require "#{ROOT}/lib/shoes.rb"
-require "#{ROOT}/lib/logwrite.rb"
+require "#{ROOT}/logwrite.rb"
 require "#{ROOT}/lib/funcs.rb"
 require "#{ROOT}/lib/configer.rb"
 require "#{ROOT}/lib/common.rb"
