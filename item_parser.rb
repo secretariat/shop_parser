@@ -1,4 +1,4 @@
-ROOT = File.expand_path(File.dirname(File.dirname(__FILE__)))
+ROOT = File.expand_path(File.dirname(__FILE__))
 require 'thread'
 require 'future_proof'
 require 'open-uri'

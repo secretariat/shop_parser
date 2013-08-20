@@ -1,5 +1,5 @@
 # -*- encoding : utf-8 -*-
-ROOT = File.expand_path(File.dirname(File.dirname(__FILE__)))
+ROOT = File.expand_path(File.dirname(__FILE__))
 
 require 'yaml'
 require 'nokogiri'
@@ -177,6 +177,7 @@ end
 
 
 Log.info("---PARSER STARED---")
+Log.info("CURRENT_PATH: #{ROOT}")
 
 conf = Configer.new
 conf.process_config
