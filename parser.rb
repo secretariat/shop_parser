@@ -7,9 +7,9 @@ require 'open-uri'
 require 'active_record'
 require "#{ROOT}/lib/shoes.rb"
 require "#{ROOT}/logwrite.rb"
-require "#{ROOT}/lib/funcs.rb"
-require "#{ROOT}/lib/configer.rb"
-require "#{ROOT}/lib/common.rb"
+require "#{ROOT}/funcs.rb"
+require "#{ROOT}/configer.rb"
+require "#{ROOT}/common.rb"
 
 #############################################################
 SITE_URL = "http://6pm.com"
