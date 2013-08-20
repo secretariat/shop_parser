@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 ROOT = File.expand_path(File.dirname(__FILE__))
-
+puts ROOT
 require 'yaml'
 require 'nokogiri'
 require 'open-uri'
