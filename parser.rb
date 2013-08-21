@@ -173,4 +173,4 @@ parse.process_departments
 
 Log.info("PARSER ENDED")
 
-system("ruby item_parser.rb")
+system("ruby #{ROOT}/item_parser.rb")

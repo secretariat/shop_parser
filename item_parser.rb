@@ -128,4 +128,4 @@ thread_pool.perform
 thread_pool.values
 
 Log.info("---ITEM_PARSER ENDED---")
-system("ruby style_parser.rb")
+system("ruby #{ROOT}/style_parser.rb")
