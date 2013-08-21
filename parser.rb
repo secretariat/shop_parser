@@ -51,7 +51,7 @@ class ShopParser
 			if link['class'] =~ /view-all last/
 				full_link = "#{SITE_URL}#{link['href']}"
 				gender = Gender.find_by_gender_name( get_gender_from_link( full_link ) )
-				puts full_link
+				# puts full_link
 				get_style_and_material_links( full_link ) if was_parsed == 0
 				was_parsed = 1
 				@cur_gender = gender
@@ -82,7 +82,7 @@ class ShopParser
 	 	cur_page_link = link_template.gsub!(/page[0-9]/, "pageX")
 	 	cur_page_link_tmp = link_template.gsub!(/p=[0-9]/, "p=Z")
 		1.upto(pages_num) do |i|
-			puts "CURRENT PAGE: -->#{i}"
+			# puts "CURRENT PAGE: -->#{i}"
 			page_link = cur_page_link_tmp.gsub(/pageX/, "page#{i}")
 			page_link = page_link.gsub(/p=Z/, "p=#{i-1}")
 			ready_link = "#{SITE_URL}#{page_link}"
@@ -98,7 +98,7 @@ class ShopParser
 			@cur_category = c
 			page = open_page( c.cat_link )
 			return if page.blank?
-			puts "CATEGORY: #{c.cat_name_en.upcase}"
+			# puts "CATEGORY: #{c.cat_name_en.upcase}"
 			BrowsePagesFromCategory( page )
 		end
 	end
@@ -128,7 +128,7 @@ class ShopParser
 			price_usd = link.css("span.price-6pm").text.gsub!("$","").to_f
 			price_ua = (get_price( link.css("span.price-6pm").text.gsub!("$","").to_f )).to_i
 			discount = $1 if link.css("span.discount").text =~ /([\d]+)%/
-			puts msrp_ua = (price_ua/((100-discount.to_f)/100.00)).to_i
+			msrp_ua = (price_ua/((100-discount.to_f)/100.00)).to_i
 
 			h_item = {
 									:image_path => image_path,

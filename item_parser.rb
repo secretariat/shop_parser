@@ -4,7 +4,7 @@ require "#{PATH}/header.rb"
 
 def get_item_details( item )
 
-	puts "#{item.id}\t#{item.productname} - started, #{item.object_id}"
+	# puts "#{item.id}\t#{item.productname} - started, #{item.object_id}"
 
 	page = open_page( item.ilink )
 	process_width(page, item)
@@ -39,7 +39,7 @@ def get_item_details( item )
 		end
 	end
 	# end
-	puts "#{item.id}\t#{item.productname} - ended"
+	# puts "#{item.id}\t#{item.productname} - ended"
 end
 
 def process_color( page, item )
@@ -99,7 +99,7 @@ def process_width(page, item)
 	width_block = page.css("li.dimensions")
 	width_block.each do |dimensions_block|
 		if dimensions_block.css("label.d4")
-			puts width = dimensions_block.css("p.note").text.chomp
+			width = dimensions_block.css("p.note").text.chomp
 			if !width.blank?
 				if( !Width.exists?(:name_us => width) )
 					cur_width = Width.create(:name_us => width)
