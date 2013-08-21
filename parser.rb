@@ -109,7 +109,13 @@ class ShopParser
 
 		return if page.blank?
 
-		search_result = page.css("div#searchResults")
+		begin
+			search_result = page.css("div#searchResults")
+		rescue Exception => e
+			Log.error( "ERROR: \'#{e.message}\'" )
+			return
+		end
+
 		item_links = search_result.css("a")
 		item_links.each do |link|
 			brandName = link.css("span.brandName").text
