@@ -1,5 +1,6 @@
 # -*- encoding : utf-8 -*-
-require "./header"
+PATH = File.expand_path(File.dirname(__FILE__))
+require "#{PATH}/header.rb"
 
 def get_item_details( item )
 

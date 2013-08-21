@@ -23,7 +23,7 @@ SITE_URL = "http://6pm.com"
 HOME_DIR = "/home/user/www/sites/garderob4ik/public/images"
 #############################################################
 
-@db_config = YAML::load(File.open('./config/database.yml'))
+@db_config = YAML::load(File.open("#{ROOT}/config/database.yml"))
 ActiveRecord::Base.establish_connection( @db_config )
 
 #############################################################
