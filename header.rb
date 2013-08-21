@@ -1,5 +1,5 @@
 ROOT = File.expand_path(File.dirname(__FILE__))
-puts ROOT
+# puts ROOT
 
 #############################################################
 require 'yaml'
