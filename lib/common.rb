@@ -55,7 +55,7 @@ module Common
 			pages_num = ar.max
 
 			link_template = links[0]['href']
-			# puts link_template
+			puts link_template
 			break
 		end
 		Log.info( "pages for current category: #{pages_num}" )
@@ -75,7 +75,7 @@ module Common
 			style_id = link['data-style-id']
 			item = Item.find( :all, :conditions => { :product_id => product_id, :style_id => style_id } )
 
-			# puts "#{item[0].productname} #{item[0].style}" if !item.blank?
+			puts "#{item[0].productname} #{item[0].style}" if !item.blank?
 			demension.items << item if !item.blank?
 		end
 	end
