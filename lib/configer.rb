@@ -1,5 +1,3 @@
-load 'header.rb'
-
 class Configer
 
 	attr_accessor :cat_by_gender

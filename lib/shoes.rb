@@ -1,5 +1,3 @@
-load 'header.rb'
-
 class Shoes
 
 	attr_accessor :current_item

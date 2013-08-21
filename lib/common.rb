@@ -58,7 +58,7 @@ module Common
 			puts link_template
 			break
 		end
-
+		Log.info( "pages for current category: #{pages_num}" )
 		return link_template, pages_num
 	end
 

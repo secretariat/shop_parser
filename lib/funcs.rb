@@ -26,7 +26,7 @@ def ImageDownload( image_url, image_path )
 			end
 		end
 	rescue Exception => e
-		puts "ERROR while downloading image: #{e.message}"
+		Log.error( "ERROR: \'#{e.message}\' downloading image: #{image_url}" )
 	end
 end
 
@@ -34,7 +34,7 @@ def open_page( page_link )
 	begin
 		page = Nokogiri::HTML(open( page_link ))
 	rescue Exception => e
-		puts "ERROR: #{e.message}"
+		Log.error( "ERROR: \'#{e.message}\'" )
 	end
 end
 

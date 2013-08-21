@@ -16,7 +16,7 @@ class Log < Logger
 	def initialize
   	time = Time.now
   	ftime = time.strftime("%Y%m%d")
-    super("logfile.log", 'daily')
+    super("#{ROOT}/log/logfile.log", 'daily')
     self.formatter = Formatter.new
     self
 	end

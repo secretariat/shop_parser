@@ -1,5 +1,5 @@
 # -*- encoding : utf-8 -*-
-load 'header.rb'
+require "./header"
 
 class ShopParser
 
@@ -8,8 +8,8 @@ class ShopParser
 	attr_accessor :gconfig
 
 	def initialize( global_config )
-		@db_config = YAML::load(File.open('./config/database.yml'))
-		ActiveRecord::Base.establish_connection( @db_config )
+		# @db_config = YAML::load(File.open('./config/database.yml'))
+		# ActiveRecord::Base.establish_connection( @db_config )
 		@gconfig = global_config
 		@cur_dep = nil
 		@cur_category = nil
@@ -92,6 +92,7 @@ class ShopParser
 
 	def browse_categories
 		categories = Category.where( :departments_id => @cur_dep.id, :active => true )
+		Log.info( "active categories for parsing: #{categories.size}" )
 		categories.each do |c|
 			@cur_category = c
 			page = open_page( c.cat_link )
@@ -160,7 +161,7 @@ class ShopParser
 end
 
 
-Log.info("---PARSER STARED---")
+Log.info("PARSER STARED")
 Log.info("CURRENT_PATH: #{ROOT}")
 
 conf = Configer.new
@@ -169,6 +170,6 @@ conf.process_config
 parse = ShopParser.new( conf )
 parse.process_departments
 
-Log.info("---PARSER ENDED---")
+Log.info("PARSER ENDED")
 
 system("ruby item_parser.rb")
