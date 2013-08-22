@@ -8,7 +8,7 @@ class Shoes
 	end
 
 	def create_item
-		puts "new"
+		# puts "new"
 		@current_item = Item.create( @item )
 	end
 
@@ -17,7 +17,7 @@ class Shoes
 		@item[:updated_at] = Time.now+1
 		@current_item.update_attributes( @item )
 		@current_item.save
-		puts "exists"
+		# puts "exists"
 	end
 
 	def get_item

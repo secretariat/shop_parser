@@ -81,14 +81,20 @@ class ShopParser
 		link_template, pages_num = pagination( page )
 	 	cur_page_link = link_template.gsub!(/page[0-9]/, "pageX")
 	 	cur_page_link_tmp = link_template.gsub!(/p=[0-9]/, "p=Z")
+	 	thread_pool = FutureProof::ThreadPool.new(10)
 		1.upto(pages_num) do |i|
-			puts "CURRENT PAGE: -->#{i}"
+			# puts "CURRENT PAGE: -->#{i}"
 			page_link = cur_page_link_tmp.gsub(/pageX/, "page#{i}")
 			page_link = page_link.gsub(/p=Z/, "p=#{i-1}")
 			ready_link = "#{SITE_URL}#{page_link}"
-			BrowseItemsFromPage( ready_link )
-			# break
+			thread_pool.submit ready_link do |link|
+				BrowseItemsFromPage( link )
+  		end
 		end
+
+		thread_pool.perform
+		thread_pool.values
+
 	end
 
 	def browse_categories
@@ -104,7 +110,7 @@ class ShopParser
 	end
 
 	def BrowseItemsFromPage( page_link )
-
+		puts "new started"
 		page = open_page( page_link )
 
 		return if page.blank?
@@ -134,7 +140,7 @@ class ShopParser
 			price_usd = link.css("span.price-6pm").text.gsub!("$","").to_f
 			price_ua = (get_price( link.css("span.price-6pm").text.gsub!("$","").to_f )).to_i
 			discount = $1 if link.css("span.discount").text =~ /([\d]+)%/
-			puts msrp_ua = (price_ua/((100-discount.to_f)/100.00)).to_i
+			msrp_ua = (price_ua/((100-discount.to_f)/100.00)).to_i
 
 			h_item = {
 									:image_path => image_path,
@@ -160,6 +166,7 @@ class ShopParser
 			end
 
 		end
+		puts "ended"
 	end
 
 	def process_styles( link )
