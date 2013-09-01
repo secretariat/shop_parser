@@ -4,7 +4,7 @@ require "#{PATH}/header.rb"
 
 def get_item_details( item )
 
-	puts "#{item.id}\t#{item.productname} - started, #{item.object_id}"
+	puts "#{item.id}\t#{item.productname} - started"
 
 	page = open_page( item.ilink )
 	process_width(page, item)
@@ -18,7 +18,7 @@ def get_item_details( item )
 
 	desc = Description.new( :sku => sku.to_i, :description => description_block.to_s )
 	item.description = desc
-	# thread_pool = FutureProof::ThreadPool.new(10)
+
 	image_links_block.each do |link|
 		if link['src'] =~ /MULTIVIEW_THUMBNAILS/
 
@@ -32,18 +32,13 @@ def get_item_details( item )
 
 			large_image_download_link = link['src'].gsub("_THUMBNAILS","")
 			zoom_image_download_link = link['src'].gsub("MULTIVIEW_THUMBNAILS","4x")
-			# thread_pool.submit do
-				ImageDownload( link['src'], thumb_image_full_path )
-				ImageDownload( large_image_download_link, large_image_full_path )
-				ImageDownload( zoom_image_download_link, zoom_image_full_path )
-			# end
-			desc.images << Image.new( :thumb_path => thumb_image_name, :image_path => large_image_name, :zoom_path => zoom_image_name,  )
+			ImageDownload( link['src'], thumb_image_full_path )
+			ImageDownload( large_image_download_link, large_image_full_path )
+			ImageDownload( zoom_image_download_link, zoom_image_full_path )
+			desc.images << Image.new( :thumb_path => thumb_image_name, :image_path => large_image_name, :zoom_path => zoom_image_name )
 		end
 	end
-	# thread_pool.perform
-	# thread_pool.values
 
-	# end
 	puts "#{item.id}\t#{item.productname} - ended"
 end
 
@@ -104,7 +99,7 @@ def process_width(page, item)
 	width_block = page.css("li.dimensions")
 	width_block.each do |dimensions_block|
 		if dimensions_block.css("label.d4")
-			puts width = dimensions_block.css("p.note").text.chomp
+			width = dimensions_block.css("p.note").text.chomp
 			if !width.blank?
 				if( !Width.exists?(:name_us => width) )
 					cur_width = Width.create(:name_us => width)
@@ -121,9 +116,10 @@ end
 
 Log.info("---ITEM_PARSER STARTED---")
 
-thread_pool = FutureProof::ThreadPool.new(1)
+thread_pool = FutureProof::ThreadPool.new(5)
 @items = Item.all
 @items.each do |item|
+	next if item.description.present?
   thread_pool.submit item do |i|
    	get_item_details( i )
   end

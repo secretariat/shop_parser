@@ -19,8 +19,11 @@ class ShopParser
 
 	def process_brands( brand_name )
 		if Brand.exists?( :name => brand_name )
-			@cur_brand = Brand.find_by_name( brand_name.downcase )
-			@cur_brand.update_attributes( :name_shown => brand_name)
+			cur_brand = Brand.find_by_name( brand_name.downcase )
+			cur_brand.update_attributes( :name_shown => brand_name)
+			return cur_brand
+		else
+			return false
 		end
 	end
 
@@ -81,14 +84,15 @@ class ShopParser
 		link_template, pages_num = pagination( page )
 	 	cur_page_link = link_template.gsub!(/page[0-9]/, "pageX")
 	 	cur_page_link_tmp = link_template.gsub!(/p=[0-9]/, "p=Z")
-	 	thread_pool = FutureProof::ThreadPool.new(10)
+	 	thread_pool = FutureProof::ThreadPool.new(5)
 		1.upto(pages_num) do |i|
 			# puts "CURRENT PAGE: -->#{i}"
 			page_link = cur_page_link_tmp.gsub(/pageX/, "page#{i}")
 			page_link = page_link.gsub(/p=Z/, "p=#{i-1}")
 			ready_link = "#{SITE_URL}#{page_link}"
-			thread_pool.submit ready_link do |link|
-				BrowseItemsFromPage( link )
+			thread_pool.submit ready_link, i do |link,i|
+				BrowseItemsFromPage( link, i )
+				# BrowseItemsFromPage( ready_link, i )
   		end
 		end
 
@@ -109,24 +113,28 @@ class ShopParser
 		end
 	end
 
-	def BrowseItemsFromPage( page_link )
-		puts "new started"
+	def BrowseItemsFromPage( page_link, i )
+		local_thread_count = 0
+		puts "new started #{i}"
+
 		page = open_page( page_link )
-
-		return if page.blank?
-
+		if page.blank?
+			puts "page is blank"
+			Log.error( "BrowseItemsFromPage: #{page_link}" )
+			return
+		end
 		begin
 			search_result = page.css("div#searchResults")
 		rescue Exception => e
-			Log.error( "ERROR: \'#{e.message}\'" )
+			Log.error( "BrowseItemsFromPage: \'#{e.message}\'" )
 			return
 		end
 
 		item_links = search_result.css("a")
 		item_links.each do |link|
 			brandName = link.css("span.brandName").text
-
-			next if !process_brands( brandName )
+			bbb = process_brands( brandName )
+			next if bbb == false
 
 			product_id = link['data-product-id']
 			style_id = link['data-style-id']
@@ -160,16 +168,15 @@ class ShopParser
 				shoe.update_item
 			else
 				shoe.create_item
+				local_thread_count += 1
 				ImageDownload( image_link, image_full_path )
-				@cur_brand.items << shoe.get_item
+				bbb.items << shoe.get_item
 				@cur_category.items << shoe.get_item
 			end
 
 		end
-		puts "ended"
-	end
-
-	def process_styles( link )
+		puts "ended #{i}\ttotal items: #{local_thread_count}"
+		Log.info( "p#{i}\ttotal items: #{local_thread_count}" )
 	end
 
 end
@@ -184,6 +191,7 @@ conf.process_config
 parse = ShopParser.new( conf )
 parse.process_departments
 
+Log.info("TOTAL ITEMS: #{Item.all.count}")
 Log.info("PARSER ENDED")
 
 system("ruby #{ROOT}/item_parser.rb")
