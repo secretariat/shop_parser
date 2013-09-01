@@ -25,5 +25,5 @@ HOME_DIR = File.join( Dir.home, "ror/garderob4ik/public/images" )
 
 @db_config = YAML::load(File.open("#{ROOT}/config/database.yml"))
 ActiveRecord::Base.establish_connection( @db_config )
-ActiveRecord:: ConnectionAdapters::ConnectionManagement
+ActiveRecord::ConnectionAdapters::ConnectionManagement
 #############################################################

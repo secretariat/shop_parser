@@ -32,12 +32,10 @@ module Common
 	 	cur_page_link = link_template.gsub!(/page[0-9]/, "pageX")
 	 	cur_page_link_tmp = link_template.gsub!(/p=[0-9]/, "p=Z")
 		1.upto(pages_num) do |i|
-			# puts "CURRENT PAGE: -->#{i}"
 			page_link = cur_page_link_tmp.gsub(/pageX/, "page#{i}")
 			page_link = page_link.gsub(/p=Z/, "p=#{i-1}")
 			ready_link = "#{SITE_URL}#{page_link}"
 			process_items_for_demension( ready_link, demension )
-			# break
 		end
 	end
 
