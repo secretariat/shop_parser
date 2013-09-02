@@ -73,8 +73,8 @@ module Common
 			style_id = link['data-style-id']
 			item = Item.find( :all, :conditions => { :product_id => product_id, :style_id => style_id } )
 
-			puts "#{item[0].productname} #{item[0].style}" if !item.blank?
 			demension.items << item if !item.blank?
+			puts "#{item[0].id}. #{item[0].productname}" if !item.blank?
 		end
 	end
 

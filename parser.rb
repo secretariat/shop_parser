@@ -9,8 +9,6 @@ class ShopParser
 	attr_accessor :gconfig
 
 	def initialize( global_config )
-		# @db_config = YAML::load(File.open('./config/database.yml'))
-		# ActiveRecord::Base.establish_connection( @db_config )
 		@gconfig = global_config
 		@cur_dep = nil
 		@cur_category = nil
@@ -118,11 +116,13 @@ class ShopParser
 		puts "new started #{i}"
 
 		page = open_page( page_link )
+
 		if page.blank?
 			puts "page is blank"
 			Log.error( "BrowseItemsFromPage: #{page_link}" )
 			return
 		end
+
 		begin
 			search_result = page.css("div#searchResults")
 		rescue Exception => e

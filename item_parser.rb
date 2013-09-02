@@ -7,6 +7,12 @@ def get_item_details( item )
 	puts "#{item.id}\t#{item.productname} - started"
 
 	page = open_page( item.ilink )
+
+	if page.blank?
+		Log.error( "get_item_details: #{page_link}" )
+		return
+	end
+
 	process_width(page, item)
 	process_color(page, item)
 	process_size(page, item)
