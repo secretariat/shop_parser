@@ -19,8 +19,8 @@ require "#{ROOT}/lib/common.rb"
 
 #############################################################
 SITE_URL = "http://6pm.com"
-# HOME_DIR = File.join( Dir.home, "ror/garderob4ik/public/images" )
-HOME_DIR = "/home/user/www/sites/garderob4ik/public/images"
+HOME_DIR = File.join( Dir.home, "ror/garderob4ik/public/images" )
+# HOME_DIR = "/home/user/www/sites/garderob4ik/public/images"
 #############################################################
 
 @db_config = YAML::load(File.open("#{ROOT}/config/database.yml"))

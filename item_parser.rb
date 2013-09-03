@@ -127,6 +127,7 @@ thread_pool = FutureProof::ThreadPool.new(5)
 @items.each do |item|
 	next if item.description.present?
   thread_pool.submit item do |i|
+  	puts "item_parser: parsing #{item.id}"
    	get_item_details( i )
   end
 end

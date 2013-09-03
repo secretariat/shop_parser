@@ -4,6 +4,8 @@ module Common
 
 		page = open_page( link )
 
+		return if page.blank?
+
 		styles_block = page.css("div#FCTtxattrfacet_stylesSelect")
 		style_links = styles_block.css("a")
 		style_links.each do |link|
@@ -28,7 +30,6 @@ module Common
 
 	def browse_paginated_pages( page, demension )
 		link_template, pages_num = pagination( page )
-		# puts pages_num
 	 	cur_page_link = link_template.gsub!(/page[0-9]/, "pageX")
 	 	cur_page_link_tmp = link_template.gsub!(/p=[0-9]/, "p=Z")
 		1.upto(pages_num) do |i|
@@ -66,12 +67,32 @@ module Common
 
 		return if page.blank?
 
-		search_result = page.css("div#searchResults")
+		begin
+			search_result = page.css("div#searchResults")
+		rescue Exception => e
+			Log.error( "process_items_for_demension: \'#{e.message}\'" )
+			return
+		end
+
 		item_links = search_result.css("a")
 		item_links.each do |link|
 			product_id = link['data-product-id']
 			style_id = link['data-style-id']
 			item = Item.find( :all, :conditions => { :product_id => product_id, :style_id => style_id } )
+
+			next if item.blank?
+
+			if demension.class == Style
+				if item[0].style.present?
+					puts "Item style present"
+					next
+				end
+			elsif demension.class == Material
+				if item[0].material.present?
+					puts "Item material present"
+					next
+				end
+			end
 
 			demension.items << item if !item.blank?
 			puts "#{item[0].id}. #{item[0].productname}" if !item.blank?
