@@ -4,8 +4,8 @@ class CreateCategory < ActiveRecord::Migration
     create_table :categories do |t|
       t.integer :gender_id
     	t.integer :departments_id
-      t.string :cat_name_en
-      t.string :cat_name_ru
+      t.string :name_us
+      t.string :name_ru
       t.string :cat_link
       t.boolean :active
       t.timestamps

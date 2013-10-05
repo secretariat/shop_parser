@@ -11,8 +11,8 @@ module Common
 		style_links.each do |link|
 			style_link = "#{SITE_URL}#{link['href']}"
 			style_name = link.text.split(/\(/)[0].strip
-			if( !Style.exists?(:name_us => style_name ) )
-				Style.create(:name_us => style_name, :link => style_link)
+			if( !Istyle.exists?(:name_us => style_name ) )
+				Istyle.create(:name_us => style_name, :link => style_link)
 			end
 		end
 
@@ -41,7 +41,12 @@ module Common
 	end
 
 	def pagination( page )
-		pagin_block = page.css("div.pagination")
+		begin
+			pagin_block = page.css("div.pagination")
+		rescue Exception => e
+			Log.error( "pagination: \'#{e.message}\'" )
+			return
+		end
 		link_template = ""
 		pages_num = 0
 		pagin_block.each do |pag|
@@ -82,20 +87,20 @@ module Common
 
 			next if item.blank?
 
-			if demension.class == Style
-				if item[0].style.present?
-					puts "Item style present"
+			if demension.class == Istyle
+				if !item[0].istyle.blank?
+					# Log.info( "Item Style Exists #{item[0].istyle.name_us}" )
 					next
 				end
 			elsif demension.class == Material
-				if item[0].material.present?
-					puts "Item material present"
+				if !item[0].material.blank?
+					# Log.info("Item Material Exists #{item[0].material.name_us}")
 					next
 				end
 			end
 
-			demension.items << item if !item.blank?
-			puts "#{item[0].id}. #{item[0].productname}" if !item.blank?
+			demension.items << item
+			Log.info( "Item Style created" )
 		end
 	end
 

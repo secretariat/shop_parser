@@ -16,11 +16,12 @@ def parse_style( demension )
 	end
 end
 
-Log.info("STYLE PARSER STARED")
-ar = [ Style, Material ]
+Log.info("STYLE PARSER STARTED")
+ar = [ Istyle, 	Material ]
 ar.each do |style|
-	Log.info("current style: '#{style}'")
+	Log.info("parsing '#{style}' started")
 	parse_style( style )
+	Log.info("parsing '#{style}' ended")
 end
 
 Log.info("STYLE PARSER ENDED")

@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
-class CreateStyle < ActiveRecord::Migration
+class CreateIstyle < ActiveRecord::Migration
   def change
-    create_table :styles do |t|
+    create_table :istyles do |t|
       t.string :name_us
       t.string :name_ru
       t.string :link

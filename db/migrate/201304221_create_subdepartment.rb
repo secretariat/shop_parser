@@ -4,8 +4,8 @@ class CreateSubdepartment < ActiveRecord::Migration
     create_table :subdepartments do |t|
       t.integer :department_id
     	t.integer :gender_id
-      t.string :subdep_name_en
-      t.string :subdep_name_ru
+      t.string :name_us
+      t.string :name_ru
       t.string :cat_link
       t.timestamps
     end
