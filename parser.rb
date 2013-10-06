@@ -29,8 +29,8 @@ class ShopParser
 		deps = Departments.where( :active => true )
 		deps.each do |d|
 			@cur_dep = d
-			case d.dep_name_en
-				when "Shoes" ; process_shoes( d.dep_link )
+			case d.name_us
+				when "Shoes" ; process_shoes( d.link )
 				when "Clothing" ; puts "Clothing"
 				when "Accessories" ; puts "Accessories"
 				when "Bags" ; puts "Bags"
@@ -70,8 +70,8 @@ class ShopParser
 			cat_name = cat_name.split("(")[0].chomp
 			cat_link = "#{SITE_URL}#{link['href']}"
 			if !Category.exists?( :cat_link => cat_link )
-				activity = gconfig.cat_by_gender["#{@cur_dep.dep_name_en}"]["#{@cur_gender.gender_name}"]
-				cat = Category.create( :cat_name_en => cat_name, :cat_link => cat_link, :active => activity )
+				activity = gconfig.cat_by_gender["#{@cur_dep.name_us}"]["#{@cur_gender.gender_name}"]
+				cat = Category.create( :name_us => cat_name, :cat_link => cat_link, :active => activity )
 				@cur_dep.categories << cat
 				@cur_gender.categories << cat
 			end
@@ -106,7 +106,7 @@ class ShopParser
 			@cur_category = c
 			page = open_page( c.cat_link )
 			return if page.blank?
-			puts "CATEGORY: #{c.cat_name_en.upcase}"
+			puts "CATEGORY: #{c.name_us.upcase}"
 			BrowsePagesFromCategory( page )
 		end
 	end

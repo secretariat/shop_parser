@@ -31,11 +31,11 @@ class Configer
 		@departs.each do |dep|
 			cur_dep = Departments.find_by_id( dep[1]['id'] )
 			if cur_dep.present?
-				if (cur_dep.dep_link != dep[1]['link']) || (cur_dep.active != dep[1]['active'])
-					Departments.update( dep[1]['id'], :dep_link => dep[1]['link'], :active => dep[1]['active'] )
+				if (cur_dep.link != dep[1]['link']) || (cur_dep.active != dep[1]['active'])
+					Departments.update( dep[1]['id'], :link => dep[1]['link'], :active => dep[1]['active'] )
 				end
 			else
-				Departments.create( :id => dep[1]['id'], :dep_name_en => dep[1]['name_en'], :dep_name_ru => dep[1]['name_ru'], :dep_link => dep[1]['link'], :active => dep[1]['active'] )
+				Departments.create( :id => dep[1]['id'], :name_us => dep[1]['name_en'], :name_ru => dep[1]['name_ru'], :link => dep[1]['link'], :active => dep[1]['active'] )
 			end
 		end
 	end
