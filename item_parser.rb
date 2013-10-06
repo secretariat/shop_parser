@@ -14,20 +14,15 @@ def get_item_details( item )
 	end
 
 	process_width(page, item)
-	puts "------1-------"
 	process_color(page, item)
-	puts "------2-------"
 	process_size(page, item)
-	puts "------3-------"
 	sku = page.css("span#sku").text.split("#")[1].to_i
 	main_image_div = page.css("div#detailImage")
 	description_block = page.css("div.description")
 	thumbnails_block = page.css("div#productImages")
 	image_links_block = thumbnails_block.css('img')
-	puts "------4-------"
 	desc = Description.new( :sku => sku.to_i, :description => description_block.to_s )
 	item.description = desc
-	puts "------5-------"
 
 	image_links_block.each do |link|
 		if link['src'] =~ /MULTIVIEW_THUMBNAILS/
