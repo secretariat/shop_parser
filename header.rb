@@ -8,6 +8,8 @@ require 'open-uri'
 require 'active_record'
 require 'fileutils'
 require 'future_proof'
+require 'rubygems'
+require 'pp'
 
 #############################################################
 require "#{ROOT}/lib/shoes.rb"
@@ -19,8 +21,8 @@ require "#{ROOT}/lib/common.rb"
 
 #############################################################
 SITE_URL = "http://6pm.com"
-HOME_DIR = File.join( Dir.home, "ror/garderob4ik/public/images" )
-# HOME_DIR = "/home/user/www/sites/garderob4ik/shared/public/images"
+HOME_DIR = File.join( Dir.home, "/home/user/shop_parser" )
+# HOME_DIR = "/home/user/shop_parser"
 #############################################################
 
 @db_config = YAML::load(File.open("#{ROOT}/config/database.yml"))

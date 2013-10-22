@@ -9,6 +9,7 @@ class Configer
 		@db_config = YAML::load(File.open("#{ROOT}/config/database.yml"))
 		@cat_by_gender = YAML::load(File.open("#{ROOT}/config/category_by_gender.yml"))
 		ActiveRecord::Base.establish_connection( @db_config )
+		page_link = "http://www.6pm.com/brands/filter/txAttrFacet_Gender/%22Women%22/txCategoryFacet_ZetaCategories1/%22Shoes%22#brands"
 	end
 
 	def get_brands
@@ -52,4 +53,19 @@ class Configer
 		get_departments
 	end
 
+end
+
+page = open_page( page_link )
+brand_block = page.css("div#brandlist")
+lis = brand_block.css("li")
+lis.each do |l|
+    link = l.css("a")
+    link_url = link['href']
+    link_text = link.text
+    Тут делаешь поиск в БД, например так
+    brand = Brand.find_by_name( link_text.downcase )
+    if (condition)
+        brand_page = page_open( link_url )
+        image_block = brand_page.css("xxx")
+    end
 end
