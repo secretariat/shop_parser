@@ -14,10 +14,24 @@ class Configer
 
 	def get_brands
 		@brands.each do |s|
+			page = open_page( page_link )
+			brand_block = page.css("div#brandlist")
+			lis = brand_block.css("li")
+			lis.each do |l|
+    			link = l.css("a")
+    			link_url = link['href']
+    			link_text = link.text
+    			brand = Brand.find_by_name( link_text.downcase )
+   				if (condition)
+       				brand_page = page_open( link_url )
+        			image_block = brand_page.css("h1")
+    			end
+			end
 			if !Brand.exists?( :name => s )
 				Brand.create( :name => s )
 			end
 		end
+		return @brands
 	end
 
 	def get_gender_table
@@ -53,19 +67,4 @@ class Configer
 		get_departments
 	end
 
-end
-
-page = open_page( page_link )
-brand_block = page.css("div#brandlist")
-lis = brand_block.css("li")
-lis.each do |l|
-    link = l.css("a")
-    link_url = link['href']
-    link_text = link.text
-    Тут делаешь поиск в БД, например так
-    brand = Brand.find_by_name( link_text.downcase )
-    if (condition)
-        brand_page = page_open( link_url )
-        image_block = brand_page.css("xxx")
-    end
 end
